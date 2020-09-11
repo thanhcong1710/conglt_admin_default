@@ -8,105 +8,124 @@ use Illuminate\Support\Facades\DB;
 
 class UtilityServiceProvider extends ServiceProvider
 {
-    public static function query($query, $print = false)
-    {
-        $resp = null;
-        $query = trim($query);
-        $upperQuery = strtoupper(substr($query, 0, 6));
-        if ($print) {
-            dd('\n-------------------------------------------------------------\n', $query, '\n-------------------------------------------------------------\n');
-        } else {
-            if ($upperQuery == ('SELECT')) {
-                $resp = DB::select(DB::raw($query));
-            } elseif ($upperQuery == ('INSERT')) {
-                $resp = DB::insert(DB::raw($query));
-            } elseif ($upperQuery == ('UPDATE')) {
-                $resp = DB::update(DB::raw($query));
-            } elseif ($upperQuery == ('DELETE')) {
-                $resp = DB::delete(DB::raw($query));
-            } else {
-                $resp = DB::statement(DB::raw($query));
-            }
-        }
-        return $resp;
-    }
-    public static function getOne($query){
-	    $finalQuery = $query. " LIMIT 1";
-        $resp = DB::select(DB::raw($finalQuery));
-        return $resp && is_array($resp) && count($resp) >= 1 ? $resp[0] : $resp;
-    }
-    public static function getObject($array_input, $table, $order_by_key='', $order_by_desc=false) {
+	public static function query($query, $print = false)
+	{
+		$resp = null;
+		$query = trim($query);
+		$upperQuery = strtoupper(substr($query, 0, 6));
+		if ($print) {
+			dd('\n-------------------------------------------------------------\n', $query, '\n-------------------------------------------------------------\n');
+		} else {
+			if ($upperQuery == ('SELECT')) {
+				$resp = DB::select(DB::raw($query));
+			} elseif ($upperQuery == ('INSERT')) {
+				$resp = DB::insert(DB::raw($query));
+			} elseif ($upperQuery == ('UPDATE')) {
+				$resp = DB::update(DB::raw($query));
+			} elseif ($upperQuery == ('DELETE')) {
+				$resp = DB::delete(DB::raw($query));
+			} else {
+				$resp = DB::statement(DB::raw($query));
+			}
+		}
+		return $resp;
+	}
+	public static function first($query, $print = false)
+	{
+		$resp = self::query($query, $print);
+		return $resp && is_array($resp) && count($resp) >= 1 ? $resp[0] : $resp;
+	}
+	public static function getObject($array_input, $table, $order_by_key = '', $order_by_desc = false)
+	{
 		$sub_sql = '1 ';
 		$sub_order = '';
-		foreach ( $array_input as $key => $value ) {
+		foreach ($array_input as $key => $value) {
 			$sub_sql .= " AND " . $key . "= :" . $key;
 		}
-		if($order_by_key!=''){
-			if($order_by_desc){
+		if ($order_by_key != '') {
+			if ($order_by_desc) {
 				$sub_order = " ORDER BY $order_by_key DESC";
-			}else{
+			} else {
 				$sub_order = " ORDER BY $order_by_key ASC";
 			}
 		}
 		$query = "SELECT * FROM " . $table . " WHERE " . $sub_sql . $sub_order . " LIMIT 1";
-		$resp = DB::select(DB::raw($query),$array_input);
+		$resp = DB::select(DB::raw($query), $array_input);
 		return $resp && is_array($resp) && count($resp) == 1 ? $resp[0] : $resp;
-    }
+	}
 
-	public static function getMultiObject($array_input, $table, $limit=0, $order_by_key='', $order_by_desc=false) {
+	public static function getMultiObject($array_input, $table, $limit = 0, $order_by_key = '', $order_by_desc = false)
+	{
 		$sub_sql = '1 ';
 		$sub_order = '';
 		$sub_limit = '';
-		foreach ( $array_input as $key => $value ) {
+		foreach ($array_input as $key => $value) {
 			$sub_sql .= " AND " . $key . "= :" . $key;
 		}
-		if($order_by_key!=''){
-			if($order_by_desc){
+		if ($order_by_key != '') {
+			if ($order_by_desc) {
 				$sub_order = " ORDER BY $order_by_key DESC";
-			}else{
+			} else {
 				$sub_order = " ORDER BY $order_by_key ASC";
 			}
 		}
-		if($limit){
+		if ($limit) {
 			$sub_limit = " LIMIT $limit";
 		}
 		$query = "SELECT * FROM " . $table . " WHERE " . $sub_sql . $sub_order . $sub_limit;
-		$resp = DB::select(DB::raw($query),$array_input);
-		return $resp ;
-    }
+		$resp = DB::select(DB::raw($query), $array_input);
+		return $resp;
+	}
 
-	public static function insertSimpleRow($arr_params, $table) {
+	public static function insertSimpleRow($arr_params, $table)
+	{
 		$field = "";
 		$field_value = "";
-		foreach ( $arr_params as $key => $value ) {
+		foreach ($arr_params as $key => $value) {
 			$field .= $key . ",";
 			$field_value .= ":" . $key . ",";
 		}
-		$field = rtrim ( $field, "," );
-		$field_value = rtrim ( $field_value, "," );
+		$field = rtrim($field, ",");
+		$field_value = rtrim($field_value, ",");
 		$sql = "INSERT IGNORE INTO " . $table . "(" . $field . ") VALUES (" . $field_value . ")";
-		$resp = DB::insert(DB::raw($sql),$arr_params);
+		$resp = DB::insert(DB::raw($sql), $arr_params);
 		return $resp ? DB::getPdo()->lastInsertId() : $resp;
-    }
+	}
 
-	public static function updateSimpleRow($arr_params, $arr_key, $table) {
+	public static function updateSimpleRow($arr_params, $arr_key, $table)
+	{
 		$set_clause = "";
 		$arr_binding = array();
-		foreach ( $arr_params as $key => $value ) {
+		foreach ($arr_params as $key => $value) {
 			$set_clause .= $key . "= :value_" . $key . ",";
-			$arr_binding['value_'.$key] = $value;
+			$arr_binding['value_' . $key] = $value;
 		}
-		$set_clause = rtrim ( $set_clause, "," );
+		$set_clause = rtrim($set_clause, ",");
 
 		$sql_cond = '1=1';
-		foreach ( $arr_key as $key => $value ) {
+		foreach ($arr_key as $key => $value) {
 			$sql_cond .= ' AND ' . $key . "= :key_" . $key;
-			$arr_binding['key_'.$key] = $value;
+			$arr_binding['key_' . $key] = $value;
 		}
 		if ($set_clause != '') {
 			$sql = 'UPDATE ' . $table . ' SET ' . $set_clause . ' WHERE ' . $sql_cond;
-			$resp = DB::update(DB::raw($sql),$arr_binding);
+			$resp = DB::update(DB::raw($sql), $arr_binding);
 			return $resp;
 		}
+	}
+	public static function makingPagination($list, $total, $page, $limit)
+	{
+		$pagination = (object)[];
+		$data = (object)[];
+		$pagination->spage = 1;
+		$pagination->cpage = $page;
+		$pagination->total = $total;
+		$pagination->limit = $limit;
+		$pagination->lpage = ($total % $limit) == 0 ? (int)($total / $limit) : (int)($total / $limit) + 1;
+		$pagination->ppage = $page > 0 ? $page - 1 : 0;
+		$pagination->npage = $page < $pagination->lpage ? $page + 1 : $pagination->lpage;
+		$data->list = $list;
+		$data->paging = $pagination;
+		return $data;
 	}
 }
