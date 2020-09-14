@@ -66,8 +66,12 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::resource('roles',        'RolesController');
         Route::get('/roles/move/move-up',      'RolesController@moveUp')->name('roles.up');
         Route::get('/roles/move/move-down',    'RolesController@moveDown')->name('roles.down');
-        Route::post('/config/products/list', 'ProductsController@list');
         Route::get('/language/{language}', 'LangController@setLanguage');
+
+        Route::post('/config/products/list', 'ProductsController@list');
+        Route::post('/config/products/add', 'ProductsController@add');
+        Route::post('/config/products/update/{product_id}', 'ProductsController@update');
+        Route::get('/config/products/detail/{product_id}', 'ProductsController@detail');
     });
 });
 

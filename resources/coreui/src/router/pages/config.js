@@ -1,5 +1,7 @@
 import u from '../../utilities/utility'
 const ProductList = () => import('../../views/config/products/list')
+const ProductAdd = () => import('../../views/config/products/add')
+const ProductEdit = () => import('../../views/config/products/edit')
 export default {
   router: {
     path: '/',
@@ -14,9 +16,17 @@ export default {
         path: '/products',
         name: 'Danh Sách Các Sản Phẩm',
         component: ProductList
+      },
+      {
+        path: '/products/add',
+        name: 'Thêm Mới Sản Phẩm',
+        component: ProductAdd
+      },
+      {
+        path: '/products/:id/edit',
+        name: 'Cập Nhật Sản Phẩm',
+        component: ProductEdit
       }
-      // routers.product_add,
-      // routers.product_edit,
     ]
   }
 }

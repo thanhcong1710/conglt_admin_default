@@ -1,8 +1,9 @@
 <template>
-  <div class="animated fadeIn apax-form">
+  <div class="animated fadeIn">
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
+          <loader :active="loading.processing" :text="loading.text" />
           <div class="card-header">
             <strong>Bộ lọc</strong>
           </div>
@@ -28,13 +29,21 @@
             </div>
           </div>
           <div class="card-footer">
-            <button class="btn btn-info" type="submit" @click="search()">Tìm kiếm</button>
-            <button class="btn btn-secondary" type="reset" @click="reset()">Reset</button>
+            <router-link class="btn btn-sm btn-success" :to="'/products/add'">
+              <i class="fa fa-plus"></i> Thêm mới
+            </router-link>
+            <button class="btn btn-sm btn-info" type="submit" @click="search()">
+              <i class="fa fa-search"></i> Tìm kiếm
+            </button>
+            <button class="btn btn-sm btn-secondary" type="reset" @click="reset()">
+              <i class="fas fa-undo-alt"></i> Reset
+            </button>
           </div>
         </div>
       </div>
       <div class="col-lg-12">
         <div class="card">
+          <loader :active="loading.processing" :text="loading.text" />
           <div class="card-header">
             <strong>Danh sách</strong>
           </div>
@@ -53,7 +62,14 @@
                   <td>{{ index + 1 + ((pagination.cpage - 1) * pagination.limit) }}</td>
                   <td>{{ item.title }}</td>
                   <td>{{ item.status | getStatusName }}</td>
-                  <td></td>
+                  <td>
+                    <router-link class="btn btn-sm btn-success" :to="`/products/${item.id}/edit`">
+                      <i class="fa fa-edit"></i> Sửa
+                    </router-link>
+                    <button class="btn btn-sm btn-danger" type="submit" @click="search()">
+                      <i class="fas fa-times"></i> Xóa
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -87,14 +103,20 @@
 import axios from "axios";
 import paging from "../../../components/Pagination";
 import u from "../../../utilities/utility";
+import loader from "../../../components/Loading";
 
 export default {
   components: {
+    loader: loader,
     paging: paging,
   },
   name: "List-Product",
   data() {
     return {
+      loading: {
+        text: "Đang tải dữ liệu...",
+        processing: false,
+      },
       searchData: {
         keyword: "",
         status: "",
@@ -133,10 +155,12 @@ export default {
       };
       const link =
         "/api/config/products/list?token=" + localStorage.getItem("api_token");
+
+      this.loading.processing = true;
       axios
         .post(link, data)
         .then((response) => {
-          console.log(response.data);
+          this.loading.processing = false;
           this.products = response.data.list;
           this.pagination.spage = response.data.paging.spage;
           this.pagination.ppage = response.data.paging.ppage;
@@ -146,7 +170,9 @@ export default {
           this.pagination.total = response.data.paging.total;
           this.pagination.limit = response.data.paging.limit;
         })
-        .catch((e) => {});
+        .catch((e) => {
+          u.processAuthen(e);
+        });
     },
     changePage(link) {
       const info = link

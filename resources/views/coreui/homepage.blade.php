@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="locale" content="{{ App::getLocale() }}"/>
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <title>CoreUI - Vue Open Source Bootstrap Admin Template</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
     <script>
@@ -25,7 +25,6 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-
   </head>
 
   <!-- BODY options, add following classes to body to change options
