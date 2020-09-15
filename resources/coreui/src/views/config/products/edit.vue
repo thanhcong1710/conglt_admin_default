@@ -27,6 +27,15 @@
                   <option value="1">Hoạt động</option>
                 </select>
               </div>
+              <div class="form-group">
+                <label for="nf-email">Ghi chú</label>
+                <editor
+                  :api-key="tinymce.key"
+                  :init="tinymce.init"
+                  id="input_tinymce"
+                  :value="product.note"
+                />
+              </div>
             </form>
           </div>
           <div class="card-footer">
@@ -61,14 +70,36 @@
 import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
+import Editor from "@tinymce/tinymce-vue";
 
 export default {
   components: {
     loader: loader,
+    editor: Editor,
   },
   name: "Edit-Product",
   data() {
     return {
+      tinymce: {
+        key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
+        init: {
+          height: 300,
+          menubar: true,
+          plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table paste code help wordcount",
+          ],
+          toolbar:
+            "undo redo | bold italic backcolor | image| media |\
+           alignleft aligncenter alignright alignjustify | \
+           bullist numlist outdent indent | removeformat | help",
+          images_upload_url:
+            "/api/upload/upload_file?token=" +
+            localStorage.getItem("api_token"),
+          images_upload_base_path: "",
+        },
+      },
       loading: {
         text: "Đang tải dữ liệu...",
         processing: false,

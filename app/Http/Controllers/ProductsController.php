@@ -39,7 +39,8 @@ class ProductsController extends Controller
             'status' => $request->status,
             'lang' => $request->lang,
             'created_at' => date('Y-m-d H:i:s'),
-            'creator_id' => Auth::user()->id
+            'creator_id' => Auth::user()->id,
+            'note' => $request->note,
         ), 'lms_products');
         return response()->json($data);
     }
@@ -55,7 +56,8 @@ class ProductsController extends Controller
             'status' => $request->status,
             'lang' => $request->lang,
             'updated_at' => date('Y-m-d H:i:s'),
-            'updator_id' => Auth::user()->id
+            'updator_id' => Auth::user()->id,
+            'note' => $request->note,
         ), array('id' => $product_id), 'lms_products');
         return response()->json($data);
     }

@@ -72,6 +72,7 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('/config/products/add', 'ProductsController@add');
         Route::post('/config/products/update/{product_id}', 'ProductsController@update');
         Route::get('/config/products/detail/{product_id}', 'ProductsController@detail');
+        Route::post('/upload/upload_file', 'UploadController@upload');
     });
 });
 
