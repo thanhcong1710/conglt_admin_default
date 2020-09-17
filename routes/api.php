@@ -77,6 +77,10 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('/courseware/quizs/list', 'QuizsController@list');
         Route::post('/courseware/quizs/add1', 'QuizsController@add1');
         Route::post('/courseware/quizs/update1/{quiz_id}', 'QuizsController@update1');
+        Route::post('/courseware/quizs/add2', 'QuizsController@add2');
+        Route::post('/courseware/quizs/update2/{quiz_id}', 'QuizsController@update2');
+        Route::post('/courseware/quizs/add3', 'QuizsController@add3');
+        Route::post('/courseware/quizs/update3/{quiz_id}', 'QuizsController@update3');
         Route::get('/courseware/quizs/detail/{quiz_id}', 'QuizsController@detail');
     });
 });

@@ -12,14 +12,8 @@
               <div class="row">
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label for="nf-email">Mã câu hỏi</label>
-                    <input class="form-control" type="text" name="title" v-model="quiz.ma_cauhoi" />
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
                     <label for="nf-email">Dạng câu hỏi</label>
-                    <select class="form-control" v-model="quiz.type">
+                    <select class="form-control" v-model="quiz.type" @change="redirectTypeQuiz">
                       <option value="1">Trắc nghiệm</option>
                       <option value="2">Điền từ</option>
                       <option value="3">Tự luận</option>
@@ -28,8 +22,14 @@
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
+                    <label for="nf-email">Mã câu hỏi</label>
+                    <input class="form-control" type="text" name="title" v-model="quiz.ma_cauhoi" />
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
                     <label for="nf-email">Độ khó</label>
-                    <select class="form-control" v-model="quiz.status">
+                    <select class="form-control" v-model="quiz.dokho_quiz">
                       <option value="1">Dễ</option>
                       <option value="2">Trung bình</option>
                       <option value="3">Khó</option>
@@ -46,10 +46,23 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-group">
-                <label for="nf-email">Ghi chú</label>
-                <editor :api-key="tinymce.key" :init="tinymce.init" id="input_tinymce" />
+                <label for="nf-email">Nội dung câu hỏi</label>
+                <editor
+                  :api-key="tinymce.key"
+                  :init="tinymce.init"
+                  :value="quiz.noidung_intro"
+                  id="noidung_intro"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nf-email">Giải thích</label>
+                <editor
+                  :api-key="tinymce.key"
+                  :init="tinymce.init"
+                  :value="quiz.giaithich_quiz"
+                  id="giaithich_quiz"
+                />
               </div>
             </form>
           </div>
@@ -98,7 +111,8 @@ export default {
       tinymce: {
         key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
         init: {
-          height: 300,
+          entity_encoding: "raw",
+          height: 250,
           menubar: true,
           plugins: [
             "advlist autolink lists link image charmap print preview anchor",
@@ -123,32 +137,43 @@ export default {
         title: "THÔNG BÁO",
         show: false,
         color: "success",
-        body: "Thêm mới sản phẩm thành công",
+        body: "Thêm mới câu hỏi thành công",
         closeOnBackdrop: false,
       },
       quiz: {
-        title: "",
+        type: 3,
+        ma_cauhoi: "",
         status: 1,
-        lang: 0,
-        note: "",
+        dokho_quiz: 2,
+        noidung_intro: "",
+        giaithich_quiz: "",
       },
     };
   },
   created() {},
   methods: {
+    redirectTypeQuiz() {
+      if (this.quiz.type == 2) {
+        this.$router.push({ path: "/quizs/add2" });
+      } else if (this.quiz.type == 1) {
+        this.$router.push({ path: "/quizs/add1" });
+      }
+    },
     save() {
-      this.quiz.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
+      this.quiz.noidung_intro = tinymce.get("noidung_intro").getContent();
+      this.quiz.giaithich_quiz = tinymce.get("giaithich_quiz").getContent();
       axios
         .post(
-          "/api/config/quizs/add?token=" + localStorage.getItem("api_token"),
+          "/api/courseware/quizs/add3?token=" +
+            localStorage.getItem("api_token"),
           this.quiz
         )
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
             this.modal.color = "success";
-            this.modal.body = "Thêm mới sản phẩm thành công";
+            this.modal.body = "Thêm mới câu hỏi thành công";
             this.modal.show = true;
           }
         })

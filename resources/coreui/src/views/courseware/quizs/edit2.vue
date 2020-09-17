@@ -1,49 +1,111 @@
 <template>
   <div class="animated fadeIn">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <div class="card">
           <loader :active="loading.processing" :text="loading.text" />
           <div class="card-header">
-            <strong>Cập nhật sản phẩm</strong>
+            <strong>Cập nhật câu hỏi</strong>
           </div>
           <div class="card-body">
             <form action method="post">
-              <div class="form-group">
-                <label for="nf-email">Tên sản phẩm</label>
-                <input class="form-control" type="text" name="title" v-model="product.title" />
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="nf-email">Dạng câu hỏi</label>
+                    <select class="form-control" v-model="quiz.type" disabled>
+                      <option value="1">Trắc nghiệm</option>
+                      <option value="2">Điền từ</option>
+                      <option value="3">Tự luận</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="nf-email">Mã câu hỏi</label>
+                    <input class="form-control" type="text" name="title" v-model="quiz.ma_cauhoi" />
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="nf-email">Độ khó</label>
+                    <select class="form-control" v-model="quiz.dokho_quiz">
+                      <option value="1">Dễ</option>
+                      <option value="2">Trung bình</option>
+                      <option value="3">Khó</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="nf-email">Trạng thái</label>
+                    <select class="form-control" v-model="quiz.status">
+                      <option value="0">Ngừng hoạt động</option>
+                      <option value="1">Hoạt động</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="nf-email">Kích thước ô trống</label>
+                    <select class="form-control" v-model="quiz.noidung_template">
+                      <option value="small">Ngắn</option>
+                      <option value="default">Trung bình</option>
+                      <option value="large">Dài</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="nf-email">Chính tả</label>
+                    <select class="form-control" v-model="quiz.noidung_type_convert">
+                      <option value="0">Có phân biệt chính tả</option>
+                      <option value="1">Không phân biệt chính tả</option>
+                    </select>
+                  </div>
+                </div>
               </div>
               <div class="form-group">
-                <label for="nf-email">Ngôn ngữ</label>
-                <select class="form-control" v-model="product.lang">
-                  <option value="0">Tiếng Việt</option>
-                  <option value="1">Tiếng Anh</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="nf-email">Trạng thái</label>
-                <select class="form-control" v-model="product.status">
-                  <option value="0">Ngừng hoạt động</option>
-                  <option value="1">Hoạt động</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="nf-email">Ghi chú</label>
+                <label for="nf-email">Nội dung câu hỏi</label>
                 <editor
                   :api-key="tinymce.key"
                   :init="tinymce.init"
-                  id="input_tinymce"
-                  :value="product.note"
+                  :value="quiz.noidung_intro"
+                  id="noidung_intro"
+                />
+                <p style="font-size:12px">
+                  <i>Chú ý: ô trống có dạng /*1*/ /*2*/</i>
+                </p>
+              </div>
+              <div class="form-group">
+                <label for="nf-email">Đáp án</label>
+                <editor
+                  :api-key="tinymce.key"
+                  :init="tinymce.init"
+                  :value="quiz.dapan_quiz"
+                  id="dapan_quiz"
+                />
+                <p style="font-size:12px">
+                  <i>Chú ý: đáp án quiz có dạng " 1) nội dung đáp án 1"</i>
+                </p>
+              </div>
+              <div class="form-group">
+                <label for="nf-email">Giải thích</label>
+                <editor
+                  :api-key="tinymce.key"
+                  :init="tinymce.init"
+                  :value="quiz.giaithich_quiz"
+                  id="giaithich_quiz"
                 />
               </div>
             </form>
           </div>
           <div class="card-footer">
-            <router-link class="btn btn-danger" :to="`/products`">
+            <router-link class="btn btn-danger" :to="`/quizs`">
               <i class="fas fa-undo-alt"></i> Hủy
             </router-link>
             <button class="btn btn-success" type="button" @click="save">
-              <i class="fas fa-save"></i> Cập nhật
+              <i class="fas fa-save"></i> Lưu
             </button>
           </div>
         </div>
@@ -77,13 +139,14 @@ export default {
     loader: loader,
     editor: Editor,
   },
-  name: "Edit-Product",
+  name: "Add-Product",
   data() {
     return {
       tinymce: {
         key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
         init: {
-          height: 300,
+          entity_encoding: "raw",
+          height: 250,
           menubar: true,
           plugins: [
             "advlist autolink lists link image charmap print preview anchor",
@@ -108,13 +171,19 @@ export default {
         title: "THÔNG BÁO",
         show: false,
         color: "success",
-        body: "Cập nhật sản phẩm thành công",
+        body: "Thêm mới câu hỏi thành công",
         closeOnBackdrop: false,
       },
-      product: {
-        title: "",
+      quiz: {
+        type: 2,
+        ma_cauhoi: "",
         status: 1,
-        lang: 0,
+        dokho_quiz: 2,
+        noidung_template: "default",
+        noidung_type_convert: 1,
+        noidung_intro: "",
+        dapan_quiz: "",
+        giaithich_quiz: "",
       },
     };
   },
@@ -122,12 +191,16 @@ export default {
     this.loading.processing = true;
     axios
       .get(
-        `api/config/products/detail/${this.$route.params.id}?token=` +
+        `api/courseware/quizs/detail/${this.$route.params.id}?token=` +
           localStorage.getItem("api_token")
       )
       .then((response) => {
         this.loading.processing = false;
-        this.product = response.data;
+        this.quiz = response.data;
+        this.quiz.noidung_template = this.quiz.noidung_quiz.template;
+        this.quiz.noidung_type_convert = this.quiz.noidung_quiz.type_convert;
+        this.quiz.noidung_intro = this.quiz.noidung_quiz.intro;
+        this.quiz.dapan_quiz = this.quiz.meta_data;
       })
       .catch((e) => {
         u.processAuthen(e);
@@ -136,17 +209,20 @@ export default {
   methods: {
     save() {
       this.loading.processing = true;
+      this.quiz.noidung_intro = tinymce.get("noidung_intro").getContent();
+      this.quiz.dapan_quiz = tinymce.get("dapan_quiz").getContent();
+      this.quiz.giaithich_quiz = tinymce.get("giaithich_quiz").getContent();
       axios
         .post(
-          `/api/config/products/update/${this.$route.params.id}?token=` +
+          `/api/courseware/quizs/update2/${this.$route.params.id}?token=` +
             localStorage.getItem("api_token"),
-          this.product
+          this.quiz
         )
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
             this.modal.color = "success";
-            this.modal.body = "Cập nhật sản phẩm thành công";
+            this.modal.body = "Cập nhật câu hỏi thành công";
             this.modal.show = true;
           }
         })
@@ -155,7 +231,7 @@ export default {
         });
     },
     exit() {
-      this.$router.push({ path: "/products" });
+      this.$router.push({ path: "/quizs" });
     },
   },
 };

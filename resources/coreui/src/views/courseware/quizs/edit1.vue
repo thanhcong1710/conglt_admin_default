@@ -192,6 +192,7 @@ export default {
     };
   },
   created() {
+    this.loading.processing = true;
     axios
       .get(
         `api/courseware/quizs/detail/${this.$route.params.id}?token=` +
