@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Config from './pages/config'
+import Courseware from './pages/courseware'
 // Containers
 const TheContainer = () => import('@/containers/TheContainer')
 
@@ -88,6 +89,7 @@ function configRoutes () {
       component: TheContainer,
       children: [
         Config.router,
+        Courseware.router,
         {
           path: 'media',
           name: 'Media',

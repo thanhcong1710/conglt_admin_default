@@ -83,6 +83,7 @@ export default {
       tinymce: {
         key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
         init: {
+          entity_encoding : "raw",
           height: 300,
           menubar: true,
           plugins: [
@@ -136,6 +137,7 @@ export default {
   methods: {
     save() {
       this.loading.processing = true;
+      this.product.note = tinymce.get("input_tinymce").getContent();
       axios
         .post(
           `/api/config/products/update/${this.$route.params.id}?token=` +

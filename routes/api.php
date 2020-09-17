@@ -67,12 +67,17 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::get('/roles/move/move-up',      'RolesController@moveUp')->name('roles.up');
         Route::get('/roles/move/move-down',    'RolesController@moveDown')->name('roles.down');
         Route::get('/language/{language}', 'LangController@setLanguage');
+        Route::post('/upload/upload_file', 'UploadController@upload');
 
         Route::post('/config/products/list', 'ProductsController@list');
         Route::post('/config/products/add', 'ProductsController@add');
         Route::post('/config/products/update/{product_id}', 'ProductsController@update');
         Route::get('/config/products/detail/{product_id}', 'ProductsController@detail');
-        Route::post('/upload/upload_file', 'UploadController@upload');
+
+        Route::post('/courseware/quizs/list', 'QuizsController@list');
+        Route::post('/courseware/quizs/add1', 'QuizsController@add1');
+        Route::post('/courseware/quizs/update1/{quiz_id}', 'QuizsController@update1');
+        Route::get('/courseware/quizs/detail/{quiz_id}', 'QuizsController@detail');
     });
 });
 

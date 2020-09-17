@@ -78,6 +78,7 @@ export default {
       tinymce: {
         key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
         init: {
+          entity_encoding : "raw",
           height: 300,
           menubar: true,
           plugins: [

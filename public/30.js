@@ -133,6 +133,7 @@ __webpack_require__.r(__webpack_exports__);
       tinymce: {
         key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
         init: {
+          entity_encoding: "raw",
           height: 300,
           menubar: true,
           plugins: ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table paste code help wordcount"],
@@ -177,6 +178,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loading.processing = true;
+      this.product.note = tinymce.get("input_tinymce").getContent();
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/config/products/update/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token"), this.product).then(function (response) {
         _this2.loading.processing = false;
 

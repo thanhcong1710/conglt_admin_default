@@ -128,6 +128,7 @@ __webpack_require__.r(__webpack_exports__);
       tinymce: {
         key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
         init: {
+          entity_encoding: "raw",
           height: 300,
           menubar: true,
           plugins: ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table paste code help wordcount"],

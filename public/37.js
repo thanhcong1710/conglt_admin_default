@@ -1,14 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[37],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/components/Loading.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/components/Loading.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var timers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! timers */ "./node_modules/timers-browserify/main.js");
+/* harmony import */ var timers__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(timers__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -18,365 +20,360 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Dropdowns'
+  props: {
+    active: {
+      type: Boolean,
+      "default": false
+    },
+    text: {
+      type: String,
+      "default": "Đang xử lý..."
+    }
+  }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=template&id=fe8aa238&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=template&id=fe8aa238& ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./resources/coreui/node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utilities_utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utilities/utility */ "./resources/coreui/src/utilities/utility.js");
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/Loading */ "./resources/coreui/src/components/Loading.vue");
+/* harmony import */ var _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tinymce/tinymce-vue */ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    loader: _components_Loading__WEBPACK_IMPORTED_MODULE_2__["default"],
+    editor: _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  name: "Add-Product",
+  data: function data() {
+    return {
+      tinymce: {
+        key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
+        init: {
+          entity_encoding: "raw",
+          height: 250,
+          menubar: true,
+          plugins: ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table paste code help wordcount"],
+          toolbar: "undo redo | bold italic backcolor | image| media |\
+           alignleft aligncenter alignright alignjustify | \
+           bullist numlist outdent indent | removeformat | help",
+          images_upload_url: "/api/upload/upload_file?token=" + localStorage.getItem("api_token"),
+          images_upload_base_path: ""
+        }
+      },
+      loading: {
+        text: "Đang tải dữ liệu...",
+        processing: false
+      },
+      modal: {
+        title: "THÔNG BÁO",
+        show: false,
+        color: "success",
+        body: "Thêm mới câu hỏi thành công",
+        closeOnBackdrop: false
+      },
+      quiz: {
+        type: 1,
+        ma_cauhoi: "",
+        status: 1,
+        dokho_quiz: 2,
+        noidung_template: "large",
+        noidung_is_multichoice: 0,
+        noidung_intro: "",
+        noidung_option: "",
+        dapan_quiz: "",
+        giaithich_quiz: ""
+      }
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/courseware/quizs/detail/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token")).then(function (response) {
+      _this.loading.processing = false;
+      _this.quiz = response.data;
+      _this.quiz.noidung_template = _this.quiz.noidung_quiz.template;
+      _this.quiz.noidung_is_multichoice = _this.quiz.noidung_quiz.is_multichoice;
+      _this.quiz.noidung_intro = _this.quiz.noidung_quiz.intro;
+      _this.quiz.noidung_option = _this.quiz.noidung_quiz.option_html;
+    })["catch"](function (e) {
+      _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
+    });
+  },
+  methods: {
+    save: function save() {
+      var _this2 = this;
+
+      this.loading.processing = true;
+      this.quiz.noidung_intro = tinymce.get("noidung_intro").getContent();
+      this.quiz.noidung_option = tinymce.get("noidung_option").getContent();
+      this.quiz.giaithich_quiz = tinymce.get("giaithich_quiz").getContent();
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/courseware/quizs/update1/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token"), this.quiz).then(function (response) {
+        _this2.loading.processing = false;
+
+        if (response.status == 200) {
+          _this2.modal.color = "success";
+          _this2.modal.body = "Cập nhật câu hỏi thành công";
+          _this2.modal.show = true;
+        }
+      })["catch"](function (e) {
+        _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
+      });
+    },
+    exit: function exit() {
+      this.$router.push({
+        path: "/quizs"
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/components/Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/components/Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.d-flex.justify-content-center[data-v-ff24627c] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  z-index: 100;\n  background: #3e3f4078;\n}\n.spinner-border[data-v-ff24627c] {\n  margin-top: 50px;\n  position: absolute;\n}\n.loading-text[data-v-ff24627c] {\n  color: #fff;\n  margin-top: 10px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/components/Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/components/Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/components/Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/components/Loading.vue?vue&type=template&id=ff24627c&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/components/Loading.vue?vue&type=template&id=ff24627c&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.active
+    ? _c("div", { staticClass: "d-flex justify-content-center" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "loading-text cssload-loader" }, [
+          _vm._v(_vm._s(_vm.text))
+        ])
+      ])
+    : _vm._e()
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border text-danger", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=template&id=0e5f5502&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=template&id=0e5f5502& ***!
+  \****************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -390,777 +387,443 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "animated fadeIn" },
     [
-      _c(
-        "CRow",
-        [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12" }, [
           _c(
-            "CCol",
-            { attrs: { col: "12", md: "6" } },
+            "div",
+            { staticClass: "card" },
             [
-              _c(
-                "CCard",
-                [
-                  _c(
-                    "CCardHeader",
-                    [
-                      _c("CIcon", { attrs: { name: "cil-justify-center" } }),
-                      _vm._v(" "),
-                      _c("strong", [_vm._v(" Bootstrap Dropdown")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-header-actions" }, [
+              _c("loader", {
+                attrs: {
+                  active: _vm.loading.processing,
+                  text: _vm.loading.text
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("form", { attrs: { action: "", method: "post" } }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-sm-3" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "nf-email" } }, [
+                          _vm._v("Dạng câu hỏi")
+                        ]),
+                        _vm._v(" "),
                         _c(
-                          "a",
+                          "select",
                           {
-                            staticClass: "card-header-action",
-                            attrs: {
-                              href:
-                                "https://coreui.io/vue/docs/components/dropdown",
-                              rel: "noreferrer noopener",
-                              target: "_blank"
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.quiz.type,
+                                expression: "quiz.type"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { disabled: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.quiz,
+                                  "type",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
                             }
                           },
                           [
-                            _c("small", { staticClass: "text-muted" }, [
-                              _vm._v("docs")
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("Trắc nghiệm")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2" } }, [
+                              _vm._v("Điền từ")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "3" } }, [
+                              _vm._v("Tự luận")
                             ])
                           ]
                         )
                       ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("CCardBody", [
-                    _c(
-                      "div",
-                      [
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-3" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "nf-email" } }, [
+                          _vm._v("Mã câu hỏi")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.quiz.ma_cauhoi,
+                              expression: "quiz.ma_cauhoi"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", name: "title" },
+                          domProps: { value: _vm.quiz.ma_cauhoi },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.quiz,
+                                "ma_cauhoi",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-3" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "nf-email" } }, [
+                          _vm._v("Độ khó")
+                        ]),
+                        _vm._v(" "),
                         _c(
-                          "CDropdown",
+                          "select",
                           {
-                            staticClass: "m-2",
-                            attrs: {
-                              "toggler-text": "Dropdown Button",
-                              color: "secondary"
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.quiz.dokho_quiz,
+                                expression: "quiz.dokho_quiz"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.quiz,
+                                  "dokho_quiz",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
                             }
                           },
                           [
-                            _c("CDropdownItem", [_vm._v("First Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Second Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Third Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownDivider"),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [
-                              _vm._v("Something else here...")
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("Dễ")
                             ]),
                             _vm._v(" "),
-                            _c("CDropdownItem", { attrs: { disabled: "" } }, [
-                              _vm._v("Disabled action")
+                            _c("option", { attrs: { value: "2" } }, [
+                              _vm._v("Trung bình")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "3" } }, [
+                              _vm._v("Khó")
                             ])
-                          ],
-                          1
+                          ]
                         )
-                      ],
-                      1
-                    ),
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      [
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2",
-                            attrs: {
-                              "toggler-text": "Dropdown with divider",
-                              color: "secondary"
-                            }
-                          },
-                          [
-                            _c("CDropdownItem", [_vm._v("First item")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Second item")]),
-                            _vm._v(" "),
-                            _c("CDropdownDivider"),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Separated Item")])
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      [
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2",
-                            attrs: {
-                              "toggler-text": "Dropdown with header",
-                              color: "secondary"
-                            }
-                          },
-                          [
-                            _c("CDropdownHeader", [_vm._v("Dropdown header")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("First item")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Second Item")])
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", md: "6" } },
-            [
-              _c(
-                "CCard",
-                [
-                  _c(
-                    "CCardHeader",
-                    [
-                      _c("CIcon", { attrs: { name: "cil-justify-center" } }),
-                      _vm._v(" "),
-                      _c("strong", [_vm._v(" Dropdown ")]),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("positioning")])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("CCardBody", [
-                    _c(
-                      "div",
-                      [
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2 d-inline-block",
-                            attrs: {
-                              "toggler-text": "Left align",
-                              color: "primary"
-                            }
-                          },
-                          [
-                            _c("CDropdownItem", [_vm._v("Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Another action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Something else here")])
-                          ],
-                          1
-                        ),
+                    _c("div", { staticClass: "col-sm-3" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "nf-email" } }, [
+                          _vm._v("Trạng thái")
+                        ]),
                         _vm._v(" "),
                         _c(
-                          "CDropdown",
+                          "select",
                           {
-                            staticClass: "m-2 d-inline-block",
-                            attrs: {
-                              placement: "bottom-end",
-                              "toggler-text": "Right align",
-                              color: "primary"
-                            }
-                          },
-                          [
-                            _c("CDropdownItem", [_vm._v("Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Another action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Something else here")])
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      [
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2",
-                            attrs: {
-                              "toggler-text": "Drop-Up",
-                              color: "info",
-                              placement: "top-start"
-                            }
-                          },
-                          [
-                            _c("CDropdownItem", [_vm._v("Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Another action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Something else here")])
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      [
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2",
-                            attrs: {
-                              color: "secondary",
-                              offset: [10, 5],
-                              "toggler-text": "Offset Dropdown"
-                            }
-                          },
-                          [
-                            _c("CDropdownItem", [_vm._v("Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Another action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Something else here")])
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      [
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2",
-                            attrs: {
-                              color: "secondary",
-                              split: "",
-                              "toggler-text": "Split Dropdown"
-                            }
-                          },
-                          [
-                            _c("CDropdownItem", [_vm._v("Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Another action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [
-                              _vm._v("Something else here...")
-                            ])
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CRow",
-        [
-          _c(
-            "CCol",
-            { attrs: { col: "12", md: "6" } },
-            [
-              _c(
-                "CCard",
-                [
-                  _c(
-                    "CCardHeader",
-                    [
-                      _c("CIcon", { attrs: { name: "cil-justify-center" } }),
-                      _vm._v(" "),
-                      _c("strong", [_vm._v(" Dropdown ")]),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("hidden caret")])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("CCardBody", [
-                    _c(
-                      "div",
-                      [
-                        _c(
-                          "CDropdown",
-                          {
-                            attrs: { color: "link", size: "lg", caret: false },
-                            scopedSlots: _vm._u([
+                            directives: [
                               {
-                                key: "toggler-content",
-                                fn: function() {
-                                  return [
-                                    _vm._v("\n                🔍"),
-                                    _c("span", { staticClass: "sr-only" }, [
-                                      _vm._v("Search")
-                                    ])
-                                  ]
-                                },
-                                proxy: true
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.quiz.status,
+                                expression: "quiz.status"
                               }
-                            ])
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.quiz,
+                                  "status",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
                           },
                           [
+                            _c("option", { attrs: { value: "0" } }, [
+                              _vm._v("Ngừng hoạt động")
+                            ]),
                             _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Another action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [
-                              _vm._v("Something else here...")
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("Hoạt động")
                             ])
-                          ],
-                          1
+                          ]
                         )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", md: "6" } },
-            [
-              _c(
-                "CCard",
-                [
-                  _c(
-                    "CCardHeader",
-                    [
-                      _c("CIcon", { attrs: { name: "cil-justify-center" } }),
-                      _vm._v(" "),
-                      _c("strong", [_vm._v(" Dropdown ")]),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("sizing")])
-                    ],
-                    1
-                  ),
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-3" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "nf-email" } }, [
+                          _vm._v("Giao diện hiển thị")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.quiz.noidung_template,
+                                expression: "quiz.noidung_template"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.quiz,
+                                  "noidung_template",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "small" } }, [
+                              _vm._v("Lựa chọn ngắn")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "large" } }, [
+                              _vm._v("Lựa chọn dài")
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-3" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "nf-email" } }, [
+                          _vm._v("Lọai trắc nghiệm")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.quiz.noidung_is_multichoice,
+                                expression: "quiz.noidung_is_multichoice"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.quiz,
+                                  "noidung_is_multichoice",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "0" } }, [
+                              _vm._v("Một đáp án")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("Nhiều đáp án")
+                            ])
+                          ]
+                        )
+                      ])
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _c("CCardBody", [
-                    _c(
-                      "div",
-                      [
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2 d-inline-block",
-                            attrs: {
-                              color: "secondary",
-                              size: "lg",
-                              "toggler-text": "Large"
-                            }
-                          },
-                          [
-                            _c("CDropdownItem", [_vm._v("Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Another action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Something else here")])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2",
-                            attrs: {
-                              color: "secondary",
-                              size: "lg",
-                              split: "",
-                              "toggler-text": "Large Split"
-                            }
-                          },
-                          [
-                            _c("CDropdownItem", [_vm._v("Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Another action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [
-                              _vm._v("Something else here...")
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2 d-inline-block",
-                            attrs: {
-                              color: "secondary",
-                              size: "sm",
-                              "toggler-text": "Small"
-                            }
-                          },
-                          [
-                            _c("CDropdownItem", [_vm._v("Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Another action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [
-                              _vm._v("Something else here...")
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2",
-                            attrs: {
-                              color: "secondary",
-                              size: "sm",
-                              split: "",
-                              "toggler-text": "Small Split"
-                            }
-                          },
-                          [
-                            _c("CDropdownItem", [_vm._v("Action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [_vm._v("Another action")]),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [
-                              _vm._v("Something else here...")
-                            ])
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CRow",
-        [
-          _c(
-            "CCol",
-            { attrs: { col: "12", md: "6" } },
-            [
-              _c(
-                "CCard",
-                [
                   _c(
-                    "CCardHeader",
+                    "div",
+                    { staticClass: "form-group" },
                     [
-                      _c("CIcon", { attrs: { name: "cil-justify-center" } }),
+                      _c("label", { attrs: { for: "nf-email" } }, [
+                        _vm._v("Nội dung câu hỏi")
+                      ]),
                       _vm._v(" "),
-                      _c("strong", [_vm._v(" Dropdown ")]),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("headers and accessibility")])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("CCardBody", [
-                    _c(
-                      "div",
-                      [
-                        _c(
-                          "CDropdown",
-                          {
-                            staticClass: "m-2",
-                            attrs: {
-                              "toggler-text": "Dropdown ARIA",
-                              color: "primary"
-                            }
-                          },
-                          [
-                            _c(
-                              "div",
-                              { attrs: { role: "group" } },
-                              [
-                                _c("CDropdownHeader", [_vm._v("Groups")]),
-                                _vm._v(" "),
-                                _c("CDropdownItem", [_vm._v("Add")]),
-                                _vm._v(" "),
-                                _c("CDropdownItem", [_vm._v("Delete")])
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { attrs: { role: "group" } },
-                              [
-                                _c("CDropdownHeader", [_vm._v("Users")]),
-                                _vm._v(" "),
-                                _c("CDropdownItem", [_vm._v("Add")]),
-                                _vm._v(" "),
-                                _c("CDropdownItem", [_vm._v("Delete")])
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("CDropdownDivider"),
-                            _vm._v(" "),
-                            _c("CDropdownItem", [
-                              _vm._v("\n                Something "),
-                              _c("strong", [_vm._v("not")]),
-                              _vm._v(" associated with user\n              ")
-                            ])
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", md: "6" } },
-            [
-              _c(
-                "CCard",
-                [
-                  _c(
-                    "CCardHeader",
-                    [
-                      _c("CIcon", { attrs: { name: "cil-justify-center" } }),
-                      _vm._v(" "),
-                      _c("strong", [_vm._v(" Dropdown ")]),
-                      _vm._v(" "),
-                      _c("small", [_c("code", [_vm._v("color")])])
+                      _c("editor", {
+                        attrs: {
+                          "api-key": _vm.tinymce.key,
+                          init: _vm.tinymce.init,
+                          value: _vm.quiz.noidung_intro,
+                          id: "noidung_intro"
+                        }
+                      })
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
-                    "CCardBody",
+                    "div",
+                    { staticClass: "form-group" },
                     [
-                      _c(
-                        "CDropdown",
-                        {
-                          staticClass: "m-0 d-inline-block",
-                          attrs: {
-                            size: "sm",
-                            "toggler-text": "Primary",
-                            color: "primary"
-                          }
-                        },
-                        [
-                          _c("CDropdownItem", [_vm._v("First Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Second Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Third Action")])
-                        ],
-                        1
-                      ),
+                      _c("label", { attrs: { for: "nf-email" } }, [
+                        _vm._v("Các lựa chọn")
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "CDropdown",
-                        {
-                          staticClass: "m-0 d-inline-block",
-                          attrs: {
-                            size: "sm",
-                            "toggler-text": "Secondary",
-                            color: "secondary"
-                          }
-                        },
-                        [
-                          _c("CDropdownItem", [_vm._v("First Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Second Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Third Action")])
-                        ],
-                        1
-                      ),
+                      _c("editor", {
+                        attrs: {
+                          "api-key": _vm.tinymce.key,
+                          init: _vm.tinymce.init,
+                          value: _vm.quiz.noidung_option,
+                          id: "noidung_option"
+                        }
+                      }),
                       _vm._v(" "),
-                      _c(
-                        "CDropdown",
-                        {
-                          staticClass: "m-0 d-inline-block",
-                          attrs: {
-                            size: "sm",
-                            "toggler-text": "Success",
-                            color: "success"
-                          }
-                        },
-                        [
-                          _c("CDropdownItem", [_vm._v("First Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Second Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Third Action")])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "CDropdown",
-                        {
-                          staticClass: "m-0 d-inline-block",
-                          attrs: {
-                            size: "sm",
-                            "toggler-text": "Warning",
-                            color: "warning"
-                          }
-                        },
-                        [
-                          _c("CDropdownItem", [_vm._v("First Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Second Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Third Action")])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "CDropdown",
-                        {
-                          staticClass: "m-0 d-inline-block",
-                          attrs: {
-                            size: "sm",
-                            "toggler-text": "Danger",
-                            color: "danger"
-                          }
-                        },
-                        [
-                          _c("CDropdownItem", [_vm._v("First Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Second Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Third Action")])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "CDropdown",
-                        {
-                          staticClass: "m-0 d-inline-block",
-                          attrs: {
-                            size: "sm",
-                            "toggler-text": "Info",
-                            color: "info"
-                          }
-                        },
-                        [
-                          _c("CDropdownItem", [_vm._v("First Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Second Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Third Action")])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "CDropdown",
-                        {
-                          staticClass: "m-0 d-inline-block",
-                          attrs: {
-                            size: "sm",
-                            "toggler-text": "Light",
-                            color: "light"
-                          }
-                        },
-                        [
-                          _c("CDropdownItem", [_vm._v("First Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Second Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Third Action")])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "CDropdown",
-                        {
-                          staticClass: "m-0 d-inline-block",
-                          attrs: {
-                            size: "sm",
-                            "toggler-text": "Dark",
-                            color: "dark"
-                          }
-                        },
-                        [
-                          _c("CDropdownItem", [_vm._v("First Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Second Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Third Action")])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "CDropdown",
-                        {
-                          staticClass: "m-0 d-inline-block",
-                          attrs: {
-                            size: "sm",
-                            "toggler-text": "Link",
-                            color: "link"
-                          }
-                        },
-                        [
-                          _c("CDropdownItem", [_vm._v("First Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Second Action")]),
-                          _vm._v(" "),
-                          _c("CDropdownItem", [_vm._v("Third Action")])
-                        ],
-                        1
-                      )
+                      _vm._m(1)
                     ],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Đáp án")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.quiz.dapan_quiz,
+                          expression: "quiz.dapan_quiz"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" },
+                      domProps: { value: _vm.quiz.dapan_quiz },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.quiz, "dapan_quiz", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c("label", { attrs: { for: "nf-email" } }, [
+                        _vm._v("Giải thích")
+                      ]),
+                      _vm._v(" "),
+                      _c("editor", {
+                        attrs: {
+                          "api-key": _vm.tinymce.key,
+                          init: _vm.tinymce.init,
+                          value: _vm.quiz.giaithich_quiz,
+                          id: "giaithich_quiz"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-footer" },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "btn btn-danger", attrs: { to: "/quizs" } },
+                    [
+                      _c("i", { staticClass: "fas fa-undo-alt" }),
+                      _vm._v(" Hủy\n          ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { type: "button" },
+                      on: { click: _vm.save }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-save" }),
+                      _vm._v(" Lưu\n          ")
+                    ]
                   )
                 ],
                 1
@@ -1168,32 +831,193 @@ var render = function() {
             ],
             1
           )
-        ],
-        1
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "CModal",
+        {
+          attrs: {
+            title: _vm.modal.title,
+            show: _vm.modal.show,
+            color: _vm.modal.color,
+            closeOnBackdrop: _vm.modal.closeOnBackdrop
+          },
+          on: {
+            "update:show": function($event) {
+              return _vm.$set(_vm.modal, "show", $event)
+            }
+          },
+          scopedSlots: _vm._u([
+            {
+              key: "header",
+              fn: function() {
+                return [
+                  _c("h5", { staticClass: "modal-title" }, [
+                    _vm._v(_vm._s(_vm.modal.title))
+                  ])
+                ]
+              },
+              proxy: true
+            },
+            {
+              key: "footer",
+              fn: function() {
+                return [
+                  _c(
+                    "CButton",
+                    {
+                      attrs: {
+                        color: "btn btn-" + _vm.modal.color,
+                        type: "button"
+                      },
+                      on: { click: _vm.exit }
+                    },
+                    [_vm._v("Đóng")]
+                  )
+                ]
+              },
+              proxy: true
+            }
+          ])
+        },
+        [_vm._v("\n    " + _vm._s(_vm.modal.body) + "\n    ")]
       )
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("strong", [_vm._v("Cập nhật câu hỏi")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticStyle: { "font-size": "12px" } }, [
+      _c("i", [_vm._v('Chú ý: lựa chọn có dạng " 1) nội dung lựa chọn 1"')])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticStyle: { "font-size": "12px" } }, [
+      _c("i", [_vm._v("Chú ý: đáp án có dạng: 1,2,3")])
+    ])
+  }
+]
 render._withStripped = true
 
 
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/buttons/Dropdowns.vue":
-/*!**********************************************************!*\
-  !*** ./resources/coreui/src/views/buttons/Dropdowns.vue ***!
-  \**********************************************************/
+/***/ "./resources/coreui/src/components/Loading.vue":
+/*!*****************************************************!*\
+  !*** ./resources/coreui/src/components/Loading.vue ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Dropdowns_vue_vue_type_template_id_fe8aa238___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dropdowns.vue?vue&type=template&id=fe8aa238& */ "./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=template&id=fe8aa238&");
-/* harmony import */ var _Dropdowns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dropdowns.vue?vue&type=script&lang=js& */ "./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Loading_vue_vue_type_template_id_ff24627c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Loading.vue?vue&type=template&id=ff24627c&scoped=true& */ "./resources/coreui/src/components/Loading.vue?vue&type=template&id=ff24627c&scoped=true&");
+/* harmony import */ var _Loading_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Loading.vue?vue&type=script&lang=js& */ "./resources/coreui/src/components/Loading.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Loading_vue_vue_type_style_index_0_id_ff24627c_scoped_true_language_scss_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css& */ "./resources/coreui/src/components/Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Loading_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Loading_vue_vue_type_template_id_ff24627c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Loading_vue_vue_type_template_id_ff24627c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "ff24627c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/coreui/src/components/Loading.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/coreui/src/components/Loading.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/coreui/src/components/Loading.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Loading.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/components/Loading.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/coreui/src/components/Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css&":
+/*!****************************************************************************************************************************!*\
+  !*** ./resources/coreui/src/components/Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css& ***!
+  \****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_style_index_0_id_ff24627c_scoped_true_language_scss_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/components/Loading.vue?vue&type=style&index=0&id=ff24627c&scoped=true&language=scss&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_style_index_0_id_ff24627c_scoped_true_language_scss_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_style_index_0_id_ff24627c_scoped_true_language_scss_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_style_index_0_id_ff24627c_scoped_true_language_scss_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_style_index_0_id_ff24627c_scoped_true_language_scss_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_style_index_0_id_ff24627c_scoped_true_language_scss_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/coreui/src/components/Loading.vue?vue&type=template&id=ff24627c&scoped=true&":
+/*!************************************************************************************************!*\
+  !*** ./resources/coreui/src/components/Loading.vue?vue&type=template&id=ff24627c&scoped=true& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_template_id_ff24627c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Loading.vue?vue&type=template&id=ff24627c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/components/Loading.vue?vue&type=template&id=ff24627c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_template_id_ff24627c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loading_vue_vue_type_template_id_ff24627c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/coreui/src/views/courseware/quizs/edit1.vue":
+/*!***************************************************************!*\
+  !*** ./resources/coreui/src/views/courseware/quizs/edit1.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _edit1_vue_vue_type_template_id_0e5f5502___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit1.vue?vue&type=template&id=0e5f5502& */ "./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=template&id=0e5f5502&");
+/* harmony import */ var _edit1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit1.vue?vue&type=script&lang=js& */ "./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -1202,9 +1026,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Dropdowns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Dropdowns_vue_vue_type_template_id_fe8aa238___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Dropdowns_vue_vue_type_template_id_fe8aa238___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _edit1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _edit1_vue_vue_type_template_id_0e5f5502___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _edit1_vue_vue_type_template_id_0e5f5502___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1214,38 +1038,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/coreui/src/views/buttons/Dropdowns.vue"
+component.options.__file = "resources/coreui/src/views/courseware/quizs/edit1.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************!*\
-  !*** ./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************/
+/***/ "./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Dropdowns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Dropdowns.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Dropdowns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_edit1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./edit1.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_edit1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=template&id=fe8aa238&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=template&id=fe8aa238& ***!
-  \*****************************************************************************************/
+/***/ "./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=template&id=0e5f5502&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=template&id=0e5f5502& ***!
+  \**********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dropdowns_vue_vue_type_template_id_fe8aa238___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Dropdowns.vue?vue&type=template&id=fe8aa238& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/buttons/Dropdowns.vue?vue&type=template&id=fe8aa238&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dropdowns_vue_vue_type_template_id_fe8aa238___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit1_vue_vue_type_template_id_0e5f5502___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./edit1.vue?vue&type=template&id=0e5f5502& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/quizs/edit1.vue?vue&type=template&id=0e5f5502&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit1_vue_vue_type_template_id_0e5f5502___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dropdowns_vue_vue_type_template_id_fe8aa238___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit1_vue_vue_type_template_id_0e5f5502___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
