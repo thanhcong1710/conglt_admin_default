@@ -68,9 +68,12 @@
                     <router-link class="btn btn-sm btn-success" :to="`/quizs/${item.id}/edit${item.type}`">
                       <i class="fa fa-edit"></i> Sửa
                     </router-link>
-                    <button class="btn btn-sm btn-danger" type="submit" @click="search()">
+                    <button class="btn btn-sm btn-danger" type="submit">
                       <i class="fas fa-times"></i> Xóa
                     </button>
+                    <router-link class="btn btn-sm btn-info" :to="`/preview/${item.id}/quiz${item.type}`">
+                      <i class="fa fa-eye"></i> Xem trước
+                    </router-link>
                   </td>
                 </tr>
               </tbody>

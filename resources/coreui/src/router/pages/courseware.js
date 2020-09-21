@@ -6,6 +6,10 @@ const QuizAdd2 = () => import('../../views/courseware/quizs/add2')
 const QuizEdit2 = () => import('../../views/courseware/quizs/edit2')
 const QuizAdd3 = () => import('../../views/courseware/quizs/add3')
 const QuizEdit3 = () => import('../../views/courseware/quizs/edit3')
+const PreviewQuiz1 = () => import('../../views/courseware/preview/quiz1')
+const PreviewQuiz2 = () => import('../../views/courseware/preview/quiz2')
+const PreviewQuiz3 = () => import('../../views/courseware/preview/quiz3')
+
 export default {
   router: {
     path: '/',
@@ -50,6 +54,21 @@ export default {
         path: '/quizs/:id/edit3',
         name: 'Cập Nhật Câu Hỏi',
         component: QuizEdit3
+      },
+      {
+        path: '/preview/:id/quiz1',
+        name: 'Xem Trước Câu Hỏi',
+        component: PreviewQuiz1
+      },
+      {
+        path: '/preview/:id/quiz2',
+        name: 'Xem Trước Câu Hỏi',
+        component: PreviewQuiz2
+      },
+      {
+        path: '/preview/:id/quiz3',
+        name: 'Xem Trước Câu Hỏi',
+        component: PreviewQuiz3
       },
     ]
   }

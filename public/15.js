@@ -117,6 +117,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -427,20 +430,19 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
+                          _vm._m(3, true),
+                          _vm._v(" "),
                           _c(
-                            "button",
+                            "router-link",
                             {
-                              staticClass: "btn btn-sm btn-danger",
-                              attrs: { type: "submit" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.search()
-                                }
+                              staticClass: "btn btn-sm btn-info",
+                              attrs: {
+                                to: "/preview/" + item.id + "/quiz" + item.type
                               }
                             },
                             [
-                              _c("i", { staticClass: "fas fa-times" }),
-                              _vm._v(" Xóa\n                  ")
+                              _c("i", { staticClass: "fa fa-eye" }),
+                              _vm._v(" Xem trước\n                  ")
                             ]
                           )
                         ],
@@ -520,6 +522,19 @@ var staticRenderFns = [
         _c("th", [_vm._v("Thao tác")])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-sm btn-danger", attrs: { type: "submit" } },
+      [
+        _c("i", { staticClass: "fas fa-times" }),
+        _vm._v(" Xóa\n                  ")
+      ]
+    )
   }
 ]
 render._withStripped = true

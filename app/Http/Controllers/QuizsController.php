@@ -151,7 +151,7 @@ class QuizsController extends Controller
         foreach ($arr_option as $op) {
             $op = trim($op);
             if ($op != "") {
-                $key = intval(substr($op, 0, 1));
+                $key = "option_".intval(substr($op, 0, 1));
                 $value = trim(substr($op, 2));
                 $option[$key] = $value;
             }
@@ -210,6 +210,13 @@ class QuizsController extends Controller
         $arr_input['noidung_quiz'] = json_encode($noidung_quiz, true);
         $data = u::updateSimpleRow($arr_input, array('id' => $quiz_id), 'lms_quiz');
 
+        return response()->json($data);
+    }
+    public function getNoiDungQuiz($quiz_id)
+    {
+        $data = u::first("SELECT id AS quiz_id,noidung_quiz FROM lms_quiz WHERE id=$quiz_id");
+        $data->noidung_quiz = json_decode($data->noidung_quiz,true);
+        u::shuffle_assoc($data->noidung_quiz['option']);
         return response()->json($data);
     }
 }
