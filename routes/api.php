@@ -84,6 +84,8 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::get('/courseware/quizs/detail/{quiz_id}', 'QuizsController@detail');
 
         Route::get('/quiz/noidung_quiz/{quiz_id}', 'QuizsController@getNoiDungQuiz');
+        Route::post('/quiz/answer', 'QuizsController@answerQuiz');
+        
     });
 });
 

@@ -151,7 +151,7 @@ class QuizsController extends Controller
         foreach ($arr_option as $op) {
             $op = trim($op);
             if ($op != "") {
-                $key = "option_".intval(substr($op, 0, 1));
+                $key = intval(substr($op, 0, 1));
                 $value = trim(substr($op, 2));
                 $option[$key] = $value;
             }
@@ -214,9 +214,41 @@ class QuizsController extends Controller
     }
     public function getNoiDungQuiz($quiz_id)
     {
-        $data = u::first("SELECT id AS quiz_id,noidung_quiz FROM lms_quiz WHERE id=$quiz_id");
-        $data->noidung_quiz = json_decode($data->noidung_quiz,true);
-        u::shuffle_assoc($data->noidung_quiz['option']);
+        $data = u::first("SELECT id AS quiz_id,noidung_quiz,`type` FROM lms_quiz WHERE id=$quiz_id");
+        if($data->type==1){
+            $data->noidung_quiz = json_decode($data->noidung_quiz,true);
+            u::shuffle_assoc($data->noidung_quiz['option']);
+            $tmp_array=array();
+            foreach($data->noidung_quiz['option'] AS $k=> $row){
+                $tmp_array[] =(object) ['key' => $k,'value'=>$row,'item_status'=>'default'];
+            }
+            $data->noidung_quiz['option'] = $tmp_array;
+        }
+        return response()->json($data);
+    }
+    public function answerQuiz(Request $request){
+        $quiz_id = $request->quiz_id;
+        $answer = $request->answer;
+        $quiz_info = u::first("SELECT * FROM lms_quiz WHERE id = $quiz_id");
+
+        $tmp_result = 1;
+        if($quiz_info->type==1){
+            $arr_dapan_quiz = explode(",",$quiz_info->dapan_quiz);
+            $arr_answer = explode(",",$answer);
+            if(count($arr_answer) != count($arr_dapan_quiz)){
+                $tmp_result = 0;
+            }
+            foreach($arr_dapan_quiz AS $row){
+                if(!in_array($row,$arr_answer)){
+                    $tmp_result = 0;
+                }
+            }
+        }
+        $data= (object)array(
+            'result_status'=>$tmp_result,
+            'quiz_info'=>$quiz_info,
+            'arr_dapan_quiz'=>$arr_dapan_quiz
+        );
         return response()->json($data);
     }
 }
