@@ -81,6 +81,7 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->name       = $request->input('name');
         $user->email      = $request->input('email');
+        $user->status      = $request->input('status');
         if($request->password){
             $user->password = bcrypt($request->password);
         }
@@ -117,6 +118,34 @@ class UsersController extends Controller
         if($user){
             $user->delete();
         }
+        return response()->json( ['status' => 'success'] );
+    }
+    public function add(Request $request)
+    {
+        $user =new User();
+        $user->name       = $request->input('name');
+        $user->email      = $request->input('email');
+        $user->password = bcrypt($request->password);
+        $user->status      = $request->input('status');
+        $user->email_verified_at = date('Y-m-d H:i:s');
+        $user->save();
+        $roles = $request->roles;
+        $menuroles = "";
+        foreach($roles AS $role){
+            $role = (object) $role;
+            if(isset($role->checked) && $role->checked==true){
+                $menuroles .= $menuroles == "" ? $role->name : ','.$role->name;
+                $model_has_roles = u::getObject(array('role_id'=>$role->id,'model_id'=>$user->id),'model_has_roles');
+                if(!$model_has_roles){
+                    u::insertSimpleRow(array('role_id'=>$role->id,'model_id'=>$user->id,'model_type'=>'App\User'),'model_has_roles');
+                }
+            }else{
+                u::query("DELETE FROM model_has_roles WHERE role_id = $role->id AND model_id=$user->id");
+            }
+        }
+        $user->menuroles = $menuroles;
+        $user->save();
+        //$request->session()->flash('message', 'Successfully updated user');
         return response()->json( ['status' => 'success'] );
     }
 }

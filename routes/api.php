@@ -23,6 +23,7 @@ Route::group(['middleware' => 'api'], function ($router) {
 
     Route::group(['middleware' => 'admin'], function ($router) {
         Route::resource('users', 'UsersController')->except( ['create', 'store'] );
+        Route::post('/users/add', 'UsersController@add');
 
         Route::prefix('menu/menu')->group(function () { 
             Route::get('/',         'MenuEditController@index')->name('menu.menu.index');
@@ -68,11 +69,17 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::get('/roles/move/move-down',    'RolesController@moveDown')->name('roles.down');
         Route::get('/language/{language}', 'LangController@setLanguage');
         Route::post('/upload/upload_file', 'UploadController@upload');
-
+        
         Route::post('/config/products/list', 'ProductsController@list');
         Route::post('/config/products/add', 'ProductsController@add');
         Route::post('/config/products/update/{product_id}', 'ProductsController@update');
         Route::get('/config/products/detail/{product_id}', 'ProductsController@detail');
+        Route::get('/config/products/delete/{product_id}', 'ProductsController@delete');
+        Route::post('/config/branches/list', 'BranchesController@list');
+        Route::post('/config/branches/add', 'BranchesController@add');
+        Route::post('/config/branches/update/{branch_id}', 'BranchesController@update');
+        Route::get('/config/branches/detail/{branch_id}', 'BranchesController@detail');
+        Route::get('/config/branches/delete/{branch_id}', 'BranchesController@delete');
 
         Route::post('/courseware/quizs/list', 'QuizsController@list');
         Route::post('/courseware/quizs/add1', 'QuizsController@add1');

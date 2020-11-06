@@ -4,7 +4,7 @@
       <CCard no-header>
         <CCardBody>
           <h3>
-            Edit Menu Element
+            Edit Menu Element 
           </h3>
           <CAlert
             :show.sync="dismissCountDown"

@@ -35,7 +35,11 @@
             <button class="btn btn-sm btn-info" type="submit" @click="search()">
               <i class="fa fa-search"></i> Tìm kiếm
             </button>
-            <button class="btn btn-sm btn-secondary" type="reset" @click="reset()">
+            <button
+              class="btn btn-sm btn-secondary"
+              type="reset"
+              @click="reset()"
+            >
               <i class="fas fa-undo-alt"></i> Reset
             </button>
           </div>
@@ -59,14 +63,23 @@
               </thead>
               <tbody>
                 <tr v-for="(item, index) in products" :key="index">
-                  <td>{{ index + 1 + ((pagination.cpage - 1) * pagination.limit) }}</td>
+                  <td>
+                    {{ index + 1 + (pagination.cpage - 1) * pagination.limit }}
+                  </td>
                   <td>{{ item.title }}</td>
                   <td>{{ item.status | getStatusName }}</td>
                   <td>
-                    <router-link class="btn btn-sm btn-success" :to="`/products/${item.id}/edit`">
+                    <router-link
+                      class="btn btn-sm btn-success"
+                      :to="`/products/${item.id}/edit`"
+                    >
                       <i class="fa fa-edit"></i> Sửa
                     </router-link>
-                    <button class="btn btn-sm btn-danger" type="submit" @click="search()">
+                    <button
+                      class="btn btn-sm btn-danger"
+                      type="button"
+                      @click="deleteItem(item.id)"
+                    >
                       <i class="fas fa-times"></i> Xóa
                     </button>
                   </td>
@@ -96,6 +109,22 @@
         </div>
       </div>
     </div>
+    <CModal
+      :title="modal.title"
+      :show.sync="modal.show"
+      :color="modal.color"
+      :closeOnBackdrop="modal.closeOnBackdrop"
+    >
+      {{ modal.body }}
+      <template #header>
+        <h5 class="modal-title">{{ modal.title }}</h5>
+      </template>
+      <template #footer>
+        <CButton :color="'btn btn-' + modal.color" @click="exit" type="button"
+          >Đóng</CButton
+        >
+      </template>
+    </CModal>
   </div>
 </template>
 
@@ -138,6 +167,13 @@ export default {
         limit: 20,
         limitSource: [10, 20, 30, 40, 50],
         pages: [],
+      },
+      modal: {
+        title: "THÔNG BÁO",
+        show: false,
+        color: "success",
+        body: "Cập nhật trung tâm thành công",
+        closeOnBackdrop: false,
       },
     };
   },
@@ -182,6 +218,28 @@ export default {
       const page = info.length > 1 ? info[1] : 1;
       this.pagination.cpage = parseInt(page);
       this.search();
+    },
+    deleteItem(id) {
+      axios
+        .get(
+          `/api/config/products/delete/${id}?token=` +
+            localStorage.getItem("api_token")
+        )
+        .then((response) => {
+          this.loading.processing = false;
+          if (response.status == 200) {
+            this.modal.color = "success";
+            this.modal.body = "Xóa sản phẩm thành công";
+            this.modal.show = true;
+            this.search();
+          }
+        })
+        .catch((e) => {
+          u.processAuthen(e);
+        });
+    },
+    exit() {
+      this.modal.show = false;
     },
   },
   filters: {

@@ -61,4 +61,9 @@ class ProductsController extends Controller
         ), array('id' => $product_id), 'lms_products');
         return response()->json($data);
     }
+    public function delete($branch_id)
+    {
+        $data = u::query("DELETE FROM lms_products WHERE id=$branch_id");
+        return response()->json($data);
+    }
 }

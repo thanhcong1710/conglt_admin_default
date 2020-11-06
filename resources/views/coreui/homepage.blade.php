@@ -7,6 +7,7 @@
     <meta name="locale" content="{{ App::getLocale() }}"/>
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/all.min.css">
     <title>CoreUI - Vue Open Source Bootstrap Admin Template</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
     <script>

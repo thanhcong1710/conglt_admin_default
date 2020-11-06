@@ -17,6 +17,7 @@ const Register = () => import('@/views/pages/Register')
 const Users = () => import('@/views/users/Users')
 const User = () => import('@/views/users/User')
 const EditUser = () => import('@/views/users/EditUser')
+const AddUser = () => import('@/views/users/AddUser')
 
 //Roles
 const Roles = () => import('@/views/roles/Roles')
@@ -208,6 +209,15 @@ function configRoutes () {
             {
               path: '',
               component: Users,
+              meta:{
+                requiresAdmin: true
+              }
+            },
+            {
+              path: 'add',
+              meta: { label: 'Add User' },
+              name: 'Add User',
+              component: AddUser,
               meta:{
                 requiresAdmin: true
               }
