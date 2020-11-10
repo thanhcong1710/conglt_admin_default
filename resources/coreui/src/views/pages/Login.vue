@@ -86,6 +86,7 @@ import axios from "axios";
             self.password = '';
             localStorage.setItem("api_token", response.data.access_token);
             localStorage.setItem('roles', response.data.roles);
+            localStorage.setItem('uf', JSON.stringify(response.data.user_info));
             self.$router.push({ path: 'dashboard' });
           })
           .catch(function (error) {

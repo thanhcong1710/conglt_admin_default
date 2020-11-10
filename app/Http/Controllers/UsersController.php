@@ -31,6 +31,7 @@ class UsersController extends Controller
         $users = DB::table('users')
         ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles', 'users.status', 'users.email_verified_at as registered')
         ->whereNull('deleted_at')
+        ->where('branch_id',auth()->user()->branch_id)
         ->get();
         return response()->json( compact('users', 'you') );
     }
@@ -123,6 +124,7 @@ class UsersController extends Controller
     public function add(Request $request)
     {
         $user =new User();
+        $user->branch_id  = auth()->user()->branch_id;
         $user->name       = $request->input('name');
         $user->email      = $request->input('email');
         $user->password = bcrypt($request->password);

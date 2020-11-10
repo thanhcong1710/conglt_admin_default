@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Providers\UtilityServiceProvider as u;
 
 class AuthController extends Controller
 { 
@@ -96,13 +97,16 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token, $email)
     {
-        $user = User::select('menuroles as roles')->where('email', '=', $email)->first();
+        $user_info = u::first("SELECT u.id AS user_id, u.branch_id, u.name AS user_name, u.email, u.menuroles, 
+                (SELECT title FROM lms_branches WHERE id=u.branch_id) AS branch_name
+            FROM users AS u WHERE u.email='$email'");
 
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'roles' => $user->roles,
+            'roles' =>  $user_info->menuroles,
+            'user_info'=>$user_info,
         ]);
     }
 }

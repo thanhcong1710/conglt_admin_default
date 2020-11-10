@@ -5,6 +5,9 @@ const ProductEdit = () => import('../../views/config/products/edit')
 const BranchList = () => import('../../views/config/branches/list')
 const BranchAdd = () => import('../../views/config/branches/add')
 const BranchEdit = () => import('../../views/config/branches/edit')
+const ClassList = () => import('../../views/config/classes/list')
+const ClassAdd = () => import('../../views/config/classes/add')
+const ClassEdit = () => import('../../views/config/classes/edit')
 export default {
   router: {
     path: '/',
@@ -29,6 +32,21 @@ export default {
         path: '/branches/:id/edit',
         name: 'Cập Nhật Trung Tâm',
         component: BranchEdit
+      },
+      {
+        path: '/classes',
+        name: 'Danh Sách Lớp Học',
+        component: ClassList
+      },
+      {
+        path: '/classes/add',
+        name: 'Thêm Mới Lớp Học',
+        component: ClassAdd
+      },
+      {
+        path: '/classes/:id/edit',
+        name: 'Cập Nhật Lớp Học',
+        component: ClassEdit
       },
       {
         path: '/products',

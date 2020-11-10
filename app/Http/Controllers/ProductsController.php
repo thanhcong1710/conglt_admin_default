@@ -20,7 +20,7 @@ class ProductsController extends Controller
         $keyword = isset($request->keyword) ? $request->keyword : '';
         $page = isset($request->page) ? (int) $request->page : 1;
         $limit = isset($request->limit) ? (int) $request->limit : 20;
-        $cond = " 1 ";
+        $cond = " p.branch_id = ".(int)Auth::user()->branch_id;
         if ($status !== '') {
             $cond .= " AND p.status=$status";
         }
@@ -35,6 +35,7 @@ class ProductsController extends Controller
     public function add(Request $request)
     {
         $data = u::insertSimpleRow(array(
+            'branch_id'=> Auth::user()->branch_id,
             'title' => $request->title,
             'status' => $request->status,
             'lang' => $request->lang,
@@ -64,6 +65,11 @@ class ProductsController extends Controller
     public function delete($branch_id)
     {
         $data = u::query("DELETE FROM lms_products WHERE id=$branch_id");
+        return response()->json($data);
+    }
+    public function getAll(Request $request)
+    {
+        $data = u::getMultiObject(array('status'=>1,'branch_id'=>Auth::user()->branch_id),'lms_products');
         return response()->json($data);
     }
 }

@@ -75,11 +75,17 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('/config/products/update/{product_id}', 'ProductsController@update');
         Route::get('/config/products/detail/{product_id}', 'ProductsController@detail');
         Route::get('/config/products/delete/{product_id}', 'ProductsController@delete');
+        Route::get('/config/products/get_all', 'ProductsController@getAll');
         Route::post('/config/branches/list', 'BranchesController@list');
         Route::post('/config/branches/add', 'BranchesController@add');
         Route::post('/config/branches/update/{branch_id}', 'BranchesController@update');
         Route::get('/config/branches/detail/{branch_id}', 'BranchesController@detail');
         Route::get('/config/branches/delete/{branch_id}', 'BranchesController@delete');
+        Route::post('/config/classes/list', 'ClassesController@list');
+        Route::post('/config/classes/add', 'ClassesController@add');
+        Route::post('/config/classes/update/{class_id}', 'ClassesController@update');
+        Route::get('/config/classes/detail/{class_id}', 'ClassesController@detail');
+        Route::get('/config/classes/delete/{class_id}', 'ClassesController@delete');
 
         Route::post('/courseware/quizs/list', 'QuizsController@list');
         Route::post('/courseware/quizs/add1', 'QuizsController@add1');

@@ -57,7 +57,7 @@ router.beforeEach((to, from, next) => {
     roles = roles.split(',')
   }
   if(to.matched.some(record => record.meta.requiresAdmin)) {
-    if(roles != null && roles.indexOf('admin') >= 0 ){
+    if(roles != null && (roles.indexOf('admin') >= 0 || roles.indexOf('supper admin') >= 0 )){
       next()
     }else{
       next({
