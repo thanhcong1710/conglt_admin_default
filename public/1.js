@@ -1,16 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[1],{
 
-/***/ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js":
-/*!***********************************************************************************************!*\
-  !*** ./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js ***!
+  \******************************************************************************/
 /*! exports provided: ScriptLoader */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScriptLoader", function() { return ScriptLoader; });
-/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Utils */ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js");
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Utils */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js");
 /**
  * Copyright (c) 2018-present, Ephox, Inc.
  *
@@ -72,10 +72,10 @@ var ScriptLoader = CreateScriptLoader();
 
 /***/ }),
 
-/***/ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js":
-/*!******************************************************************************************!*\
-  !*** ./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js ***!
+  \*************************************************************************/
 /*! exports provided: getTinymce */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -96,14 +96,14 @@ var getTinymce = function () {
 };
 
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
-/***/ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js":
-/*!****************************************************************************************!*\
-  !*** ./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js ***!
+  \***********************************************************************/
 /*! exports provided: bindHandlers, bindModelHandlers, initEditor, uuid, isTextarea, mergePlugins, isNullOrUndefined */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -251,20 +251,20 @@ var isNullOrUndefined = function (value) { return value === null || value === un
 
 /***/ }),
 
-/***/ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js":
-/*!****************************************************************************************************!*\
-  !*** ./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js ***!
-  \****************************************************************************************************/
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js ***!
+  \***********************************************************************************/
 /*! exports provided: Editor */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Editor", function() { return Editor; });
-/* harmony import */ var _ScriptLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../ScriptLoader */ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js");
-/* harmony import */ var _TinyMCE__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../TinyMCE */ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js");
-/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Utils */ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js");
-/* harmony import */ var _EditorPropTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditorPropTypes */ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js");
+/* harmony import */ var _ScriptLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../ScriptLoader */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js");
+/* harmony import */ var _TinyMCE__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../TinyMCE */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js");
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Utils */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js");
+/* harmony import */ var _EditorPropTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditorPropTypes */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js");
 /**
  * Copyright (c) 2018-present, Ephox, Inc.
  *
@@ -349,10 +349,10 @@ var Editor = {
 
 /***/ }),
 
-/***/ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js":
-/*!*************************************************************************************************************!*\
-  !*** ./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js ***!
-  \*************************************************************************************************************/
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js ***!
+  \********************************************************************************************/
 /*! exports provided: editorProps */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -389,16 +389,16 @@ var editorProps = {
 
 /***/ }),
 
-/***/ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js":
-/*!****************************************************************************************!*\
-  !*** ./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Editor */ "./resources/coreui/node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js");
+/* harmony import */ var _components_Editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Editor */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js");
 /**
  * Copyright (c) 2018-present, Ephox, Inc.
  *

@@ -21,7 +21,7 @@ class RenderFromDatabaseData{
     }
 
     private function addLink($data){
-        if($data['parent_id'] === NULL){
+        if($data['parent_id'] === NULL || $data['parent_id'] === 0){
             $this->mb->addLink($data['id'], $data['name'], $data['href'], $data['icon']);
         }
     }

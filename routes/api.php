@@ -99,6 +99,11 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::get('/quiz/noidung_quiz/{quiz_id}', 'QuizsController@getNoiDungQuiz');
         Route::post('/quiz/answer', 'QuizsController@answerQuiz');
         
+        Route::post('/students/list', 'StudentsController@list');
+        Route::post('/students/add', 'StudentsController@add');
+        Route::post('/students/update/{class_id}', 'StudentsController@update');
+        Route::get('/students/detail/{class_id}', 'StudentsController@detail');
+        Route::get('/students/delete/{class_id}', 'StudentsController@delete');
     });
 });
 
