@@ -5,34 +5,51 @@
         <div class="card">
           <loader :active="loading.processing" :text="loading.text" />
           <div class="card-header">
-            <strong>Cập nhật lớp học</strong>
+            <strong>Cập nhật học sinh</strong>
           </div>
           <div class="card-body">
             <form action method="post">
               <div class="form-group">
                 <label for="nf-email"
-                  >Sản phẩm <span class="text-danger"> (*)</span></label
-                >
-                <select class="form-control" v-model="lms_class.product_id">
-                  <option value="">Chọn sản phẩm</option>
-                  <option
-                    :value="product.id"
-                    v-for="(product, index) in list_product"
-                    :key="index"
-                  >
-                    {{ product.title }}
-                  </option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="nf-email"
-                  >Tên lớp học <span class="text-danger"> (*)</span></label
+                  >Tên học sinh <span class="text-danger"> (*)</span></label
                 >
                 <input
                   class="form-control"
                   type="text"
                   name="title"
-                  v-model="lms_class.title"
+                  v-model="student.name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nf-email"
+                  >Ngày sinh <span class="text-danger"> (*)</span></label
+                >
+                <datepicker
+                  class="form-control calendar"
+                  v-model="student.birthday"
+                  placeholder="Chọn ngày kết thúc"
+                  lang="lang"
+                  @change="selectDate"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nf-email"
+                  >Số điện thoại <span class="text-danger"> (*)</span></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  name="title"
+                  v-model="student.phone"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nf-email">Email</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="title"
+                  v-model="student.email"
                 />
               </div>
               <div class="form-group">
@@ -41,12 +58,12 @@
                   :api-key="tinymce.key"
                   :init="tinymce.init"
                   id="input_tinymce"
-                  :value="lms_class.note"
+                  :value="student.note"
                 />
               </div>
               <div class="form-group">
                 <label for="nf-email">Trạng thái</label>
-                <select class="form-control" v-model="lms_class.status">
+                <select class="form-control" v-model="student.status">
                   <option value="0">Ngừng hoạt động</option>
                   <option value="1">Hoạt động</option>
                 </select>
@@ -54,7 +71,7 @@
             </form>
           </div>
           <div class="card-footer">
-            <router-link class="btn btn-danger" :to="`/classes`">
+            <router-link class="btn btn-danger" :to="`/students`">
               <i class="fas fa-undo-alt"></i> Hủy
             </router-link>
             <button class="btn btn-success" type="button" @click="save">
@@ -88,11 +105,14 @@ import axios from "axios";
 import u from "../../utilities/utility";
 import loader from "../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
+import datepicker from "vue2-datepicker";
+import moment from 'moment';
 
 export default {
   components: {
     loader: loader,
     editor: Editor,
+    datepicker,
   },
   name: "Edit-Product",
   data() {
@@ -130,54 +150,58 @@ export default {
         closeOnBackdrop: false,
         action_exit: "exit",
       },
-      lms_class: {
-        title: "",
-        status: 1,
-        lang: 0,
+      student: {
+        name: "",
+        birthday: "",
+        phone: "",
         note: "",
-        product_id: "",
+        email: "",
+        status: 1,
       },
-      list_product: [],
     };
   },
   created() {
     this.loading.processing = true;
     axios
       .get(
-        "/api/config/products/get_all?token=" +
+        `api/students/detail/${this.$route.params.id}?token=` +
           localStorage.getItem("api_token")
       )
       .then((response) => {
         this.loading.processing = false;
-        this.list_product = response.data;
-      })
-      .catch((e) => {
-        u.processAuthen(e);
-      });
-    this.loading.processing = true;
-    axios
-      .get(
-        `api/config/classes/detail/${this.$route.params.id}?token=` +
-          localStorage.getItem("api_token")
-      )
-      .then((response) => {
-        this.loading.processing = false;
-        this.lms_class = response.data;
+        this.student = response.data;
       })
       .catch((e) => {
         u.processAuthen(e);
       });
   },
   methods: {
+    selectDate(date) {
+      if (date) {
+        this.student.birthday = moment(date).format("YYYY-MM-DD");
+      }
+    },
     save() {
       let mess = "";
       let resp = true;
-      if (this.lms_class.product_id == "") {
-        mess += " - Sản phẩm không được để trống<br/>";
+      if (this.student.name == "") {
+        mess += " - Tên học sinh không được để trống<br/>";
         resp = false;
       }
-      if (this.lms_class.title == "") {
-        mess += " - Tên lớp học không được để trống<br/>";
+      if (this.student.birthday == "") {
+        mess += " - Ngày sinh không được để trống<br/>";
+        resp = false;
+      }
+      if (this.student.phone == "") {
+        mess += " - Số điện thoại không được để trống<br/>";
+        resp = false;
+      }
+      if (this.student.phone != "" && !u.vld.phone(this.student.phone)) {
+        mess += " - Số điện thoại không đúng định dạng<br/>";
+        resp = false;
+      }
+      if (this.student.email != "" && !u.vld.email(this.student.email)) {
+        mess += " - Email không đúng định dạng<br/>";
         resp = false;
       }
       if (!resp) {
@@ -188,18 +212,18 @@ export default {
         return false;
       }
       this.loading.processing = true;
-      this.lms_class.note = tinymce.get("input_tinymce").getContent();
+      this.student.note = tinymce.get("input_tinymce").getContent();
       axios
         .post(
-          `/api/config/classes/update/${this.$route.params.id}?token=` +
+          `/api/students/update/${this.$route.params.id}?token=` +
             localStorage.getItem("api_token"),
-          this.lms_class
+          this.student
         )
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
             this.modal.color = "success";
-            this.modal.body = "Cập nhật lớp  học thành công";
+            this.modal.body = "Cập nhật học sinh thành công";
             this.modal.show = true;
           }
         })
@@ -209,7 +233,7 @@ export default {
     },
     exit() {
       if (this.modal.action_exit == "exit") {
-        this.$router.push({ path: "/classes" });
+        this.$router.push({ path: "/students" });
       } else {
         this.modal.show = false;
       }

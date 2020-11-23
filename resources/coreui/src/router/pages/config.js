@@ -8,6 +8,9 @@ const BranchEdit = () => import('../../views/config/branches/edit')
 const ClassList = () => import('../../views/config/classes/list')
 const ClassAdd = () => import('../../views/config/classes/add')
 const ClassEdit = () => import('../../views/config/classes/edit')
+const TuitionFeeList = () => import('../../views/config/tuition_fees/list')
+const TuitionFeeAdd = () => import('../../views/config/tuition_fees/add')
+const TuitionFeeEdit = () => import('../../views/config/tuition_fees/edit')
 export default {
   router: {
     path: '/',
@@ -62,6 +65,21 @@ export default {
         path: '/products/:id/edit',
         name: 'Cập Nhật Sản Phẩm',
         component: ProductEdit
+      },
+      {
+        path: '/tuition_fees',
+        name: 'Danh Sách Các Gói phí',
+        component: TuitionFeeList
+      },
+      {
+        path: '/tuition_fees/add',
+        name: 'Thêm Mới Gói Phí',
+        component: TuitionFeeAdd
+      },
+      {
+        path: '/tuition_fees/:id/edit',
+        name: 'Cập Nhật Gói Phí',
+        component: TuitionFeeEdit
       }
     ]
   }

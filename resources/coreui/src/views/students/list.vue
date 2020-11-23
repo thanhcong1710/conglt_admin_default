@@ -56,8 +56,9 @@
               <thead>
                 <tr>
                   <th>STT</th>
-                  <th>Sản phẩm</th>
-                  <th>Tên lớp học</th>
+                  <th>Tên học sinh</th>
+                  <th>SĐT</th>
+                  <th>Email</th>
                   <th>Trạng thái</th>
                   <th>Thao tác</th>
                 </tr>
@@ -67,8 +68,9 @@
                   <td>
                     {{ index + 1 + (pagination.cpage - 1) * pagination.limit }}
                   </td>
-                  <td>{{ item.product_name }}</td>
-                  <td>{{ item.title }}</td>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.phone }}</td>
+                  <td>{{ item.email }}</td>
                   <td>{{ item.status | getStatusName }}</td>
                   <td>
                     <router-link
@@ -231,7 +233,7 @@ export default {
           this.loading.processing = false;
           if (response.status == 200) {
             this.modal.color = "success";
-            this.modal.body = "Xóa lớp học thành công";
+            this.modal.body = "Xóa học sinh thành công";
             this.modal.show = true;
             this.search();
           }

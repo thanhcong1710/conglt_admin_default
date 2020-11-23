@@ -5,7 +5,7 @@
         <div class="card">
           <loader :active="loading.processing" :text="loading.text" />
           <div class="card-header">
-            <strong>Thêm mới học sinh</strong>
+            <strong>Thêm mới học sinh </strong>
           </div>
           <div class="card-body">
             <form action method="post">
@@ -70,7 +70,7 @@
             </form>
           </div>
           <div class="card-footer">
-            <router-link class="btn btn-danger" :to="`/classes`">
+            <router-link class="btn btn-danger" :to="`/students`">
               <i class="fas fa-undo-alt"></i> Hủy
             </router-link>
             <button class="btn btn-success" type="button" @click="save">
@@ -150,29 +150,16 @@ export default {
         action_exit: "exit",
       },
       student: {
-        title: "",
-        status: 1,
-        lang: 0,
+        name: "",
+        birthday: "",
+        phone: "",
         note: "",
-        product_id: "",
+        email: "",
+        status: 1,
       },
-      list_product: [],
     };
   },
   created() {
-    this.loading.processing = true;
-    axios
-      .get(
-        "/api/config/products/get_all?token=" +
-          localStorage.getItem("api_token")
-      )
-      .then((response) => {
-        this.loading.processing = false;
-        this.list_product = response.data;
-      })
-      .catch((e) => {
-        u.processAuthen(e);
-      });
   },
   methods: {
     selectDate(date) {
@@ -183,12 +170,24 @@ export default {
     save() {
       let mess = "";
       let resp = true;
-      if (this.student.product_id == "") {
-        mess += " - Sản phẩm không được để trống<br/>";
+      if (this.student.name == "") {
+        mess += " - Tên học sinh không được để trống<br/>";
         resp = false;
       }
-      if (this.student.title == "") {
-        mess += " - Tên lớp học không được để trống<br/>";
+      if (this.student.birthday == "") {
+        mess += " - Ngày sinh không được để trống<br/>";
+        resp = false;
+      }
+      if (this.student.phone == "") {
+        mess += " - Số điện thoại không được để trống<br/>";
+        resp = false;
+      }
+      if (this.student.phone != "" && !u.vld.phone(this.student.phone)) {
+        mess += " - Số điện thoại không đúng định dạng<br/>";
+        resp = false;
+      }
+      if (this.student.email != "" && !u.vld.email(this.student.email)) {
+        mess += " - Email không đúng định dạng<br/>";
         resp = false;
       }
       if (!resp) {
@@ -202,7 +201,7 @@ export default {
       this.loading.processing = true;
       axios
         .post(
-          "/api/config/classes/add?token=" + localStorage.getItem("api_token"),
+          "/api/students/add?token=" + localStorage.getItem("api_token"),
           this.student
         )
         .then((response) => {
@@ -220,7 +219,7 @@ export default {
     },
     exit() {
       if (this.modal.action_exit == "exit") {
-        this.$router.push({ path: "/classes" });
+        this.$router.push({ path: "/students" });
       } else {
         this.modal.show = false;
       }
