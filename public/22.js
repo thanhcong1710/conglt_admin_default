@@ -113,6 +113,66 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -147,31 +207,49 @@ __webpack_require__.r(__webpack_exports__);
         title: "THÔNG BÁO",
         show: false,
         color: "success",
-        body: "Thêm mới sản phẩm thành công",
+        body: "Thêm mới gói phí thành công",
         closeOnBackdrop: false
       },
-      product: {
-        title: "",
+      tuition_fee: {
+        name: "",
+        product_id: "",
+        session: "",
+        discount: "",
+        receivable: "",
+        discount_show: "",
+        receivable_show: "",
         status: 1,
-        lang: 0,
         note: ""
-      }
+      },
+      price: "",
+      price_show: "",
+      list_product: []
     };
   },
-  created: function created() {},
+  created: function created() {
+    var _this = this;
+
+    this.loading.processing = true;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/config/products/get_all?token=" + localStorage.getItem("api_token")).then(function (response) {
+      _this.loading.processing = false;
+      _this.list_product = response.data;
+    })["catch"](function (e) {
+      _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
+    });
+  },
   methods: {
     save: function save() {
-      var _this = this;
+      var _this2 = this;
 
-      this.product.note = tinymce.get("input_tinymce").getContent();
+      this.tuition_fee.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/config/products/add?token=" + localStorage.getItem("api_token"), this.product).then(function (response) {
-        _this.loading.processing = false;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/config/tuition_fees/add?token=" + localStorage.getItem("api_token"), this.tuition_fee).then(function (response) {
+        _this2.loading.processing = false;
 
         if (response.status == 200) {
-          _this.modal.color = "success";
-          _this.modal.body = "Thêm mới sản phẩm thành công";
-          _this.modal.show = true;
+          _this2.modal.color = "success";
+          _this2.modal.body = "Thêm mới gói phí thành công";
+          _this2.modal.show = true;
         }
       })["catch"](function (e) {
         _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
@@ -179,8 +257,24 @@ __webpack_require__.r(__webpack_exports__);
     },
     exit: function exit() {
       this.$router.push({
-        path: "/products"
+        path: "/tuition_fees"
       });
+    },
+    calculate: function calculate(type) {
+      if (type == 'tuition_fee.price_show') {
+        var val = _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].fmc(this.tuition_fee.price_show);
+        this.tuition_fee.price_show = val.s;
+        this.tuition_fee.price = val.n;
+      } else if (type == 'tuition_fee.discount_show') {
+        var _val = _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].fmc(this.tuition_fee.discount_show);
+
+        this.tuition_fee.discount_show = _val.s;
+        this.tuition_fee.discount = _val.n;
+      }
+
+      var val_receivable = _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].fmc(this.tuition_fee.price > this.tuition_fee.discount ? this.tuition_fee.price - this.tuition_fee.discount : 0);
+      this.tuition_fee.receivable_show = val_receivable.s;
+      this.tuition_fee.receivable = val_receivable.n;
     }
   }
 });
@@ -316,37 +410,7 @@ var render = function() {
               _c("div", { staticClass: "card-body" }, [
                 _c("form", { attrs: { action: "", method: "post" } }, [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "nf-email" } }, [
-                      _vm._v("Tên sản phẩm")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.product.title,
-                          expression: "product.title"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text", name: "title" },
-                      domProps: { value: _vm.product.title },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.product, "title", $event.target.value)
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "nf-email" } }, [
-                      _vm._v("Ngôn ngữ")
-                    ]),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -355,8 +419,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.product.lang,
-                            expression: "product.lang"
+                            value: _vm.tuition_fee.product_id,
+                            expression: "tuition_fee.product_id"
                           }
                         ],
                         staticClass: "form-control",
@@ -371,8 +435,8 @@ var render = function() {
                                 return val
                               })
                             _vm.$set(
-                              _vm.product,
-                              "lang",
+                              _vm.tuition_fee,
+                              "product_id",
                               $event.target.multiple
                                 ? $$selectedVal
                                 : $$selectedVal[0]
@@ -381,15 +445,186 @@ var render = function() {
                         }
                       },
                       [
-                        _c("option", { attrs: { value: "0" } }, [
-                          _vm._v("Tiếng Việt")
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Chọn sản phẩm")
                         ]),
                         _vm._v(" "),
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("Tiếng Anh")
-                        ])
-                      ]
+                        _vm._l(_vm.list_product, function(product, index) {
+                          return _c(
+                            "option",
+                            { key: index, domProps: { value: product.id } },
+                            [
+                              _vm._v(
+                                "\n                  " +
+                                  _vm._s(product.title) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.name,
+                          expression: "tuition_fee.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" },
+                      domProps: { value: _vm.tuition_fee.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.tuition_fee, "name", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Số buổi")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.session,
+                          expression: "tuition_fee.session"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "number", name: "title" },
+                      domProps: { value: _vm.tuition_fee.session },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "session",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Giá")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.price_show,
+                          expression: "tuition_fee.price_show"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" },
+                      domProps: { value: _vm.tuition_fee.price_show },
+                      on: {
+                        change: function($event) {
+                          return _vm.calculate("tuition_fee.price_show")
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "price_show",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Giảm giá")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.discount_show,
+                          expression: "tuition_fee.discount_show"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" },
+                      domProps: { value: _vm.tuition_fee.discount_show },
+                      on: {
+                        change: function($event) {
+                          return _vm.calculate("tuition_fee.discount_show")
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "discount_show",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Giá thực thu")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.receivable_show,
+                          expression: "tuition_fee.receivable_show"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title", disabled: "true" },
+                      domProps: { value: _vm.tuition_fee.receivable_show },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "receivable_show",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
@@ -404,8 +639,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.product.status,
-                            expression: "product.status"
+                            value: _vm.tuition_fee.status,
+                            expression: "tuition_fee.status"
                           }
                         ],
                         staticClass: "form-control",
@@ -420,7 +655,7 @@ var render = function() {
                                 return val
                               })
                             _vm.$set(
-                              _vm.product,
+                              _vm.tuition_fee,
                               "status",
                               $event.target.multiple
                                 ? $$selectedVal
@@ -470,7 +705,7 @@ var render = function() {
                     "router-link",
                     {
                       staticClass: "btn btn-danger",
-                      attrs: { to: "/products" }
+                      attrs: { to: "/tuition_fees" }
                     },
                     [
                       _c("i", { staticClass: "fas fa-undo-alt" }),
@@ -558,7 +793,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("strong", [_vm._v("Thêm mới sản phẩm")])
+      _c("strong", [_vm._v("Thêm mới gói phí")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "nf-email" } }, [
+      _vm._v("Sản phẩm "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v(" (*)")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "nf-email" } }, [
+      _vm._v("Tên gói phí "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v(" (*)")])
     ])
   }
 ]

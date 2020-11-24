@@ -5,36 +5,94 @@
         <div class="card">
           <loader :active="loading.processing" :text="loading.text" />
           <div class="card-header">
-            <strong>Thêm mới sản phẩm</strong>
+            <strong>Thêm mới gói phí</strong>
           </div>
           <div class="card-body">
             <form action method="post">
               <div class="form-group">
-                <label for="nf-email">Tên sản phẩm</label>
-                <input class="form-control" type="text" name="title" v-model="product.title" />
-              </div>
-              <div class="form-group">
-                <label for="nf-email">Ngôn ngữ</label>
-                <select class="form-control" v-model="product.lang">
-                  <option value="0">Tiếng Việt</option>
-                  <option value="1">Tiếng Anh</option>
+                <label for="nf-email"
+                  >Sản phẩm <span class="text-danger"> (*)</span></label
+                >
+                <select class="form-control" v-model="tuition_fee.product_id">
+                  <option value="">Chọn sản phẩm</option>
+                  <option
+                    :value="product.id"
+                    v-for="(product, index) in list_product"
+                    :key="index"
+                  >
+                    {{ product.title }}
+                  </option>
                 </select>
               </div>
               <div class="form-group">
+                <label for="nf-email"
+                  >Tên gói phí <span class="text-danger"> (*)</span></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  name="title"
+                  v-model="tuition_fee.name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nf-email">Số buổi</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  name="title"
+                  v-model="tuition_fee.session"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nf-email">Giá</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="title"
+                  v-model="tuition_fee.price_show"
+                  @change="calculate('tuition_fee.price_show')"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nf-email">Giảm giá</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="title"
+                  v-model="tuition_fee.discount_show"
+                  @change="calculate('tuition_fee.discount_show')"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nf-email">Giá thực thu</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="title"
+                  disabled="true"
+                  v-model="tuition_fee.receivable_show"
+                />
+              </div>
+              <div class="form-group">
                 <label for="nf-email">Trạng thái</label>
-                <select class="form-control" v-model="product.status">
+                <select class="form-control" v-model="tuition_fee.status">
                   <option value="0">Ngừng hoạt động</option>
                   <option value="1">Hoạt động</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="nf-email">Ghi chú</label>
-                <editor :api-key="tinymce.key" :init="tinymce.init" id="input_tinymce" />
+                <editor
+                  :api-key="tinymce.key"
+                  :init="tinymce.init"
+                  id="input_tinymce"
+                />
               </div>
             </form>
           </div>
           <div class="card-footer">
-            <router-link class="btn btn-danger" :to="`/products`">
+            <router-link class="btn btn-danger" :to="`/tuition_fees`">
               <i class="fas fa-undo-alt"></i> Hủy
             </router-link>
             <button class="btn btn-success" type="button" @click="save">
@@ -50,12 +108,14 @@
       :color="modal.color"
       :closeOnBackdrop="modal.closeOnBackdrop"
     >
-      {{modal.body}}
+      {{ modal.body }}
       <template #header>
-        <h5 class="modal-title">{{modal.title}}</h5>
+        <h5 class="modal-title">{{ modal.title }}</h5>
       </template>
       <template #footer>
-        <CButton :color="'btn btn-'+modal.color" @click="exit" type="button">Đóng</CButton>
+        <CButton :color="'btn btn-' + modal.color" @click="exit" type="button"
+          >Đóng</CButton
+        >
       </template>
     </CModal>
   </div>
@@ -78,7 +138,7 @@ export default {
       tinymce: {
         key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
         init: {
-          entity_encoding : "raw",
+          entity_encoding: "raw",
           height: 300,
           menubar: true,
           plugins: [
@@ -104,32 +164,55 @@ export default {
         title: "THÔNG BÁO",
         show: false,
         color: "success",
-        body: "Thêm mới sản phẩm thành công",
+        body: "Thêm mới gói phí thành công",
         closeOnBackdrop: false,
       },
-      product: {
-        title: "",
+      tuition_fee: {
+        name: "",
+        product_id: "",
+        session: "",
+        discount: "",
+        receivable: "",
+        discount_show: "",
+        receivable_show: "",
         status: 1,
-        lang: 0,
         note: "",
       },
+      price: "",
+      price_show: "",
+      list_product: [],
     };
   },
-  created() {},
+  created() {
+    this.loading.processing = true;
+    axios
+      .get(
+        "/api/config/products/get_all?token=" +
+          localStorage.getItem("api_token")
+      )
+      .then((response) => {
+        this.loading.processing = false;
+        this.list_product = response.data;
+      })
+      .catch((e) => {
+        u.processAuthen(e);
+      });
+  },
   methods: {
     save() {
-      this.product.note = tinymce.get("input_tinymce").getContent();
+      this.tuition_fee.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
       axios
         .post(
-          "/api/config/products/add?token=" + localStorage.getItem("api_token"),
-          this.product
+          "/api/config/tuition_fees/add?token=" +
+            localStorage.getItem("api_token"),
+          this.tuition_fee
         )
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
             this.modal.color = "success";
-            this.modal.body = "Thêm mới sản phẩm thành công";
+            this.modal.body = "Thêm mới gói phí thành công";
             this.modal.show = true;
           }
         })
@@ -138,7 +221,21 @@ export default {
         });
     },
     exit() {
-      this.$router.push({ path: "/products" });
+      this.$router.push({ path: "/tuition_fees" });
+    },
+    calculate(type) {
+      if(type =='tuition_fee.price_show'){
+        const val = u.fmc(this.tuition_fee.price_show);
+        this.tuition_fee.price_show = val.s;
+        this.tuition_fee.price = val.n
+      }else if(type =='tuition_fee.discount_show'){
+        const val = u.fmc(this.tuition_fee.discount_show);
+        this.tuition_fee.discount_show = val.s;
+        this.tuition_fee.discount = val.n
+      }
+      const val_receivable = u.fmc(this.tuition_fee.price > this.tuition_fee.discount ? this.tuition_fee.price - this.tuition_fee.discount : 0);
+      this.tuition_fee.receivable_show = val_receivable.s
+      this.tuition_fee.receivable = val_receivable.n
     },
   },
 };

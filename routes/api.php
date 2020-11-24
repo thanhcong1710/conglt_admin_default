@@ -86,6 +86,11 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('/config/classes/update/{class_id}', 'ClassesController@update');
         Route::get('/config/classes/detail/{class_id}', 'ClassesController@detail');
         Route::get('/config/classes/delete/{class_id}', 'ClassesController@delete');
+        Route::post('/config/tuition_fees/list', 'TuitionFeesController@list');
+        Route::post('/config/tuition_fees/add', 'TuitionFeesController@add');
+        Route::post('/config/tuition_fees/update/{tuiton_fee_id}', 'TuitionFeesController@update');
+        Route::get('/config/tuition_fees/detail/{tuiton_fee_id}', 'TuitionFeesController@detail');
+        Route::get('/config/tuition_fees/delete/{tuiton_fee_id}', 'TuitionFeesController@delete');
 
         Route::post('/courseware/quizs/list', 'QuizsController@list');
         Route::post('/courseware/quizs/add1', 'QuizsController@add1');
@@ -101,9 +106,9 @@ Route::group(['middleware' => 'api'], function ($router) {
         
         Route::post('/students/list', 'StudentsController@list');
         Route::post('/students/add', 'StudentsController@add');
-        Route::post('/students/update/{class_id}', 'StudentsController@update');
-        Route::get('/students/detail/{class_id}', 'StudentsController@detail');
-        Route::get('/students/delete/{class_id}', 'StudentsController@delete');
+        Route::post('/students/update/{student_id}', 'StudentsController@update');
+        Route::get('/students/detail/{student_id}', 'StudentsController@detail');
+        Route::get('/students/delete/{student_id}', 'StudentsController@delete');
     });
 });
 
