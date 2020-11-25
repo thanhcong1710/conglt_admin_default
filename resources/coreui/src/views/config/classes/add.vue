@@ -36,6 +36,20 @@
                 />
               </div>
               <div class="form-group">
+                <label for="nf-email"
+                  >Lịch học <span class="text-danger"> (*)</span></label
+                >
+                <vue_select
+                  label="title"
+                  multiple
+                  :options="class_day_list"
+                  v-model="lms_class.day_selected"
+                  placeholder="Chọn lịch học"
+                  :searchable="true"
+                  language="en-US"
+                ></vue_select>
+              </div>
+              <div class="form-group">
                 <label for="nf-email">Ghi chú</label>
                 <editor
                   :api-key="tinymce.key"
@@ -87,11 +101,13 @@ import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
+import vue_select from "vue-select";
 
 export default {
   components: {
     loader: loader,
     editor: Editor,
+    vue_select,
   },
   name: "Add-Product",
   data() {
@@ -135,8 +151,39 @@ export default {
         lang: 0,
         note: "",
         product_id: "",
+        day_selected: [],
       },
       list_product: [],
+      class_day_list: [
+        {
+          title: "Thứ 2",
+          value: 1,
+        },
+        {
+          title: "Thứ 3",
+          value: 2,
+        },
+        {
+          title: "Thứ 4",
+          value: 3,
+        },
+        {
+          title: "Thứ 5",
+          value: 4,
+        },
+        {
+          title: "Thứ 6",
+          value: 5,
+        },
+        {
+          title: "Thứ 7",
+          value: 6,
+        },
+        {
+          title: "Chủ nhật",
+          value: 0,
+        },
+      ],
     };
   },
   created() {

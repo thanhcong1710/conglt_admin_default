@@ -32,7 +32,7 @@
                   class="form-control"
                   type="text"
                   name="title"
-                  v-model="tuition_fee.name"
+                  v-model="tuition_fee.title"
                 />
               </div>
               <div class="form-group">
@@ -168,7 +168,7 @@ export default {
         closeOnBackdrop: false,
       },
       tuition_fee: {
-        name: "",
+        title: "",
         product_id: "",
         session: "",
         discount: "",
@@ -178,8 +178,6 @@ export default {
         status: 1,
         note: "",
       },
-      price: "",
-      price_show: "",
       list_product: [],
     };
   },
@@ -200,6 +198,27 @@ export default {
   },
   methods: {
     save() {
+      let mess = "";
+      let resp = true;
+      if (this.tuition_fee.product_id == "") {
+        mess += " - Sản phẩm không được để trống<br/>";
+        resp = false;
+      }
+      if (this.tuition_fee.title == "") {
+        mess += " - Tên gói phí không được để trống<br/>";
+        resp = false;
+      }
+      if (this.tuition_fee.session == "") {
+        mess += " - Số buổi gói phí không được để trống<br/>";
+        resp = false;
+      }
+      if (!resp) {
+        this.modal.color = "success";
+        this.modal.body = mess;
+        this.modal.show = true;
+        this.modal.action_exit = "close";
+        return false;
+      }
       this.tuition_fee.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
       axios
@@ -224,18 +243,22 @@ export default {
       this.$router.push({ path: "/tuition_fees" });
     },
     calculate(type) {
-      if(type =='tuition_fee.price_show'){
+      if (type == "tuition_fee.price_show") {
         const val = u.fmc(this.tuition_fee.price_show);
         this.tuition_fee.price_show = val.s;
-        this.tuition_fee.price = val.n
-      }else if(type =='tuition_fee.discount_show'){
+        this.tuition_fee.price = val.n;
+      } else if (type == "tuition_fee.discount_show") {
         const val = u.fmc(this.tuition_fee.discount_show);
         this.tuition_fee.discount_show = val.s;
-        this.tuition_fee.discount = val.n
+        this.tuition_fee.discount = val.n;
       }
-      const val_receivable = u.fmc(this.tuition_fee.price > this.tuition_fee.discount ? this.tuition_fee.price - this.tuition_fee.discount : 0);
-      this.tuition_fee.receivable_show = val_receivable.s
-      this.tuition_fee.receivable = val_receivable.n
+      const val_receivable = u.fmc(
+        this.tuition_fee.price > this.tuition_fee.discount
+          ? this.tuition_fee.price - this.tuition_fee.discount
+          : 0
+      );
+      this.tuition_fee.receivable_show = val_receivable.s;
+      this.tuition_fee.receivable = val_receivable.n;
     },
   },
 };

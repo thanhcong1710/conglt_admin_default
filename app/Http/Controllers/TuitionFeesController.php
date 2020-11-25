@@ -20,15 +20,15 @@ class TuitionFeesController extends Controller
         $keyword = isset($request->keyword) ? $request->keyword : '';
         $page = isset($request->page) ? (int) $request->page : 1;
         $limit = isset($request->limit) ? (int) $request->limit : 20;
-        $cond = " p.branch_id = ".(int)Auth::user()->branch_id;
+        $cond = " t.branch_id = ".(int)Auth::user()->branch_id;
         if ($status !== '') {
-            $cond .= " AND p.status=$status";
+            $cond .= " AND t.status=$status";
         }
         if ($keyword !== '') {
-            $cond .= " AND p.title LIKE '%$keyword%' ";
+            $cond .= " AND t.title LIKE '%$keyword%' ";
         }
-        $total = u::first("SELECT count(id) AS total FROM lms_tuition_fees AS p WHERE $cond");
-        $list = u::query("SELECT p.* FROM lms_tuition_fees AS p WHERE $cond");
+        $total = u::first("SELECT count(id) AS total FROM lms_tuition_fees AS t WHERE $cond");
+        $list = u::query("SELECT t.* FROM lms_tuition_fees AS t WHERE $cond");
         $data = u::makingPagination($list, $total->total, $page, $limit);
         return response()->json($data);
     }
@@ -36,9 +36,13 @@ class TuitionFeesController extends Controller
     {
         $data = u::insertSimpleRow(array(
             'branch_id'=> Auth::user()->branch_id,
+            'product_id'=>$request->product_id,
             'title' => $request->title,
+            'session'=>$request->session,
+            'price'=>$request->price,
+            'discount'=>$request->discount,
+            'receivable'=>$request->receivable,
             'status' => $request->status,
-            'lang' => $request->lang,
             'created_at' => date('Y-m-d H:i:s'),
             'creator_id' => Auth::user()->id,
             'note' => $request->note,
@@ -48,14 +52,21 @@ class TuitionFeesController extends Controller
     public function detail($tuition_fee_id)
     {
         $data = u::getObject(array('id' => $tuition_fee_id), 'lms_tuition_fees');
+        $data->price_show = number_format($data->price);
+        $data->discount_show = number_format($data->discount);
+        $data->receivable_show = number_format($data->receivable);
         return response()->json($data);
     }
     public function update(Request $request, $tuition_fee_id)
     {
         $data = u::updateSimpleRow(array(
+            'product_id'=>$request->product_id,
             'title' => $request->title,
+            'session'=>$request->session,
+            'price'=>$request->price,
+            'discount'=>$request->discount,
+            'receivable'=>$request->receivable,
             'status' => $request->status,
-            'lang' => $request->lang,
             'updated_at' => date('Y-m-d H:i:s'),
             'updator_id' => Auth::user()->id,
             'note' => $request->note,
@@ -65,11 +76,6 @@ class TuitionFeesController extends Controller
     public function delete($branch_id)
     {
         $data = u::query("DELETE FROM lms_tuition_fees WHERE id=$branch_id");
-        return response()->json($data);
-    }
-    public function getAll(Request $request)
-    {
-        $data = u::getMultiObject(array('status'=>1,'branch_id'=>Auth::user()->branch_id),'lms_tuition_fees');
         return response()->json($data);
     }
 }

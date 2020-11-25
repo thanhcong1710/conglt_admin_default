@@ -58,7 +58,8 @@
     "sass-loader": "~8.0.2",
     "vue-template-compiler": "~2.6.11",
     "vue2-datepicker": "^2.11.2",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "vue-select": "2.4.0"
   },
   "browserslist": [
     "> 1%",
