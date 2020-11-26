@@ -149,8 +149,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -197,10 +195,10 @@ __webpack_require__.r(__webpack_exports__);
         lang: 0,
         note: "",
         product_id: "",
-        day_selected: []
+        shift_selected: []
       },
       list_product: [],
-      class_day_list: []
+      list_shift: []
     };
   },
   created: function created() {
@@ -210,6 +208,13 @@ __webpack_require__.r(__webpack_exports__);
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/config/products/get_all?token=" + localStorage.getItem("api_token")).then(function (response) {
       _this.loading.processing = false;
       _this.list_product = response.data;
+    })["catch"](function (e) {
+      _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
+    });
+    this.loading.processing = true;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/config/shifts/get_all?token=" + localStorage.getItem("api_token")).then(function (response) {
+      _this.loading.processing = false;
+      _this.list_shift = response.data;
     })["catch"](function (e) {
       _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
     });
@@ -227,8 +232,6 @@ __webpack_require__.r(__webpack_exports__);
 
       var mess = "";
       var resp = true;
-      console.log(this.lms_class.day_selected);
-      return false;
 
       if (this.lms_class.product_id == "") {
         mess += " - Sản phẩm không được để trống<br/>";
@@ -492,23 +495,25 @@ var render = function() {
                     "div",
                     { staticClass: "form-group" },
                     [
-                      _vm._m(3),
+                      _c("label", { attrs: { for: "nf-email" } }, [
+                        _vm._v("Lịch học ")
+                      ]),
                       _vm._v(" "),
                       _c("vue_select", {
                         attrs: {
                           label: "title",
                           multiple: "",
-                          options: _vm.class_day_list,
+                          options: _vm.list_shift,
                           placeholder: "Chọn lịch học",
                           searchable: true,
                           language: "en-US"
                         },
                         model: {
-                          value: _vm.lms_class.day_selected,
+                          value: _vm.lms_class.shift_selected,
                           callback: function($$v) {
-                            _vm.$set(_vm.lms_class, "day_selected", $$v)
+                            _vm.$set(_vm.lms_class, "shift_selected", $$v)
                           },
-                          expression: "lms_class.day_selected"
+                          expression: "lms_class.shift_selected"
                         }
                       })
                     ],
@@ -700,15 +705,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "nf-email" } }, [
       _vm._v("Tên lớp học "),
-      _c("span", { staticClass: "text-danger" }, [_vm._v(" (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "nf-email" } }, [
-      _vm._v("Lịch học "),
       _c("span", { staticClass: "text-danger" }, [_vm._v(" (*)")])
     ])
   }

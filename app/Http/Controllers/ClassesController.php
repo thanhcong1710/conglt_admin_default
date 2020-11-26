@@ -20,7 +20,7 @@ class ClassesController extends Controller
         $keyword = isset($request->keyword) ? $request->keyword : '';
         $page = isset($request->page) ? (int) $request->page : 1;
         $limit = isset($request->limit) ? (int) $request->limit : 20;
-        $cond = " l.branch_id = ".(int)Auth::user()->branch_id;
+        $cond = " l.branch_id = " . (int)Auth::user()->branch_id;
         if ($status !== '') {
             $cond .= " AND l.status=$status";
         }
@@ -34,11 +34,17 @@ class ClassesController extends Controller
     }
     public function add(Request $request)
     {
+        $shifts = '';
+        foreach ($request->shift_selected as $row) {
+            $row = (object)$row;
+            $shifts .= $shifts ? "," . $row->id : $row->id;
+        }
         $data = u::insertSimpleRow(array(
-            'branch_id'=>Auth::user()->branch_id,
-            'product_id'=>$request->product_id,
+            'branch_id' => Auth::user()->branch_id,
+            'product_id' => $request->product_id,
             'title' => $request->title,
             'status' => $request->status,
+            'shifts' => $shifts,
             'created_at' => date('Y-m-d H:i:s'),
             'creator_id' => Auth::user()->id,
             'note' => $request->note,
@@ -48,14 +54,21 @@ class ClassesController extends Controller
     public function detail($class_id)
     {
         $data = u::getObject(array('id' => $class_id), 'lms_classes');
+        $data->shift_selected = u::query("SELECT * FROM lms_shifts WHERE id IN(" . ($data->shifts ? $data->shifts : 0) . ")");
         return response()->json($data);
     }
     public function update(Request $request, $class_id)
     {
+        $shifts = '';
+        foreach ($request->shift_selected as $row) {
+            $row = (object)$row;
+            $shifts .= $shifts ? "," . $row->id : $row->id;
+        }
         $data = u::updateSimpleRow(array(
-            'product_id'=>$request->product_id,
+            'product_id' => $request->product_id,
             'title' => $request->title,
             'status' => $request->status,
+            'shifts' => $shifts,
             'updated_at' => date('Y-m-d H:i:s'),
             'updator_id' => Auth::user()->id,
             'note' => $request->note,

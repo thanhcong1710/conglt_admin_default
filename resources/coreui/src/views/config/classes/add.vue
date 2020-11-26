@@ -42,8 +42,8 @@
                 <vue_select
                   label="title"
                   multiple
-                  :options="class_day_list"
-                  v-model="lms_class.day_selected"
+                  :options="list_shift"
+                  v-model="lms_class.shift_selected"
                   placeholder="Chọn lịch học"
                   :searchable="true"
                   language="en-US"
@@ -151,39 +151,10 @@ export default {
         lang: 0,
         note: "",
         product_id: "",
-        day_selected: [],
+        shift_selected: [],
       },
       list_product: [],
-      class_day_list: [
-        {
-          title: "Thứ 2",
-          value: 1,
-        },
-        {
-          title: "Thứ 3",
-          value: 2,
-        },
-        {
-          title: "Thứ 4",
-          value: 3,
-        },
-        {
-          title: "Thứ 5",
-          value: 4,
-        },
-        {
-          title: "Thứ 6",
-          value: 5,
-        },
-        {
-          title: "Thứ 7",
-          value: 6,
-        },
-        {
-          title: "Chủ nhật",
-          value: 0,
-        },
-      ],
+      list_shift: [],
     };
   },
   created() {
@@ -196,6 +167,18 @@ export default {
       .then((response) => {
         this.loading.processing = false;
         this.list_product = response.data;
+      })
+      .catch((e) => {
+        u.processAuthen(e);
+      });
+    this.loading.processing = true;
+    axios
+      .get(
+        "/api/config/shifts/get_all?token=" + localStorage.getItem("api_token")
+      )
+      .then((response) => {
+        this.loading.processing = false;
+        this.list_shift = response.data;
       })
       .catch((e) => {
         u.processAuthen(e);

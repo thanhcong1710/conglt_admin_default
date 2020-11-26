@@ -36,14 +36,12 @@
                 />
               </div>
               <div class="form-group">
-                <label for="nf-email"
-                  >Lịch học <span class="text-danger"> (*)</span></label
-                >
+                <label for="nf-email">Lịch học </label>
                 <vue_select
                   label="title"
                   multiple
-                  :options="class_day_list"
-                  v-model="lms_class.day_selected"
+                  :options="list_shift"
+                  v-model="lms_class.shift_selected"
                   placeholder="Chọn lịch học"
                   :searchable="true"
                   language="en-US"
@@ -152,10 +150,10 @@ export default {
         lang: 0,
         note: "",
         product_id: "",
-        day_selected:[],
+        shift_selected: [],
       },
       list_product: [],
-      class_day_list: [],
+      list_shift: [],
     };
   },
   created() {
@@ -168,6 +166,18 @@ export default {
       .then((response) => {
         this.loading.processing = false;
         this.list_product = response.data;
+      })
+      .catch((e) => {
+        u.processAuthen(e);
+      });
+    this.loading.processing = true;
+    axios
+      .get(
+        "/api/config/shifts/get_all?token=" + localStorage.getItem("api_token")
+      )
+      .then((response) => {
+        this.loading.processing = false;
+        this.list_shift = response.data;
       })
       .catch((e) => {
         u.processAuthen(e);
@@ -190,8 +200,6 @@ export default {
     save() {
       let mess = "";
       let resp = true;
-      console.log(this.lms_class.day_selected);
-      return false;
       if (this.lms_class.product_id == "") {
         mess += " - Sản phẩm không được để trống<br/>";
         resp = false;

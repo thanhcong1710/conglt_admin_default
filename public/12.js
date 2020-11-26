@@ -196,31 +196,10 @@ __webpack_require__.r(__webpack_exports__);
         lang: 0,
         note: "",
         product_id: "",
-        day_selected: []
+        shift_selected: []
       },
       list_product: [],
-      class_day_list: [{
-        title: "Thứ 2",
-        value: 1
-      }, {
-        title: "Thứ 3",
-        value: 2
-      }, {
-        title: "Thứ 4",
-        value: 3
-      }, {
-        title: "Thứ 5",
-        value: 4
-      }, {
-        title: "Thứ 6",
-        value: 5
-      }, {
-        title: "Thứ 7",
-        value: 6
-      }, {
-        title: "Chủ nhật",
-        value: 0
-      }]
+      list_shift: []
     };
   },
   created: function created() {
@@ -230,6 +209,13 @@ __webpack_require__.r(__webpack_exports__);
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/config/products/get_all?token=" + localStorage.getItem("api_token")).then(function (response) {
       _this.loading.processing = false;
       _this.list_product = response.data;
+    })["catch"](function (e) {
+      _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
+    });
+    this.loading.processing = true;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/config/shifts/get_all?token=" + localStorage.getItem("api_token")).then(function (response) {
+      _this.loading.processing = false;
+      _this.list_shift = response.data;
     })["catch"](function (e) {
       _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
     });
@@ -510,17 +496,17 @@ var render = function() {
                         attrs: {
                           label: "title",
                           multiple: "",
-                          options: _vm.class_day_list,
+                          options: _vm.list_shift,
                           placeholder: "Chọn lịch học",
                           searchable: true,
                           language: "en-US"
                         },
                         model: {
-                          value: _vm.lms_class.day_selected,
+                          value: _vm.lms_class.shift_selected,
                           callback: function($$v) {
-                            _vm.$set(_vm.lms_class, "day_selected", $$v)
+                            _vm.$set(_vm.lms_class, "shift_selected", $$v)
                           },
-                          expression: "lms_class.day_selected"
+                          expression: "lms_class.shift_selected"
                         }
                       })
                     ],
