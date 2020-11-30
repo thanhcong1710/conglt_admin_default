@@ -166,7 +166,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.loading.processing = true;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/config/products/detail/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token")).then(function (response) {
+    _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].g("api/config/products/detail/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token")).then(function (response) {
       _this.loading.processing = false;
       _this.product = response.data;
     })["catch"](function (e) {

@@ -23,7 +23,12 @@
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="nf-email">Mã câu hỏi</label>
-                    <input class="form-control" type="text" name="title" v-model="quiz.ma_cauhoi" />
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="title"
+                      v-model="quiz.ma_cauhoi"
+                    />
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -83,19 +88,20 @@
       :color="modal.color"
       :closeOnBackdrop="modal.closeOnBackdrop"
     >
-      {{modal.body}}
+      {{ modal.body }}
       <template #header>
-        <h5 class="modal-title">{{modal.title}}</h5>
+        <h5 class="modal-title">{{ modal.title }}</h5>
       </template>
       <template #footer>
-        <CButton :color="'btn btn-'+modal.color" @click="exit" type="button">Đóng</CButton>
+        <CButton :color="'btn btn-' + modal.color" @click="exit" type="button"
+          >Đóng</CButton
+        >
       </template>
     </CModal>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
@@ -152,31 +158,20 @@ export default {
   },
   created() {
     this.loading.processing = true;
-    axios
-      .get(
-        `api/courseware/quizs/detail/${this.$route.params.id}?token=` +
-          localStorage.getItem("api_token")
-      )
+    u.g(`api/courseware/quizs/detail/${this.$route.params.id}`)
       .then((response) => {
         this.loading.processing = false;
         this.quiz = response.data;
         this.quiz.noidung_intro = this.quiz.noidung_quiz.intro;
       })
-      .catch((e) => {
-        u.processAuthen(e);
-      });
+      .catch((e) => {});
   },
   methods: {
     save() {
       this.loading.processing = true;
       this.quiz.noidung_intro = tinymce.get("noidung_intro").getContent();
       this.quiz.giaithich_quiz = tinymce.get("giaithich_quiz").getContent();
-      axios
-        .post(
-          `/api/courseware/quizs/update3/${this.$route.params.id}?token=` +
-            localStorage.getItem("api_token"),
-          this.quiz
-        )
+      u.p(`/api/courseware/quizs/update3/${this.$route.params.id}`, this.quiz)
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
@@ -185,9 +180,7 @@ export default {
             this.modal.show = true;
           }
         })
-        .catch((e) => {
-          u.processAuthen(e);
-        });
+        .catch((e) => {});
     },
     exit() {
       this.$router.push({ path: "/quizs" });

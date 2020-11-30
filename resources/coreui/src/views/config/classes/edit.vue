@@ -96,7 +96,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
@@ -158,43 +157,26 @@ export default {
   },
   created() {
     this.loading.processing = true;
-    axios
-      .get(
-        "/api/config/products/get_all?token=" +
-          localStorage.getItem("api_token")
-      )
+    u.g("/api/config/products/get_all")
       .then((response) => {
         this.loading.processing = false;
         this.list_product = response.data;
       })
-      .catch((e) => {
-        u.processAuthen(e);
-      });
+      .catch((e) => {});
     this.loading.processing = true;
-    axios
-      .get(
-        "/api/config/shifts/get_all?token=" + localStorage.getItem("api_token")
-      )
+    u.g("/api/config/shifts/get_all")
       .then((response) => {
         this.loading.processing = false;
         this.list_shift = response.data;
       })
-      .catch((e) => {
-        u.processAuthen(e);
-      });
+      .catch((e) => {});
     this.loading.processing = true;
-    axios
-      .get(
-        `api/config/classes/detail/${this.$route.params.id}?token=` +
-          localStorage.getItem("api_token")
-      )
+    u.g(`api/config/classes/detail/${this.$route.params.id}`)
       .then((response) => {
         this.loading.processing = false;
         this.lms_class = response.data;
       })
-      .catch((e) => {
-        u.processAuthen(e);
-      });
+      .catch((e) => {});
   },
   methods: {
     save() {
@@ -217,12 +199,7 @@ export default {
       }
       this.loading.processing = true;
       this.lms_class.note = tinymce.get("input_tinymce").getContent();
-      axios
-        .post(
-          `/api/config/classes/update/${this.$route.params.id}?token=` +
-            localStorage.getItem("api_token"),
-          this.lms_class
-        )
+      u.p(`/api/config/classes/update/${this.$route.params.id}`, this.lms_class)
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
@@ -231,9 +208,7 @@ export default {
             this.modal.show = true;
           }
         })
-        .catch((e) => {
-          u.processAuthen(e);
-        });
+        .catch((e) => {});
     },
     exit() {
       if (this.modal.action_exit == "exit") {

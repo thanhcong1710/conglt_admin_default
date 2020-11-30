@@ -1,3 +1,4 @@
+import axios from 'axios'
 function processAuthen(error) {
     // console.log(error.response.data);
     // console.log(error.response.status);
@@ -27,6 +28,42 @@ function shuffle(array) {
   
     return array;
 }
+function updateQueryStringParameter(uri, key, value) {
+  var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+  var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+  if (uri.match(re)) {
+    return uri.replace(re, '$1' + key + "=" + value + '$2');
+  }
+  else {
+    return uri + separator + key + "=" + value;
+  }
+}
+const g = (link, params = null) => new Promise((resolve, reject) => {
+  if (typeof link === 'string') {
+    link = updateQueryStringParameter(link,'token',localStorage.getItem("api_token"));
+    axios.get(link,params)
+    .then(response => {
+      resolve(response)
+    }).catch(e => {
+      processAuthen(e);
+    })
+  } else {
+    reject('Request url is not valid')
+  }
+})
+const p = (link, params = null) => new Promise((resolve, reject) => {
+  if (typeof link === 'string') {
+    link = updateQueryStringParameter(link,'token',localStorage.getItem("api_token"));
+    axios.post(link,params)
+    .then(response => {
+      resolve(response)
+    }).catch(e => {
+      processAuthen(e);
+    })
+  } else {
+    reject('Request url is not valid')
+  }
+})
 const vld = {
     email: (str) => {
       // const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -137,5 +174,7 @@ export default {
     processAuthen,
     shuffle,
     vld,
-    fmc
+    fmc,
+    g,
+    p
 }

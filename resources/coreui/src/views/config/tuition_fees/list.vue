@@ -29,7 +29,10 @@
             </div>
           </div>
           <div class="card-footer">
-            <router-link class="btn btn-sm btn-success" :to="'/tuition_fees/add'">
+            <router-link
+              class="btn btn-sm btn-success"
+              :to="'/tuition_fees/add'"
+            >
               <i class="fa fa-plus"></i> Thêm mới
             </router-link>
             <button class="btn btn-sm btn-info" type="submit" @click="search()">
@@ -129,7 +132,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import paging from "../../../components/Pagination";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
@@ -152,9 +154,7 @@ export default {
       },
       tuition_fees: [],
       pagination: {
-        url:
-          "/api/config/tuition_fees/list?token=" +
-          localStorage.getItem("api_token"),
+        url: "/api/config/tuition_fees/list",
         id: "",
         style: "line",
         class: "",
@@ -189,12 +189,10 @@ export default {
         keyword: this.searchData.keyword,
         status: this.searchData.status,
       };
-      const link =
-        "/api/config/tuition_fees/list?token=" + localStorage.getItem("api_token");
+      const link = "/api/config/tuition_fees/list";
 
       this.loading.processing = true;
-      axios
-        .post(link, data)
+      u.p(link, data)
         .then((response) => {
           this.loading.processing = false;
           this.tuition_fees = response.data.list;
@@ -206,9 +204,7 @@ export default {
           this.pagination.total = response.data.paging.total;
           this.pagination.limit = response.data.paging.limit;
         })
-        .catch((e) => {
-          u.processAuthen(e);
-        });
+        .catch((e) => {});
     },
     changePage(link) {
       const info = link
@@ -220,11 +216,7 @@ export default {
       this.search();
     },
     deleteItem(id) {
-      axios
-        .get(
-          `/api/config/tuition_fees/delete/${id}?token=` +
-            localStorage.getItem("api_token")
-        )
+      u.g(`/api/config/tuition_fees/delete/${id}`)
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
@@ -234,9 +226,7 @@ export default {
             this.search();
           }
         })
-        .catch((e) => {
-          u.processAuthen(e);
-        });
+        .catch((e) => {});
     },
     exit() {
       this.modal.show = false;

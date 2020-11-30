@@ -11,7 +11,12 @@
             <form action method="post">
               <div class="form-group">
                 <label for="nf-email">Tên sản phẩm</label>
-                <input class="form-control" type="text" name="title" v-model="product.title" />
+                <input
+                  class="form-control"
+                  type="text"
+                  name="title"
+                  v-model="product.title"
+                />
               </div>
               <div class="form-group">
                 <label for="nf-email">Ngôn ngữ</label>
@@ -55,19 +60,20 @@
       :color="modal.color"
       :closeOnBackdrop="modal.closeOnBackdrop"
     >
-      {{modal.body}}
+      {{ modal.body }}
       <template #header>
-        <h5 class="modal-title">{{modal.title}}</h5>
+        <h5 class="modal-title">{{ modal.title }}</h5>
       </template>
       <template #footer>
-        <CButton :color="'btn btn-'+modal.color" @click="exit" type="button">Đóng</CButton>
+        <CButton :color="'btn btn-' + modal.color" @click="exit" type="button"
+          >Đóng</CButton
+        >
       </template>
     </CModal>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
@@ -83,7 +89,7 @@ export default {
       tinymce: {
         key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
         init: {
-          entity_encoding : "raw",
+          entity_encoding: "raw",
           height: 300,
           menubar: true,
           plugins: [
@@ -121,29 +127,18 @@ export default {
   },
   created() {
     this.loading.processing = true;
-    axios
-      .get(
-        `api/config/products/detail/${this.$route.params.id}?token=` +
-          localStorage.getItem("api_token")
-      )
+    u.g(`api/config/products/detail/${this.$route.params.id}`)
       .then((response) => {
         this.loading.processing = false;
         this.product = response.data;
       })
-      .catch((e) => {
-        u.processAuthen(e);
-      });
+      .catch((e) => {});
   },
   methods: {
     save() {
       this.loading.processing = true;
       this.product.note = tinymce.get("input_tinymce").getContent();
-      axios
-        .post(
-          `/api/config/products/update/${this.$route.params.id}?token=` +
-            localStorage.getItem("api_token"),
-          this.product
-        )
+      u.p(`/api/config/products/update/${this.$route.params.id}`, this.product)
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
@@ -152,9 +147,7 @@ export default {
             this.modal.show = true;
           }
         })
-        .catch((e) => {
-          u.processAuthen(e);
-        });
+        .catch((e) => {});
     },
     exit() {
       this.$router.push({ path: "/products" });

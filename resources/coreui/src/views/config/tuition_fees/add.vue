@@ -122,7 +122,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
@@ -183,18 +182,12 @@ export default {
   },
   created() {
     this.loading.processing = true;
-    axios
-      .get(
-        "/api/config/products/get_all?token=" +
-          localStorage.getItem("api_token")
-      )
+    u.g("/api/config/products/get_all")
       .then((response) => {
         this.loading.processing = false;
         this.list_product = response.data;
       })
-      .catch((e) => {
-        u.processAuthen(e);
-      });
+      .catch((e) => {});
   },
   methods: {
     save() {
@@ -221,12 +214,7 @@ export default {
       }
       this.tuition_fee.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
-      axios
-        .post(
-          "/api/config/tuition_fees/add?token=" +
-            localStorage.getItem("api_token"),
-          this.tuition_fee
-        )
+      u.p("/api/config/tuition_fees/add", this.tuition_fee)
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
@@ -235,9 +223,7 @@ export default {
             this.modal.show = true;
           }
         })
-        .catch((e) => {
-          u.processAuthen(e);
-        });
+        .catch((e) => {});
     },
     exit() {
       this.$router.push({ path: "/tuition_fees" });

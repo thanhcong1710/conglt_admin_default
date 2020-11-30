@@ -11,11 +11,20 @@
             <form action method="post">
               <div class="form-group">
                 <label for="nf-email">Tên trung tâm</label>
-                <input class="form-control" type="text" name="title" v-model="branch.title" />
+                <input
+                  class="form-control"
+                  type="text"
+                  name="title"
+                  v-model="branch.title"
+                />
               </div>
               <div class="form-group">
                 <label for="nf-email">Ghi chú</label>
-                <editor :api-key="tinymce.key" :init="tinymce.init" id="input_tinymce" />
+                <editor
+                  :api-key="tinymce.key"
+                  :init="tinymce.init"
+                  id="input_tinymce"
+                />
               </div>
               <div class="form-group">
                 <label for="nf-email">Trạng thái</label>
@@ -43,19 +52,20 @@
       :color="modal.color"
       :closeOnBackdrop="modal.closeOnBackdrop"
     >
-      {{modal.body}}
+      {{ modal.body }}
       <template #header>
-        <h5 class="modal-title">{{modal.title}}</h5>
+        <h5 class="modal-title">{{ modal.title }}</h5>
       </template>
       <template #footer>
-        <CButton :color="'btn btn-'+modal.color" @click="exit" type="button">Đóng</CButton>
+        <CButton :color="'btn btn-' + modal.color" @click="exit" type="button"
+          >Đóng</CButton
+        >
       </template>
     </CModal>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
@@ -71,7 +81,7 @@ export default {
       tinymce: {
         key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
         init: {
-          entity_encoding : "raw",
+          entity_encoding: "raw",
           height: 300,
           menubar: true,
           plugins: [
@@ -113,11 +123,7 @@ export default {
     save() {
       this.branch.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
-      axios
-        .post(
-          "/api/config/branches/add?token=" + localStorage.getItem("api_token"),
-          this.branch
-        )
+      u.p("/api/config/branches/add", this.branch)
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
@@ -126,9 +132,7 @@ export default {
             this.modal.show = true;
           }
         })
-        .catch((e) => {
-          u.processAuthen(e);
-        });
+        .catch((e) => {});
     },
     exit() {
       this.$router.push({ path: "/branches" });

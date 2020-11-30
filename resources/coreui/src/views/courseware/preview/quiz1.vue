@@ -68,7 +68,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 
@@ -96,8 +95,7 @@ export default {
     };
   },
   created() {
-    axios
-      .get(
+    u.g(
         `api/quiz/noidung_quiz/${this.$route.params.id}?token=` +
           localStorage.getItem("api_token")
       )
@@ -106,7 +104,6 @@ export default {
         this.quiz = response.data;
       })
       .catch((e) => {
-        u.processAuthen(e);
       });
   },
   methods: {
@@ -137,8 +134,7 @@ export default {
         return item;
       });
       this.answer_quiz.answer = answer;
-      axios
-        .post(
+      u.p(
           `api/quiz/answer?token=` + localStorage.getItem("api_token"),
           this.answer_quiz
         )
@@ -160,7 +156,6 @@ export default {
           });
         })
         .catch((e) => {
-          u.processAuthen(e);
         });
     },
     reset() {

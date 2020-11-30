@@ -13,7 +13,11 @@
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="nf-email">Dạng câu hỏi</label>
-                    <select class="form-control" v-model="quiz.type" @change="redirectTypeQuiz">
+                    <select
+                      class="form-control"
+                      v-model="quiz.type"
+                      @change="redirectTypeQuiz"
+                    >
                       <option value="1">Trắc nghiệm</option>
                       <option value="2">Điền từ</option>
                       <option value="3">Tự luận</option>
@@ -23,7 +27,12 @@
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="nf-email">Mã câu hỏi</label>
-                    <input class="form-control" type="text" name="title" v-model="quiz.ma_cauhoi" />
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="title"
+                      v-model="quiz.ma_cauhoi"
+                    />
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -48,7 +57,10 @@
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="nf-email">Kích thước ô trống</label>
-                    <select class="form-control" v-model="quiz.noidung_template">
+                    <select
+                      class="form-control"
+                      v-model="quiz.noidung_template"
+                    >
                       <option value="small">Ngắn</option>
                       <option value="default">Trung bình</option>
                       <option value="large">Dài</option>
@@ -58,7 +70,10 @@
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="nf-email">Chính tả</label>
-                    <select class="form-control" v-model="quiz.noidung_type_convert">
+                    <select
+                      class="form-control"
+                      v-model="quiz.noidung_type_convert"
+                    >
                       <option value="0">Có phân biệt chính tả</option>
                       <option value="1">Không phân biệt chính tả</option>
                     </select>
@@ -73,19 +88,19 @@
                   :value="quiz.noidung_intro"
                   id="noidung_intro"
                 />
-                <p style="font-size:12px">
+                <p style="font-size: 12px">
                   <i>Chú ý: ô trống có dạng /*1*/ /*2*/</i>
                 </p>
               </div>
               <div class="form-group">
                 <label for="nf-email">Đáp án</label>
-               <editor
+                <editor
                   :api-key="tinymce.key"
                   :init="tinymce.init"
                   :value="quiz.dapan_quiz"
                   id="dapan_quiz"
                 />
-                <p style="font-size:12px">
+                <p style="font-size: 12px">
                   <i>Chú ý: đáp án quiz có dạng " 1) nội dung đáp án 1"</i>
                 </p>
               </div>
@@ -117,19 +132,20 @@
       :color="modal.color"
       :closeOnBackdrop="modal.closeOnBackdrop"
     >
-      {{modal.body}}
+      {{ modal.body }}
       <template #header>
-        <h5 class="modal-title">{{modal.title}}</h5>
+        <h5 class="modal-title">{{ modal.title }}</h5>
       </template>
       <template #footer>
-        <CButton :color="'btn btn-'+modal.color" @click="exit" type="button">Đóng</CButton>
+        <CButton :color="'btn btn-' + modal.color" @click="exit" type="button"
+          >Đóng</CButton
+        >
       </template>
     </CModal>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
@@ -201,12 +217,7 @@ export default {
       this.quiz.noidung_intro = tinymce.get("noidung_intro").getContent();
       this.quiz.dapan_quiz = tinymce.get("dapan_quiz").getContent();
       this.quiz.giaithich_quiz = tinymce.get("giaithich_quiz").getContent();
-      axios
-        .post(
-          "/api/courseware/quizs/add2?token=" +
-            localStorage.getItem("api_token"),
-          this.quiz
-        )
+      u.p("/api/courseware/quizs/add2", this.quiz)
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
@@ -215,9 +226,7 @@ export default {
             this.modal.show = true;
           }
         })
-        .catch((e) => {
-          u.processAuthen(e);
-        });
+        .catch((e) => {});
     },
     exit() {
       this.$router.push({ path: "/quizs" });

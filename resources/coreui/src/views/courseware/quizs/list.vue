@@ -35,7 +35,11 @@
             <button class="btn btn-sm btn-info" type="submit" @click="search()">
               <i class="fa fa-search"></i> Tìm kiếm
             </button>
-            <button class="btn btn-sm btn-secondary" type="reset" @click="reset()">
+            <button
+              class="btn btn-sm btn-secondary"
+              type="reset"
+              @click="reset()"
+            >
               <i class="fas fa-undo-alt"></i> Reset
             </button>
           </div>
@@ -60,18 +64,26 @@
               </thead>
               <tbody>
                 <tr v-for="(item, index) in quizs" :key="index">
-                  <td>{{ index + 1 + ((pagination.cpage - 1) * pagination.limit) }}</td>
+                  <td>
+                    {{ index + 1 + (pagination.cpage - 1) * pagination.limit }}
+                  </td>
                   <td>{{ item.ma_cauhoi }}</td>
                   <td v-html="item.noidung_quiz.intro"></td>
                   <td>{{ item.status | getStatusName }}</td>
                   <td>
-                    <router-link class="btn btn-sm btn-success" :to="`/quizs/${item.id}/edit${item.type}`">
+                    <router-link
+                      class="btn btn-sm btn-success"
+                      :to="`/quizs/${item.id}/edit${item.type}`"
+                    >
                       <i class="fa fa-edit"></i> Sửa
                     </router-link>
                     <button class="btn btn-sm btn-danger" type="submit">
                       <i class="fas fa-times"></i> Xóa
                     </button>
-                    <router-link class="btn btn-sm btn-info" :to="`/preview/${item.id}/quiz${item.type}`">
+                    <router-link
+                      class="btn btn-sm btn-info"
+                      :to="`/preview/${item.id}/quiz${item.type}`"
+                    >
                       <i class="fa fa-eye"></i> Xem trước
                     </router-link>
                   </td>
@@ -105,7 +117,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import paging from "../../../components/Pagination";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
@@ -128,9 +139,7 @@ export default {
       },
       quizs: [],
       pagination: {
-        url:
-          "/api/courseware/quizs/list?token=" +
-          localStorage.getItem("api_token"),
+        url: "/api/courseware/quizs/list",
         id: "",
         style: "line",
         class: "",
@@ -158,12 +167,10 @@ export default {
         keyword: this.searchData.keyword,
         status: this.searchData.status,
       };
-      const link =
-        "/api/courseware/quizs/list?token=" + localStorage.getItem("api_token");
+      const link = "/api/courseware/quizs/list";
 
       this.loading.processing = true;
-      axios
-        .post(link, data)
+      u.p(link, data)
         .then((response) => {
           this.loading.processing = false;
           this.quizs = response.data.list;
@@ -175,9 +182,7 @@ export default {
           this.pagination.total = response.data.paging.total;
           this.pagination.limit = response.data.paging.limit;
         })
-        .catch((e) => {
-          u.processAuthen(e);
-        });
+        .catch((e) => {});
     },
     changePage(link) {
       const info = link

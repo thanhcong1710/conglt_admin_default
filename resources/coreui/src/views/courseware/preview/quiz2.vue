@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
@@ -58,20 +57,16 @@ export default {
     };
   },
   created() {
-    axios
-      .get(
-        `api/courseware/quizs/detail/${this.$route.params.id}?token=` +
-          localStorage.getItem("api_token")
-      )
+    u.g(
+      `api/courseware/quizs/detail/${this.$route.params.id}?token=` +
+        localStorage.getItem("api_token")
+    )
       .then((response) => {
         this.loading.processing = false;
         this.quiz = response.data;
       })
-      .catch((e) => {
-        u.processAuthen(e);
-      });
+      .catch((e) => {});
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>

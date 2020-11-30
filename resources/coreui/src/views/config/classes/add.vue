@@ -58,8 +58,9 @@
                   :endpoint="search.from_link"
                   :disabled="search.disabled"
                   :suggestObjects="search.from_search"
-                  :onSelectObject="search.from_load">
-              </search>
+                  :onSelectObject="search.from_load"
+                >
+                </search>
               </div>
               <div class="form-group">
                 <label for="nf-email">Ghi chú</label>
@@ -109,7 +110,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
@@ -169,34 +169,25 @@ export default {
       },
       list_product: [],
       list_shift: [],
-      search:{
-        loading:'hidden',
-        from_link:0,
-        from_search : keyword => this.searchSuggest(keyword),
-        from_load: object => this.searchSelect(object),
+      search: {
+        loading: "hidden",
+        from_link: 0,
+        from_search: (keyword) => this.searchSuggest(keyword),
+        from_load: (object) => this.searchSelect(object),
         calling: false,
       },
     };
   },
   created() {
     this.loading.processing = true;
-    axios
-      .get(
-        "/api/config/products/get_all?token=" +
-          localStorage.getItem("api_token")
-      )
+    u.g("/api/config/products/get_all")
       .then((response) => {
         this.loading.processing = false;
         this.list_product = response.data;
       })
-      .catch((e) => {
-        u.processAuthen(e);
-      });
+      .catch((e) => {});
     this.loading.processing = true;
-    axios
-      .get(
-        "/api/config/shifts/get_all?token=" + localStorage.getItem("api_token")
-      )
+    u.g("/api/config/shifts/get_all")
       .then((response) => {
         this.loading.processing = false;
         this.list_shift = response.data;
@@ -206,32 +197,37 @@ export default {
       });
   },
   methods: {
-    searchSuggest(keyword){
-        if (keyword && keyword.length > 3 && this.search.calling === false) {
-            keyword = keyword.trim()
-            keyword = keyword.replace(/[~`!#$%^&*[,\]./<>?;'\\:"|\t]/gi, '');
-            this.search.loading = 'display'
-            this.search.calling = true
-            return new Promise((resolve, reject) => {
-                axios.get(`/api/config/teachers/get_data_by_keyword/${keyword}?token=` + localStorage.getItem("api_token"))
-                .then(response => {
-                  const resp = response.data.length ? response.data : [{
-                        label: 'Không tìm thấy kết quả nào phù hợp',
-                        student_name: 'Không có kết quả nào phù hợp'
-                    }]
-                    this.search.calling = false
-                    this.search.loading = 'hidden'
-                    resolve(resp)
-                }).catch(e => {
-                    u.lg(e)
-                    this.search.loading = 'hidden'
-                })
+    searchSuggest(keyword) {
+      if (keyword && keyword.length > 3 && this.search.calling === false) {
+        keyword = keyword.trim();
+        keyword = keyword.replace(/[~`!#$%^&*[,\]./<>?;'\\:"|\t]/gi, "");
+        this.search.loading = "display";
+        this.search.calling = true;
+        return new Promise((resolve, reject) => {
+          u.g(`/api/config/teachers/get_data_by_keyword/${keyword}`)
+            .then((response) => {
+              const resp = response.data.length
+                ? response.data
+                : [
+                    {
+                      label: "Không tìm thấy kết quả nào phù hợp",
+                      student_name: "Không có kết quả nào phù hợp",
+                    },
+                  ];
+              this.search.calling = false;
+              this.search.loading = "hidden";
+              resolve(resp);
             })
-        }
-      },
-      searchSelect(obj){
-        console.log(obj);
-      },
+            .catch((e) => {
+              u.lg(e);
+              this.search.loading = "hidden";
+            });
+        });
+      }
+    },
+    searchSelect(obj) {
+      console.log(obj);
+    },
     save() {
       let mess = "";
       let resp = true;
@@ -252,11 +248,7 @@ export default {
       }
       this.lms_class.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
-      axios
-        .post(
-          "/api/config/classes/add?token=" + localStorage.getItem("api_token"),
-          this.lms_class
-        )
+      u.p("/api/config/classes/add", this.lms_class)
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
@@ -266,9 +258,7 @@ export default {
             this.modal.action_exit = "exit";
           }
         })
-        .catch((e) => {
-          u.processAuthen(e);
-        });
+        .catch((e) => {});
     },
     exit() {
       if (this.modal.action_exit == "exit") {
