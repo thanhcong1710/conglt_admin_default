@@ -18812,6 +18812,18 @@ p {
   border: none;
 }
 
+.form-control.autocomplete-wrapper {
+  padding: 0px;
+  border: none;
+}
+
+.form-control.autocomplete-wrapper .autocomplete-input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
 var map = {
 	"./af": "./resources/coreui/node_modules/moment/locale/af.js",
 	"./af.js": "./resources/coreui/node_modules/moment/locale/af.js",

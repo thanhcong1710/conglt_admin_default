@@ -36,9 +36,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -71,17 +71,134 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    loader: _components_Loading__WEBPACK_IMPORTED_MODULE_2__["default"]
+    loader: _components_Loading__WEBPACK_IMPORTED_MODULE_2__["default"],
+    editor: _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  name: "Add-Product",
+  name: "Edit-Product",
   data: function data() {
     return {
+      tinymce: {
+        key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
+        init: {
+          entity_encoding: "raw",
+          height: 300,
+          menubar: true,
+          plugins: ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table paste code help wordcount"],
+          toolbar: "undo redo | bold italic backcolor | image| media |\
+           alignleft aligncenter alignright alignjustify | \
+           bullist numlist outdent indent | removeformat | help",
+          images_upload_url: "/api/upload/upload_file?token=" + localStorage.getItem("api_token"),
+          images_upload_base_path: ""
+        }
+      },
       loading: {
         text: "Đang tải dữ liệu...",
         processing: false
@@ -90,34 +207,82 @@ __webpack_require__.r(__webpack_exports__);
         title: "THÔNG BÁO",
         show: false,
         color: "success",
-        body: "Thêm mới câu hỏi thành công",
+        body: "Cập nhật gói phí thành công",
         closeOnBackdrop: false
       },
-      quiz: {
-        type: 1,
-        ma_cauhoi: "",
+      tuition_fee: {
+        title: "",
+        product_id: "",
+        session: "",
+        discount: "",
+        receivable: "",
+        discount_show: "",
+        receivable_show: "",
         status: 1,
-        dokho_quiz: 2,
-        noidung_template: "large",
-        noidung_is_multichoice: 0,
-        noidung_intro: "",
-        noidung_option: "",
-        dapan_quiz: "",
-        giaithich_quiz: ""
-      }
+        note: ""
+      },
+      list_product: []
     };
   },
   created: function created() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/courseware/quizs/detail/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token")).then(function (response) {
+    this.loading.processing = true;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/config/products/get_all?token=" + localStorage.getItem("api_token")).then(function (response) {
       _this.loading.processing = false;
-      _this.quiz = response.data;
+      _this.list_product = response.data;
+    })["catch"](function (e) {
+      _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
+    });
+    this.loading.processing = true;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/config/tuition_fees/detail/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token")).then(function (response) {
+      _this.loading.processing = false;
+      _this.tuition_fee = response.data;
     })["catch"](function (e) {
       _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
     });
   },
-  methods: {}
+  methods: {
+    save: function save() {
+      var _this2 = this;
+
+      this.loading.processing = true;
+      this.tuition_fee.note = tinymce.get("input_tinymce").getContent();
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/config/tuition_fees/update/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token"), this.tuition_fee).then(function (response) {
+        _this2.loading.processing = false;
+
+        if (response.status == 200) {
+          _this2.modal.color = "success";
+          _this2.modal.body = "Cập nhật sản phẩm thành công";
+          _this2.modal.show = true;
+        }
+      })["catch"](function (e) {
+        _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
+      });
+    },
+    exit: function exit() {
+      this.$router.push({
+        path: "/tuition_fees"
+      });
+    },
+    calculate: function calculate(type) {
+      if (type == "tuition_fee.price_show") {
+        var val = _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].fmc(this.tuition_fee.price_show);
+        this.tuition_fee.price_show = val.s;
+        this.tuition_fee.price = val.n;
+      } else if (type == "tuition_fee.discount_show") {
+        var _val = _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].fmc(this.tuition_fee.discount_show);
+
+        this.tuition_fee.discount_show = _val.s;
+        this.tuition_fee.discount = _val.n;
+      }
+
+      var val_receivable = _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].fmc(this.tuition_fee.price > this.tuition_fee.discount ? this.tuition_fee.price - this.tuition_fee.discount : 0);
+      this.tuition_fee.receivable_show = val_receivable.s;
+      this.tuition_fee.receivable = val_receivable.n;
+      console.log(this.tuition_fee.receivable_show);
+    }
+  }
 });
 
 /***/ }),
@@ -214,9 +379,9 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=template&id=6f3b25df&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=template&id=6f3b25df& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648& ***!
   \******************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -229,45 +394,408 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "animated fadeIn" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
-        _c(
-          "div",
-          { staticClass: "card" },
-          [
-            _c("loader", {
-              attrs: { active: _vm.loading.processing, text: _vm.loading.text }
-            }),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", {
-              staticClass: "card-body",
-              domProps: { innerHTML: _vm._s(this.quiz.noidung_quiz.intro) }
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "card-footer" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "btn btn-danger", attrs: { to: "/quizs" } },
-                  [
-                    _c("i", { staticClass: "fas fa-undo-alt" }),
-                    _vm._v(" Quay lại\n          ")
-                  ]
-                )
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ])
-    ])
-  ])
+  return _c(
+    "div",
+    { staticClass: "animated fadeIn" },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c(
+            "div",
+            { staticClass: "card" },
+            [
+              _c("loader", {
+                attrs: {
+                  active: _vm.loading.processing,
+                  text: _vm.loading.text
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("form", { attrs: { action: "", method: "post" } }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.tuition_fee.product_id,
+                            expression: "tuition_fee.product_id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.tuition_fee,
+                              "product_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Chọn sản phẩm")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.list_product, function(product, index) {
+                          return _c(
+                            "option",
+                            { key: index, domProps: { value: product.id } },
+                            [
+                              _vm._v(
+                                "\n                  " +
+                                  _vm._s(product.title) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.title,
+                          expression: "tuition_fee.title"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" },
+                      domProps: { value: _vm.tuition_fee.title },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "title",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Số buổi")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.session,
+                          expression: "tuition_fee.session"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "number", name: "title" },
+                      domProps: { value: _vm.tuition_fee.session },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "session",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Giá")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.price_show,
+                          expression: "tuition_fee.price_show"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" },
+                      domProps: { value: _vm.tuition_fee.price_show },
+                      on: {
+                        change: function($event) {
+                          return _vm.calculate("tuition_fee.price_show")
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "price_show",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Giảm giá")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.discount_show,
+                          expression: "tuition_fee.discount_show"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" },
+                      domProps: { value: _vm.tuition_fee.discount_show },
+                      on: {
+                        change: function($event) {
+                          return _vm.calculate("tuition_fee.discount_show")
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "discount_show",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Giá thực thu")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.receivable_show,
+                          expression: "tuition_fee.receivable_show"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title", disabled: "true" },
+                      domProps: { value: _vm.tuition_fee.receivable_show },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "receivable_show",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Trạng thái")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.tuition_fee.status,
+                            expression: "tuition_fee.status"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.tuition_fee,
+                              "status",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("Ngừng hoạt động")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Hoạt động")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c("label", { attrs: { for: "nf-email" } }, [
+                        _vm._v("Ghi chú")
+                      ]),
+                      _vm._v(" "),
+                      _c("editor", {
+                        attrs: {
+                          "api-key": _vm.tinymce.key,
+                          init: _vm.tinymce.init,
+                          id: "input_tinymce"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-footer" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { to: "/tuition_fees" }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-undo-alt" }),
+                      _vm._v(" Hủy\n          ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { type: "button" },
+                      on: { click: _vm.save }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-save" }),
+                      _vm._v(" Cập nhật\n          ")
+                    ]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "CModal",
+        {
+          attrs: {
+            title: _vm.modal.title,
+            show: _vm.modal.show,
+            color: _vm.modal.color,
+            closeOnBackdrop: _vm.modal.closeOnBackdrop
+          },
+          on: {
+            "update:show": function($event) {
+              return _vm.$set(_vm.modal, "show", $event)
+            }
+          },
+          scopedSlots: _vm._u([
+            {
+              key: "header",
+              fn: function() {
+                return [
+                  _c("h5", { staticClass: "modal-title" }, [
+                    _vm._v(_vm._s(_vm.modal.title))
+                  ])
+                ]
+              },
+              proxy: true
+            },
+            {
+              key: "footer",
+              fn: function() {
+                return [
+                  _c(
+                    "CButton",
+                    {
+                      attrs: {
+                        color: "btn btn-" + _vm.modal.color,
+                        type: "button"
+                      },
+                      on: { click: _vm.exit }
+                    },
+                    [_vm._v("Đóng")]
+                  )
+                ]
+              },
+              proxy: true
+            }
+          ])
+        },
+        [_vm._v("\n    " + _vm._s(_vm.modal.body) + "\n    ")]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -275,7 +803,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("strong", [_vm._v("Câu Hỏi")])
+      _c("strong", [_vm._v("Cập nhật gói phí")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "nf-email" } }, [
+      _vm._v("Sản phẩm "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v(" (*)")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "nf-email" } }, [
+      _vm._v("Tên gói phí "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v(" (*)")])
     ])
   }
 ]
@@ -372,17 +918,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/courseware/preview/quiz2.vue":
+/***/ "./resources/coreui/src/views/config/tuition_fees/edit.vue":
 /*!*****************************************************************!*\
-  !*** ./resources/coreui/src/views/courseware/preview/quiz2.vue ***!
+  !*** ./resources/coreui/src/views/config/tuition_fees/edit.vue ***!
   \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _quiz2_vue_vue_type_template_id_6f3b25df___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./quiz2.vue?vue&type=template&id=6f3b25df& */ "./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=template&id=6f3b25df&");
-/* harmony import */ var _quiz2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./quiz2.vue?vue&type=script&lang=js& */ "./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=script&lang=js&");
+/* harmony import */ var _edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit.vue?vue&type=template&id=8c95e648& */ "./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648&");
+/* harmony import */ var _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit.vue?vue&type=script&lang=js& */ "./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -392,9 +938,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _quiz2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _quiz2_vue_vue_type_template_id_6f3b25df___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _quiz2_vue_vue_type_template_id_6f3b25df___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -404,38 +950,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/coreui/src/views/courseware/preview/quiz2.vue"
+component.options.__file = "resources/coreui/src/views/config/tuition_fees/edit.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=script&lang=js&":
+/***/ "./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************!*\
-  !*** ./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_quiz2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./quiz2.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_quiz2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=template&id=6f3b25df&":
+/***/ "./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648&":
 /*!************************************************************************************************!*\
-  !*** ./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=template&id=6f3b25df& ***!
+  !*** ./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648& ***!
   \************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_quiz2_vue_vue_type_template_id_6f3b25df___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./quiz2.vue?vue&type=template&id=6f3b25df& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/preview/quiz2.vue?vue&type=template&id=6f3b25df&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_quiz2_vue_vue_type_template_id_6f3b25df___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./edit.vue?vue&type=template&id=8c95e648& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_quiz2_vue_vue_type_template_id_6f3b25df___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -92,6 +92,7 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::get('/config/tuition_fees/detail/{tuiton_fee_id}', 'TuitionFeesController@detail');
         Route::get('/config/tuition_fees/delete/{tuiton_fee_id}', 'TuitionFeesController@delete');
         Route::get('/config/shifts/get_all', 'ShiftsController@getAll');
+        Route::get('/config/teachers/get_data_by_keyword/{keyword}', 'TeachersController@getDataByKeyword');
 
         Route::post('/courseware/quizs/list', 'QuizsController@list');
         Route::post('/courseware/quizs/add1', 'QuizsController@add1');

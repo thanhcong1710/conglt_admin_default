@@ -110,5 +110,6 @@ return [
     */
 
     'password_timeout' => 10800,
-
+    'role_teacher'=> 4,
+    'role_student'=>6,
 ];

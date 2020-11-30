@@ -37,3 +37,13 @@ p {
   padding: 0px;
   border: none;
 }
+.form-control.autocomplete-wrapper{
+  padding: 0px;
+  border: none;
+}
+.form-control.autocomplete-wrapper .autocomplete-input{
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}

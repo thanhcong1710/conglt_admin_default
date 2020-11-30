@@ -50,6 +50,18 @@
                 ></vue_select>
               </div>
               <div class="form-group">
+                <label for="nf-email"
+                  >Giáo viên <span class="text-danger"> (*)</span></label
+                >
+                <search
+                  :displayIcon="search.loading"
+                  :endpoint="search.from_link"
+                  :disabled="search.disabled"
+                  :suggestObjects="search.from_search"
+                  :onSelectObject="search.from_load">
+              </search>
+              </div>
+              <div class="form-group">
                 <label for="nf-email">Ghi chú</label>
                 <editor
                   :api-key="tinymce.key"
@@ -102,12 +114,14 @@ import u from "../../../utilities/utility";
 import loader from "../../../components/Loading";
 import Editor from "@tinymce/tinymce-vue";
 import vue_select from "vue-select";
+import search from "../../../components/ObjectSearch";
 
 export default {
   components: {
     loader: loader,
     editor: Editor,
     vue_select,
+    search,
   },
   name: "Add-Product",
   data() {
@@ -155,6 +169,13 @@ export default {
       },
       list_product: [],
       list_shift: [],
+      search:{
+        loading:'hidden',
+        from_link:0,
+        from_search : keyword => this.searchSuggest(keyword),
+        from_load: object => this.searchSelect(object),
+        calling: false,
+      },
     };
   },
   created() {
@@ -185,6 +206,32 @@ export default {
       });
   },
   methods: {
+    searchSuggest(keyword){
+        if (keyword && keyword.length > 3 && this.search.calling === false) {
+            keyword = keyword.trim()
+            keyword = keyword.replace(/[~`!#$%^&*[,\]./<>?;'\\:"|\t]/gi, '');
+            this.search.loading = 'display'
+            this.search.calling = true
+            return new Promise((resolve, reject) => {
+                axios.get(`/api/config/teachers/get_data_by_keyword/${keyword}?token=` + localStorage.getItem("api_token"))
+                .then(response => {
+                  const resp = response.data.length ? response.data : [{
+                        label: 'Không tìm thấy kết quả nào phù hợp',
+                        student_name: 'Không có kết quả nào phù hợp'
+                    }]
+                    this.search.calling = false
+                    this.search.loading = 'hidden'
+                    resolve(resp)
+                }).catch(e => {
+                    u.lg(e)
+                    this.search.loading = 'hidden'
+                })
+            })
+        }
+      },
+      searchSelect(obj){
+        console.log(obj);
+      },
     save() {
       let mess = "";
       let resp = true;
