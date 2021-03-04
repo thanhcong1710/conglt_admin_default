@@ -45,10 +45,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./resources/coreui/node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utilities_utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utilities/utility */ "./resources/coreui/src/utilities/utility.js");
-/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/Loading */ "./resources/coreui/src/components/Loading.vue");
+/* harmony import */ var _utilities_utility__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utilities/utility */ "./resources/coreui/src/utilities/utility.js");
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/Loading */ "./resources/coreui/src/components/Loading.vue");
 //
 //
 //
@@ -118,12 +116,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    loader: _components_Loading__WEBPACK_IMPORTED_MODULE_2__["default"]
+    loader: _components_Loading__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   name: "Add-Product",
   data: function data() {
@@ -147,12 +144,10 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/quiz/noidung_quiz/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token")).then(function (response) {
+    _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].g("api/quiz/noidung_quiz/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token")).then(function (response) {
       _this.loading.processing = false;
       _this.quiz = response.data;
-    })["catch"](function (e) {
-      _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
-    });
+    })["catch"](function (e) {});
   },
   methods: {
     choiceItem: function choiceItem(option_item, option_index) {
@@ -183,7 +178,7 @@ __webpack_require__.r(__webpack_exports__);
         return item;
       });
       this.answer_quiz.answer = answer;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("api/quiz/answer?token=" + localStorage.getItem("api_token"), this.answer_quiz).then(function (response) {
+      _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].p("api/quiz/answer?token=" + localStorage.getItem("api_token"), this.answer_quiz).then(function (response) {
         _this2.loading.processing = false;
         _this2.answer_quiz.is_show = 1;
         _this2.answer_quiz.result_status = response.data.quiz_info.result_status;
@@ -198,9 +193,7 @@ __webpack_require__.r(__webpack_exports__);
 
           return item;
         });
-      })["catch"](function (e) {
-        _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
-      });
+      })["catch"](function (e) {});
     },
     reset: function reset() {
       location.reload();

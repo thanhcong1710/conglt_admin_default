@@ -102,6 +102,19 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('/courseware/quizs/add3', 'QuizsController@add3');
         Route::post('/courseware/quizs/update3/{quiz_id}', 'QuizsController@update3');
         Route::get('/courseware/quizs/detail/{quiz_id}', 'QuizsController@detail');
+        Route::post('/courses/list', 'CoursesController@list');
+        Route::post('/courses/add', 'CoursesController@add');
+        Route::post('/courses/update/{course_id}', 'CoursesController@update');
+        Route::get('/courses/detail/{course_id}', 'CoursesController@detail');
+        Route::get('/courses/get_all', 'CoursesController@getAll');
+        Route::post('/lessons/list', 'LessonsController@list');
+        Route::post('/lessons/add', 'LessonsController@add');
+        Route::post('/lessons/update/{lesson_id}', 'LessonsController@update');
+        Route::get('/lessons/detail/{lesson_id}', 'LessonsController@detail');
+        Route::post('/tests/list', 'TestsController@list');
+        Route::post('/tests/add', 'TestsController@add');
+        Route::post('/tests/update/{test_id}', 'TestsController@update');
+        Route::get('/tests/detail/{test_id}', 'TestsController@detail');
 
         Route::get('/quiz/noidung_quiz/{quiz_id}', 'QuizsController@getNoiDungQuiz');
         Route::post('/quiz/answer', 'QuizsController@answerQuiz');

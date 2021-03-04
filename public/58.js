@@ -1,20 +1,153 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[58],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/users/Users.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/users/Users.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/thanhcong/Documents/GitHub/conglt_lms/resources/coreui/src/views/courseware/quizs/list.vue: Unexpected token, expected \",\" (131:38)\n\n\u001b[0m \u001b[90m 129 | \u001b[39m      pagination\u001b[33m:\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 130 | \u001b[39m        url\u001b[33m:\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 131 | \u001b[39m          \u001b[32m\"/api/courseware/quizs/list\"\u001b[39m)\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 132 | \u001b[39m        id\u001b[33m:\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 133 | \u001b[39m        style\u001b[33m:\u001b[39m \u001b[32m\"line\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 134 | \u001b[39m        \u001b[36mclass\u001b[39m\u001b[33m:\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at Parser.raise (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:6420:17)\n    at Parser.unexpected (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:7773:16)\n    at Parser.expect (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:7759:28)\n    at Parser.parseObj (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9305:14)\n    at Parser.parseExprAtom (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8939:28)\n    at Parser.parseExprSubscripts (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8556:23)\n    at Parser.parseMaybeUnary (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8536:21)\n    at Parser.parseExprOps (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8402:23)\n    at Parser.parseMaybeConditional (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8375:23)\n    at Parser.parseMaybeAssign (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8325:21)\n    at Parser.parseObjectProperty (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9441:101)\n    at Parser.parseObjPropValue (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9466:101)\n    at Parser.parseObjectMember (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9390:10)\n    at Parser.parseObj (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9314:25)\n    at Parser.parseExprAtom (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8939:28)\n    at Parser.parseExprSubscripts (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8556:23)\n    at Parser.parseMaybeUnary (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8536:21)\n    at Parser.parseExprOps (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8402:23)\n    at Parser.parseMaybeConditional (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8375:23)\n    at Parser.parseMaybeAssign (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8325:21)\n    at Parser.parseExpression (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8275:23)\n    at Parser.parseReturnStatement (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:10378:28)\n    at Parser.parseStatementContent (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:10057:21)\n    at Parser.parseStatement (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:10585:25)\n    at Parser.parseBlockBody (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:10572:10)\n    at Parser.parseBlock (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:10556:10)\n    at Parser.parseFunctionBody (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9584:24)\n    at Parser.parseFunctionBodyAndFinish (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9554:10)\n    at Parser.parseMethod (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9508:10)\n    at Parser.parseObjectMethod (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9424:19)\n    at Parser.parseObjPropValue (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9466:23)\n    at Parser.parseObjectMember (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9390:10)\n    at Parser.parseObj (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:9314:25)\n    at Parser.parseExprAtom (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8939:28)\n    at Parser.parseExprSubscripts (/Users/thanhcong/Documents/GitHub/conglt_lms/node_modules/@babel/parser/lib/index.js:8556:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./resources/coreui/node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Users',
+  data: function data() {
+    return {
+      items: [],
+      fields: ['id', 'name', 'registered', 'roles', 'status', 'actions'],
+      currentPage: 1,
+      perPage: 5,
+      totalRows: 0,
+      you: null,
+      message: '',
+      showMessage: false,
+      dismissSecs: 7,
+      dismissCountDown: 0,
+      showDismissibleAlert: false
+    };
+  },
+  paginationProps: {
+    align: 'center',
+    doubleArrows: false,
+    previousButtonHtml: 'prev',
+    nextButtonHtml: 'next'
+  },
+  methods: {
+    getBadge: function getBadge(status) {
+      return status === 1 ? 'success' : 'danger';
+    },
+    getTitleStatus: function getTitleStatus(status) {
+      return status === 1 ? 'Kích hoạt' : 'Không kích hoạt';
+    },
+    userLink: function userLink(id) {
+      return "users/".concat(id.toString());
+    },
+    editLink: function editLink(id) {
+      return "users/".concat(id.toString(), "/edit");
+    },
+    showUser: function showUser(id) {
+      var userLink = this.userLink(id);
+      this.$router.push({
+        path: userLink
+      });
+    },
+    editUser: function editUser(id) {
+      var editLink = this.editLink(id);
+      this.$router.push({
+        path: editLink
+      });
+    },
+    deleteUser: function deleteUser(id) {
+      var self = this;
+      var userId = id;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users/' + id + '?token=' + localStorage.getItem("api_token"), {
+        _method: 'DELETE'
+      }).then(function (response) {
+        self.message = 'Successfully deleted user.';
+        self.showAlert();
+        self.getUsers();
+      })["catch"](function (error) {
+        console.log(error); // self.$router.push({ path: '/login' });
+      });
+    },
+    countDownChanged: function countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown;
+    },
+    showAlert: function showAlert() {
+      this.dismissCountDown = this.dismissSecs;
+    },
+    getUsers: function getUsers() {
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users?token=' + localStorage.getItem("api_token")).then(function (response) {
+        self.items = response.data.users;
+        self.you = response.data.you;
+      })["catch"](function (error) {
+        console.log(error); // self.$router.push({ path: '/login' });
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getUsers();
+  }
+});
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=template&id=6c5b2936&":
-/*!***************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=template&id=6c5b2936& ***!
-  \***************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/users/Users.vue?vue&type=template&id=ddf19f9e&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/users/Users.vue?vue&type=template&id=ddf19f9e& ***!
+  \*****************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -26,342 +159,198 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "animated fadeIn" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
-        _c(
-          "div",
-          { staticClass: "card" },
-          [
-            _c("loader", {
-              attrs: { active: _vm.loading.processing, text: _vm.loading.text }
-            }),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "form-group col-sm-4" }, [
-                  _c("label", { attrs: { for: "name" } }, [
-                    _vm._v("Mã câu hỏi")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.searchData.keyword,
-                        expression: "searchData.keyword"
-                      }
+  return _c(
+    "CRow",
+    [
+      _c(
+        "CCol",
+        { attrs: { col: "12", xl: "12" } },
+        [
+          _c(
+            "transition",
+            { attrs: { name: "slide" } },
+            [
+              _c(
+                "CCard",
+                [
+                  _c(
+                    "CCardHeader",
+                    [
+                      _vm._v("\n          Users\n          "),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn btn-sm btn-success",
+                          staticStyle: { float: "right" },
+                          attrs: { to: "/users/add" }
+                        },
+                        [
+                          _c("i", { staticClass: "fa fa-plus" }),
+                          _vm._v(" Thêm mới\n          ")
+                        ]
+                      )
                     ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Nhập mã câu hỏi" },
-                    domProps: { value: _vm.searchData.keyword },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.searchData, "keyword", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-sm-4" }, [
-                  _c("label", { attrs: { for: "ccmonth" } }, [
-                    _vm._v("Trạng thái")
-                  ]),
+                    1
+                  ),
                   _vm._v(" "),
                   _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.searchData.status,
-                          expression: "searchData.status"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.searchData,
-                            "status",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
+                    "CCardBody",
                     [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Chọn trạng thái")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "0" } }, [
-                        _vm._v("Ngừng hoạt động")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "1" } }, [
-                        _vm._v("Hoạt động")
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "card-footer" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-sm btn-success",
-                    attrs: { to: "/quizs/add1" }
-                  },
-                  [
-                    _c("i", { staticClass: "fa fa-plus" }),
-                    _vm._v(" Thêm mới\n          ")
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-info",
-                    attrs: { type: "submit" },
-                    on: {
-                      click: function($event) {
-                        return _vm.search()
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fa fa-search" }),
-                    _vm._v(" Tìm kiếm\n          ")
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-secondary",
-                    attrs: { type: "reset" },
-                    on: {
-                      click: function($event) {
-                        return _vm.reset()
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-undo-alt" }),
-                    _vm._v(" Reset\n          ")
-                  ]
-                )
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c(
-          "div",
-          { staticClass: "card" },
-          [
-            _c("loader", {
-              attrs: { active: _vm.loading.processing, text: _vm.loading.text }
-            }),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("table", { staticClass: "table table-responsive-sm" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.quizs, function(item, index) {
-                    return _c("tr", { key: index }, [
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(
-                            index +
-                              1 +
-                              (_vm.pagination.cpage - 1) * _vm.pagination.limit
-                          )
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.ma_cauhoi))]),
-                      _vm._v(" "),
-                      _c("td", {
-                        domProps: { innerHTML: _vm._s(item.noidung_quiz.intro) }
-                      }),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(_vm._f("getStatusName")(item.status)))
-                      ]),
-                      _vm._v(" "),
                       _c(
-                        "td",
+                        "CAlert",
+                        {
+                          attrs: {
+                            show: _vm.dismissCountDown,
+                            color: "primary",
+                            fade: ""
+                          },
+                          on: {
+                            "update:show": function($event) {
+                              _vm.dismissCountDown = $event
+                            }
+                          }
+                        },
                         [
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-sm btn-success",
-                              attrs: {
-                                to: "/quizs/" + item.id + "/edit" + item.type
-                              }
-                            },
-                            [
-                              _c("i", { staticClass: "fa fa-edit" }),
-                              _vm._v(" Sửa\n                  ")
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm._m(3, true),
-                          _vm._v(" "),
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-sm btn-info",
-                              attrs: {
-                                to: "/preview/" + item.id + "/quiz" + item.type
-                              }
-                            },
-                            [
-                              _c("i", { staticClass: "fa fa-eye" }),
-                              _vm._v(" Xem trước\n                  ")
-                            ]
+                          _vm._v(
+                            "\n          (" +
+                              _vm._s(_vm.dismissCountDown) +
+                              ") " +
+                              _vm._s(_vm.message) +
+                              "\n        "
                           )
-                        ],
-                        1
-                      )
-                    ])
-                  }),
-                  0
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-center" }, [
-                _c(
-                  "nav",
-                  { attrs: { "aria-label": "Page navigation" } },
-                  [
-                    _c("paging", {
-                      attrs: {
-                        rootLink: _vm.pagination.url,
-                        id: _vm.pagination.id,
-                        listStyle: _vm.pagination.style,
-                        customClass: _vm.pagination.class,
-                        firstPage: _vm.pagination.spage,
-                        previousPage: _vm.pagination.ppage,
-                        nextPage: _vm.pagination.npage,
-                        lastPage: _vm.pagination.lpage,
-                        currentPage: _vm.pagination.cpage,
-                        pagesItems: _vm.pagination.total,
-                        pagesLimit: _vm.pagination.limit,
-                        pageList: _vm.pagination.pages,
-                        routing: _vm.changePage
-                      }
-                    })
-                  ],
-                  1
-                )
-              ])
-            ])
-          ],
-          1
-        )
-      ])
-    ])
-  ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("CDataTable", {
+                        attrs: {
+                          hover: "",
+                          striped: "",
+                          items: _vm.items,
+                          fields: _vm.fields,
+                          "items-per-page": 5,
+                          pagination: ""
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "status",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return [
+                                _c(
+                                  "td",
+                                  [
+                                    _c(
+                                      "CBadge",
+                                      {
+                                        attrs: {
+                                          color: _vm.getBadge(item.status)
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm.getTitleStatus(item.status)
+                                          )
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]
+                            }
+                          },
+                          {
+                            key: "actions",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return [
+                                _c(
+                                  "td",
+                                  [
+                                    _c(
+                                      "CButton",
+                                      {
+                                        attrs: { color: "primary" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.showUser(item.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Show")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "CButton",
+                                      {
+                                        attrs: { color: "success" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.editUser(item.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Edit")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm.you != item.id
+                                      ? _c(
+                                          "CButton",
+                                          {
+                                            attrs: { color: "danger" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.deleteUser(item.id)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Delete")]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ]
+                            }
+                          }
+                        ])
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("strong", [_vm._v("Bộ lọc")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("strong", [_vm._v("Danh sách")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("STT")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Mã câu hỏi")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nội dung")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Trạng thái")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Thao tác")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "btn btn-sm btn-danger", attrs: { type: "submit" } },
-      [
-        _c("i", { staticClass: "fas fa-times" }),
-        _vm._v(" Xóa\n                  ")
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/courseware/quizs/list.vue":
-/*!**************************************************************!*\
-  !*** ./resources/coreui/src/views/courseware/quizs/list.vue ***!
-  \**************************************************************/
+/***/ "./resources/coreui/src/views/users/Users.vue":
+/*!****************************************************!*\
+  !*** ./resources/coreui/src/views/users/Users.vue ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _list_vue_vue_type_template_id_6c5b2936___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./list.vue?vue&type=template&id=6c5b2936& */ "./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=template&id=6c5b2936&");
-/* harmony import */ var _list_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list.vue?vue&type=script&lang=js& */ "./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Users_vue_vue_type_template_id_ddf19f9e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Users.vue?vue&type=template&id=ddf19f9e& */ "./resources/coreui/src/views/users/Users.vue?vue&type=template&id=ddf19f9e&");
+/* harmony import */ var _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Users.vue?vue&type=script&lang=js& */ "./resources/coreui/src/views/users/Users.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -370,9 +359,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _list_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _list_vue_vue_type_template_id_6c5b2936___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _list_vue_vue_type_template_id_6c5b2936___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Users_vue_vue_type_template_id_ddf19f9e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Users_vue_vue_type_template_id_ddf19f9e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -382,38 +371,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/coreui/src/views/courseware/quizs/list.vue"
+component.options.__file = "resources/coreui/src/views/users/Users.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************!*\
-  !*** ./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************/
+/***/ "./resources/coreui/src/views/users/Users.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/coreui/src/views/users/Users.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_list_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./list.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_list_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Users.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/users/Users.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=template&id=6c5b2936&":
-/*!*********************************************************************************************!*\
-  !*** ./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=template&id=6c5b2936& ***!
-  \*********************************************************************************************/
+/***/ "./resources/coreui/src/views/users/Users.vue?vue&type=template&id=ddf19f9e&":
+/*!***********************************************************************************!*\
+  !*** ./resources/coreui/src/views/users/Users.vue?vue&type=template&id=ddf19f9e& ***!
+  \***********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_list_vue_vue_type_template_id_6c5b2936___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./list.vue?vue&type=template&id=6c5b2936& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/courseware/quizs/list.vue?vue&type=template&id=6c5b2936&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_list_vue_vue_type_template_id_6c5b2936___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_ddf19f9e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Users.vue?vue&type=template&id=ddf19f9e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/users/Users.vue?vue&type=template&id=ddf19f9e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_ddf19f9e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_list_vue_vue_type_template_id_6c5b2936___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_ddf19f9e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

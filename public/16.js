@@ -36,20 +36,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/products/edit.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/config/products/edit.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./resources/coreui/node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utilities_utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utilities/utility */ "./resources/coreui/src/utilities/utility.js");
-/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/Loading */ "./resources/coreui/src/components/Loading.vue");
-/* harmony import */ var _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tinymce/tinymce-vue */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js");
+/* harmony import */ var _utilities_utility__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utilities/utility */ "./resources/coreui/src/utilities/utility.js");
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/Loading */ "./resources/coreui/src/components/Loading.vue");
+/* harmony import */ var _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tinymce/tinymce-vue */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js");
 //
 //
 //
@@ -118,16 +116,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    loader: _components_Loading__WEBPACK_IMPORTED_MODULE_2__["default"],
-    editor: _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    loader: _components_Loading__WEBPACK_IMPORTED_MODULE_1__["default"],
+    editor: _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  name: "Edit-Product",
+  name: "Add-Product",
   data: function data() {
     return {
       tinymce: {
@@ -152,49 +204,94 @@ __webpack_require__.r(__webpack_exports__);
         title: "THÔNG BÁO",
         show: false,
         color: "success",
-        body: "Cập nhật sản phẩm thành công",
+        body: "Thêm mới gói phí thành công",
         closeOnBackdrop: false
       },
-      product: {
+      tuition_fee: {
         title: "",
+        product_id: "",
+        session: "",
+        discount: "",
+        receivable: "",
+        discount_show: "",
+        receivable_show: "",
         status: 1,
-        lang: 0
-      }
+        note: ""
+      },
+      list_product: []
     };
   },
   created: function created() {
     var _this = this;
 
     this.loading.processing = true;
-    _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].g("api/config/products/detail/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token")).then(function (response) {
+    _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].g("/api/config/products/get_all").then(function (response) {
       _this.loading.processing = false;
-      _this.product = response.data;
-    })["catch"](function (e) {
-      _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
-    });
+      _this.list_product = response.data;
+    })["catch"](function (e) {});
   },
   methods: {
     save: function save() {
       var _this2 = this;
 
+      var mess = "";
+      var resp = true;
+
+      if (this.tuition_fee.product_id == "") {
+        mess += " - Sản phẩm không được để trống<br/>";
+        resp = false;
+      }
+
+      if (this.tuition_fee.title == "") {
+        mess += " - Tên gói phí không được để trống<br/>";
+        resp = false;
+      }
+
+      if (this.tuition_fee.session == "") {
+        mess += " - Số buổi gói phí không được để trống<br/>";
+        resp = false;
+      }
+
+      if (!resp) {
+        this.modal.color = "success";
+        this.modal.body = mess;
+        this.modal.show = true;
+        this.modal.action_exit = "close";
+        return false;
+      }
+
+      this.tuition_fee.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
-      this.product.note = tinymce.get("input_tinymce").getContent();
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/config/products/update/".concat(this.$route.params.id, "?token=") + localStorage.getItem("api_token"), this.product).then(function (response) {
+      _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].p("/api/config/tuition_fees/add", this.tuition_fee).then(function (response) {
         _this2.loading.processing = false;
 
         if (response.status == 200) {
           _this2.modal.color = "success";
-          _this2.modal.body = "Cập nhật sản phẩm thành công";
+          _this2.modal.body = "Thêm mới gói phí thành công";
           _this2.modal.show = true;
         }
-      })["catch"](function (e) {
-        _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
-      });
+      })["catch"](function (e) {});
     },
     exit: function exit() {
       this.$router.push({
-        path: "/products"
+        path: "/tuition_fees"
       });
+    },
+    calculate: function calculate(type) {
+      if (type == "tuition_fee.price_show") {
+        var val = _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].fmc(this.tuition_fee.price_show);
+        this.tuition_fee.price_show = val.s;
+        this.tuition_fee.price = val.n;
+      } else if (type == "tuition_fee.discount_show") {
+        var _val = _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].fmc(this.tuition_fee.discount_show);
+
+        this.tuition_fee.discount_show = _val.s;
+        this.tuition_fee.discount = _val.n;
+      }
+
+      var val_receivable = _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].fmc(this.tuition_fee.price > this.tuition_fee.discount ? this.tuition_fee.price - this.tuition_fee.discount : 0);
+      this.tuition_fee.receivable_show = val_receivable.s;
+      this.tuition_fee.receivable = val_receivable.n;
     }
   }
 });
@@ -293,10 +390,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/products/edit.vue?vue&type=template&id=602b9268&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/config/products/edit.vue?vue&type=template&id=602b9268& ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -330,37 +427,7 @@ var render = function() {
               _c("div", { staticClass: "card-body" }, [
                 _c("form", { attrs: { action: "", method: "post" } }, [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "nf-email" } }, [
-                      _vm._v("Tên sản phẩm")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.product.title,
-                          expression: "product.title"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text", name: "title" },
-                      domProps: { value: _vm.product.title },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.product, "title", $event.target.value)
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "nf-email" } }, [
-                      _vm._v("Ngôn ngữ")
-                    ]),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -369,8 +436,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.product.lang,
-                            expression: "product.lang"
+                            value: _vm.tuition_fee.product_id,
+                            expression: "tuition_fee.product_id"
                           }
                         ],
                         staticClass: "form-control",
@@ -385,8 +452,8 @@ var render = function() {
                                 return val
                               })
                             _vm.$set(
-                              _vm.product,
-                              "lang",
+                              _vm.tuition_fee,
+                              "product_id",
                               $event.target.multiple
                                 ? $$selectedVal
                                 : $$selectedVal[0]
@@ -395,15 +462,190 @@ var render = function() {
                         }
                       },
                       [
-                        _c("option", { attrs: { value: "0" } }, [
-                          _vm._v("Tiếng Việt")
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Chọn sản phẩm")
                         ]),
                         _vm._v(" "),
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("Tiếng Anh")
-                        ])
-                      ]
+                        _vm._l(_vm.list_product, function(product, index) {
+                          return _c(
+                            "option",
+                            { key: index, domProps: { value: product.id } },
+                            [
+                              _vm._v(
+                                "\n                  " +
+                                  _vm._s(product.title) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.title,
+                          expression: "tuition_fee.title"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" },
+                      domProps: { value: _vm.tuition_fee.title },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "title",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Số buổi")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.session,
+                          expression: "tuition_fee.session"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "number", name: "title" },
+                      domProps: { value: _vm.tuition_fee.session },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "session",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Giá")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.price_show,
+                          expression: "tuition_fee.price_show"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" },
+                      domProps: { value: _vm.tuition_fee.price_show },
+                      on: {
+                        change: function($event) {
+                          return _vm.calculate("tuition_fee.price_show")
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "price_show",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Giảm giá")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.discount_show,
+                          expression: "tuition_fee.discount_show"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" },
+                      domProps: { value: _vm.tuition_fee.discount_show },
+                      on: {
+                        change: function($event) {
+                          return _vm.calculate("tuition_fee.discount_show")
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "discount_show",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nf-email" } }, [
+                      _vm._v("Giá thực thu")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tuition_fee.receivable_show,
+                          expression: "tuition_fee.receivable_show"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title", disabled: "true" },
+                      domProps: { value: _vm.tuition_fee.receivable_show },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.tuition_fee,
+                            "receivable_show",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
@@ -418,8 +660,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.product.status,
-                            expression: "product.status"
+                            value: _vm.tuition_fee.status,
+                            expression: "tuition_fee.status"
                           }
                         ],
                         staticClass: "form-control",
@@ -434,7 +676,7 @@ var render = function() {
                                 return val
                               })
                             _vm.$set(
-                              _vm.product,
+                              _vm.tuition_fee,
                               "status",
                               $event.target.multiple
                                 ? $$selectedVal
@@ -467,8 +709,7 @@ var render = function() {
                         attrs: {
                           "api-key": _vm.tinymce.key,
                           init: _vm.tinymce.init,
-                          id: "input_tinymce",
-                          value: _vm.product.note
+                          id: "input_tinymce"
                         }
                       })
                     ],
@@ -485,7 +726,7 @@ var render = function() {
                     "router-link",
                     {
                       staticClass: "btn btn-danger",
-                      attrs: { to: "/products" }
+                      attrs: { to: "/tuition_fees" }
                     },
                     [
                       _c("i", { staticClass: "fas fa-undo-alt" }),
@@ -502,7 +743,7 @@ var render = function() {
                     },
                     [
                       _c("i", { staticClass: "fas fa-save" }),
-                      _vm._v(" Cập nhật\n          ")
+                      _vm._v(" Thêm mới\n          ")
                     ]
                   )
                 ],
@@ -573,7 +814,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("strong", [_vm._v("Cập nhật sản phẩm")])
+      _c("strong", [_vm._v("Thêm mới gói phí")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "nf-email" } }, [
+      _vm._v("Sản phẩm "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v(" (*)")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "nf-email" } }, [
+      _vm._v("Tên gói phí "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v(" (*)")])
     ])
   }
 ]
@@ -670,17 +929,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/config/products/edit.vue":
-/*!*************************************************************!*\
-  !*** ./resources/coreui/src/views/config/products/edit.vue ***!
-  \*************************************************************/
+/***/ "./resources/coreui/src/views/config/tuition_fees/add.vue":
+/*!****************************************************************!*\
+  !*** ./resources/coreui/src/views/config/tuition_fees/add.vue ***!
+  \****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit_vue_vue_type_template_id_602b9268___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit.vue?vue&type=template&id=602b9268& */ "./resources/coreui/src/views/config/products/edit.vue?vue&type=template&id=602b9268&");
-/* harmony import */ var _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit.vue?vue&type=script&lang=js& */ "./resources/coreui/src/views/config/products/edit.vue?vue&type=script&lang=js&");
+/* harmony import */ var _add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./add.vue?vue&type=template&id=6bcde23f& */ "./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f&");
+/* harmony import */ var _add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./add.vue?vue&type=script&lang=js& */ "./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -690,9 +949,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _edit_vue_vue_type_template_id_602b9268___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _edit_vue_vue_type_template_id_602b9268___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -702,38 +961,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/coreui/src/views/config/products/edit.vue"
+component.options.__file = "resources/coreui/src/views/config/tuition_fees/add.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/config/products/edit.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************!*\
-  !*** ./resources/coreui/src/views/config/products/edit.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************/
+/***/ "./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/products/edit.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./add.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/config/products/edit.vue?vue&type=template&id=602b9268&":
-/*!********************************************************************************************!*\
-  !*** ./resources/coreui/src/views/config/products/edit.vue?vue&type=template&id=602b9268& ***!
-  \********************************************************************************************/
+/***/ "./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f& ***!
+  \***********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_602b9268___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./edit.vue?vue&type=template&id=602b9268& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/products/edit.vue?vue&type=template&id=602b9268&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_602b9268___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./add.vue?vue&type=template&id=6bcde23f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_602b9268___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

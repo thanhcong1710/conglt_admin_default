@@ -45,11 +45,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./resources/coreui/node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utilities_utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utilities/utility */ "./resources/coreui/src/utilities/utility.js");
-/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/Loading */ "./resources/coreui/src/components/Loading.vue");
-/* harmony import */ var _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tinymce/tinymce-vue */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js");
+/* harmony import */ var _utilities_utility__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utilities/utility */ "./resources/coreui/src/utilities/utility.js");
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/Loading */ "./resources/coreui/src/components/Loading.vue");
+/* harmony import */ var _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tinymce/tinymce-vue */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js");
 //
 //
 //
@@ -106,14 +104,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    loader: _components_Loading__WEBPACK_IMPORTED_MODULE_2__["default"],
-    editor: _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    loader: _components_Loading__WEBPACK_IMPORTED_MODULE_1__["default"],
+    editor: _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   name: "Add-Product",
   data: function data() {
@@ -158,7 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.branch.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/config/branches/add?token=" + localStorage.getItem("api_token"), this.branch).then(function (response) {
+      _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].p("/api/config/branches/add", this.branch).then(function (response) {
         _this.loading.processing = false;
 
         if (response.status == 200) {
@@ -166,9 +174,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.modal.body = "Thêm mới trung tâm thành công";
           _this.modal.show = true;
         }
-      })["catch"](function (e) {
-        _utilities_utility__WEBPACK_IMPORTED_MODULE_1__["default"].processAuthen(e);
-      });
+      })["catch"](function (e) {});
     },
     exit: function exit() {
       this.$router.push({

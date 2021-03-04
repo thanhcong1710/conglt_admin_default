@@ -9,6 +9,15 @@ const QuizEdit3 = () => import('../../views/courseware/quizs/edit3')
 const PreviewQuiz1 = () => import('../../views/courseware/preview/quiz1')
 const PreviewQuiz2 = () => import('../../views/courseware/preview/quiz2')
 const PreviewQuiz3 = () => import('../../views/courseware/preview/quiz3')
+const CourseList = () => import('../../views/courseware/courses/list')
+const CourseAdd = () => import('../../views/courseware/courses/add')
+const CourseEdit = () => import('../../views/courseware/courses/edit')
+const LessonList = () => import('../../views/courseware/lessons/list')
+const LessonAdd = () => import('../../views/courseware/lessons/add')
+const LessonEdit = () => import('../../views/courseware/lessons/edit')
+const TestList = () => import('../../views/courseware/tests/list')
+const TestAdd = () => import('../../views/courseware/tests/add')
+const TestEdit = () => import('../../views/courseware/tests/edit')
 
 export default {
   router: {
@@ -69,6 +78,51 @@ export default {
         path: '/preview/:id/quiz3',
         name: 'Xem Trước Câu Hỏi',
         component: PreviewQuiz3
+      },
+      {
+        path: '/courses',
+        name: 'Danh Sách Khóa Học',
+        component: CourseList
+      },
+      {
+        path: '/courses/add',
+        name: 'Thêm Mới Khóa Học',
+        component: CourseAdd
+      },
+      {
+        path: '/courses/:id/edit',
+        name: 'Cập Nhật Khóa Học',
+        component: CourseEdit
+      },
+      {
+        path: '/lessons',
+        name: 'Danh Sách Bài Học',
+        component: LessonList
+      },
+      {
+        path: '/lessons/add',
+        name: 'Thêm Mới Bài Học',
+        component: LessonAdd
+      },
+      {
+        path: '/lessons/:id/edit',
+        name: 'Cập Nhật Bài Học',
+        component: LessonEdit
+      },
+      {
+        path: '/tests',
+        name: 'Danh Sách Bài Kiểm Tra',
+        component: TestList
+      },
+      {
+        path: '/tests/add',
+        name: 'Thêm Mới Bài Kiểm Tra',
+        component: TestAdd
+      },
+      {
+        path: '/tests/:id/edit',
+        name: 'Cập Nhật Bài Kiểm Tra',
+        component: TestEdit
       },
     ]
   }
