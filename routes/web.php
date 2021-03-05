@@ -11,6 +11,7 @@
 |
 */
 Route::get('/site/index', 'WebController@index')->name('home');
+Route::get('/site/register', 'WebController@register');
 Route::get('/{any}', function () {
     return view('coreui.homepage');
 })->where('any', '.*');
