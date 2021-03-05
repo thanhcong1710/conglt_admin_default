@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/site/index', 'WebController@index')->name('home');
 Route::get('/{any}', function () {
     return view('coreui.homepage');
 })->where('any', '.*');
