@@ -153,6 +153,7 @@ export default {
       searchData: {
         keyword: "",
         status: "",
+        pagination: this.pagination
       },
       students: [],
       pagination: {

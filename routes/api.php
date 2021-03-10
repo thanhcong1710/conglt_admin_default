@@ -86,6 +86,11 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('/config/classes/update/{class_id}', 'ClassesController@update');
         Route::get('/config/classes/detail/{class_id}', 'ClassesController@detail');
         Route::get('/config/classes/delete/{class_id}', 'ClassesController@delete');
+        Route::post('/config/schedules/list', 'SchedulesController@list');
+        Route::post('/config/schedules/add', 'SchedulesController@add');
+        Route::post('/config/schedules/update/{class_id}', 'SchedulesController@update');
+        Route::get('/config/schedules/detail/{class_id}', 'SchedulesController@detail');
+        Route::get('/config/schedules/delete/{class_id}', 'SchedulesController@delete');
         Route::post('/config/tuition_fees/list', 'TuitionFeesController@list');
         Route::post('/config/tuition_fees/add', 'TuitionFeesController@add');
         Route::post('/config/tuition_fees/update/{tuiton_fee_id}', 'TuitionFeesController@update');

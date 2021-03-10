@@ -10,26 +10,26 @@
           <div class="card-body">
             <div class="row">
               <div class="form-group col-sm-4">
-                <label for="name">Tên lớp học</label>
+                <label for="name">Lớp Học</label>
                 <input
                   class="form-control"
                   v-model="searchData.keyword"
                   type="text"
-                  placeholder="Nhập tên lớp học"
+                  placeholder="Nhập tên buổi học"
                 />
               </div>
               <div class="form-group col-sm-4">
                 <label for="ccmonth">Trạng thái</label>
                 <select class="form-control" v-model="searchData.status">
                   <option value>Chọn trạng thái</option>
-                  <option value="0">Ngừng hoạt động</option>
-                  <option value="1">Hoạt động</option>
+                  <option value="1">Đã học</option>
+                  <option value="2">Chưa học</option>
                 </select>
               </div>
             </div>
           </div>
           <div class="card-footer">
-            <router-link class="btn btn-sm btn-success" :to="'/classes/add'">
+            <router-link class="btn btn-sm btn-success" :to="'/schedules/add'">
               <i class="fa fa-plus"></i> Thêm mới
             </router-link>
             <button class="btn btn-sm btn-info" type="submit" @click="search()">
@@ -56,24 +56,24 @@
               <thead>
                 <tr>
                   <th>STT</th>
-                  <th>Sản phẩm</th>
-                  <th>Tên lớp học</th>
+                  <th>Lớp</th>
+                  <th>Ngày Học</th>
                   <th>Trạng thái</th>
                   <th>Thao tác</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(item, index) in classes" :key="index">
+                <tr v-for="(item, index) in schedules" :key="index">
                   <td>
                     {{ index + 1 + (pagination.cpage - 1) * pagination.limit }}
                   </td>
-                  <td>{{ item.product_name }}</td>
-                  <td>{{ item.title }}</td>
-                  <td>{{ item.status | getStatusName }}</td>
+                  <td>{{ item.class_name }}</td>
+                  <td>{{ item.date }}</td>
+                  <td>{{ item.status}}</td>
                   <td>
                     <router-link
                       class="btn btn-sm btn-success"
-                      :to="`/classes/${item.id}/edit`"
+                      :to="`/schedules/${item.id}/edit`"
                     >
                       <i class="fa fa-edit"></i> Sửa
                     </router-link>
@@ -151,9 +151,9 @@ export default {
         keyword: "",
         status: "",
       },
-      classes: [],
+      schedules: [],
       pagination: {
-        url: "/api/config/classes/list",
+        url: "/api/config/schedules/list",
         id: "",
         style: "line",
         class: "",
@@ -171,7 +171,7 @@ export default {
         title: "THÔNG BÁO",
         show: false,
         color: "success",
-        body: "Cập nhật lớp học thành công",
+        body: "Cập nhật buổi học thành công",
         closeOnBackdrop: false,
       },
     };
@@ -189,13 +189,13 @@ export default {
         status: this.searchData.status,
         pagination: this.pagination
       };
-      const link = "/api/config/classes/list";
+      const link = "/api/config/schedules/list";
 
       this.loading.processing = true;
       u.p(link, data)
         .then((response) => {
           this.loading.processing = false;
-          this.classes = response.data.list;
+          this.schedules = response.data.list;
           this.pagination.spage = response.data.paging.spage;
           this.pagination.ppage = response.data.paging.ppage;
           this.pagination.npage = response.data.paging.npage;
@@ -216,12 +216,12 @@ export default {
       this.search();
     },
     deleteItem(id) {
-      u.g(`/api/config/classes/delete/${id}`)
+      u.g(`/api/config/schedules/delete/${id}`)
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
             this.modal.color = "success";
-            this.modal.body = "Xóa lớp học thành công";
+            this.modal.body = "Xóa buổi học thành công";
             this.modal.show = true;
             this.search();
           }

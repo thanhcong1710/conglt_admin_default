@@ -18,8 +18,13 @@ class StudentsController extends Controller
     {
         $status = isset($request->status) ? $request->status : '';
         $keyword = isset($request->keyword) ? $request->keyword : '';
-        $page = isset($request->page) ? (int) $request->page : 1;
-        $limit = isset($request->limit) ? (int) $request->limit : 20;
+        
+        $pagination = (object)$request->pagination;
+        $page = isset($pagination->cpage) ? (int) $pagination->cpage : 1;
+        $limit = isset($pagination->limit) ? (int) $pagination->limit : 20;
+        $offset = $page == 1 ? 0 : $limit * ($page-1);
+        $limitation =  $limit > 0 ? " LIMIT $offset, $limit": "";
+
         $cond = " s.branch_id = ".(int)Auth::user()->branch_id;
         if ($status !== '') {
             $cond .= " AND s.status=$status";
@@ -27,7 +32,7 @@ class StudentsController extends Controller
         if ($keyword !== '') {
             $cond .= " AND (s.name LIKE '%$keyword%' OR s.phone LIKE '%$keyword%') ";
         }
-        $total = u::first("SELECT count(id) AS total FROM lms_students AS s WHERE $cond");
+        $total = u::first("SELECT count(id) AS total FROM lms_students AS s WHERE $cond $limitation");
         $list = u::query("SELECT s.* FROM lms_students AS s WHERE $cond");
         $data = u::makingPagination($list, $total->total, $page, $limit);
         return response()->json($data);

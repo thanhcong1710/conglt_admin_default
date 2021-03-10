@@ -7,7 +7,7 @@ use App\Providers\UtilityServiceProvider as u;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ClassesController extends Controller
+class SchedulesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,23 +17,27 @@ class ClassesController extends Controller
     public function list(Request $request)
     {
         $status = isset($request->status) ? $request->status : '';
-        $keyword = isset($request->keyword) ? $request->keyword : '';
-        $cond = " l.branch_id = " . (int)Auth::user()->branch_id;
+        $class_id = isset($request->class_id) ? $request->class_id : '';
+        $cond = " c.branch_id = " . (int)Auth::user()->branch_id;
 
         $pagination = (object)$request->pagination;
         $page = isset($pagination->cpage) ? (int) $pagination->cpage : 1;
         $limit = isset($pagination->limit) ? (int) $pagination->limit : 20;
         $offset = $page == 1 ? 0 : $limit * ($page-1);
         $limitation =  $limit > 0 ? " LIMIT $offset, $limit": "";
-
-        if ($status !== '') {
-            $cond .= " AND l.status=$status";
+        
+        if ($status == 2) {
+            $cond .= " AND s.date >= CURRENT_DATE";
+        }elseif ($status==1) {
+            $cond .= " AND s.date < CURRENT_DATE";
         }
-        if ($keyword !== '') {
-            $cond .= " AND l.title LIKE '%$keyword%' ";
+        if ($class_id !== '') {
+            $cond .= " AND s.class_id LIKE '%$class_id%' ";
         }
-        $total = u::first("SELECT count(id) AS total FROM lms_classes AS l WHERE $cond");
-        $list = u::query("SELECT l.* , (SELECT title FROM lms_products WHERE id=l.product_id) AS product_name FROM lms_classes AS l WHERE $cond $limitation");
+        $total = u::first("SELECT count(s.id) AS total FROM lms_schedules AS s LEFT JOIN lms_classes AS c ON c.id=s.class_id WHERE $cond");
+        $list = u::query("SELECT c.title AS class_name, s.* ,
+                IF(s.date >= CURRENT_DATE,'Chưa học','Đã học') AS status_title
+            FROM lms_schedules AS s LEFT JOIN lms_classes AS c ON c.id=s.class_id WHERE $cond $limitation");
         $data = u::makingPagination($list, $total->total, $page, $limit);
         return response()->json($data);
     }
@@ -56,12 +60,12 @@ class ClassesController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
             'creator_id' => Auth::user()->id,
             'note' => $request->note,
-        ), 'lms_classes');
+        ), 'lms_schedules');
         return response()->json($data);
     }
     public function detail($class_id)
     {
-        $data = u::getObject(array('id' => $class_id), 'lms_classes');
+        $data = u::getObject(array('id' => $class_id), 'lms_schedules');
         $data->shift_selected = u::query("SELECT * FROM lms_shifts WHERE id IN(" . ($data->shifts ? $data->shifts : 0) . ")");
         $teacher_info = $data->teacher_id ? u::first("SELECT name FROM users WHERE id =" . $data->teacher_id ): NULL;
         $data->teacher_name = $teacher_info ? $teacher_info->name:'';
@@ -85,42 +89,12 @@ class ClassesController extends Controller
             'updated_at' => date('Y-m-d H:i:s'),
             'updator_id' => Auth::user()->id,
             'note' => $request->note,
-        ), array('id' => $class_id), 'lms_classes');
-        self::genSchedules($class_id);
+        ), array('id' => $class_id), 'lms_schedules');
         return response()->json($data);
     }
     public function delete($class_id)
     {
-        $data = u::query("DELETE FROM lms_classes WHERE id=$class_id");
+        $data = u::query("DELETE FROM lms_schedules WHERE id=$class_id");
         return response()->json($data);
-    }
-    public static function genSchedules($class_id){
-        $class_info = u::first("SELECT * FROM lms_classes WHERE id = $class_id");
-        $shifts = u::query("SELECT * FROM lms_shifts WHERE id IN ($class_info->shifts) ");
-        $holiday = [];
-        $arr_class_day = [];
-        $arr_shift = [];
-        foreach($shifts AS $shift){
-            array_push($arr_class_day,$shift->day);
-            $arr_shift[$shift->day] =$shift;
-        }
-        $data = u::calculatorSessionsByNumberOfSessions($class_info->start_date,$class_info->session,$holiday,$arr_class_day);
-        foreach($data->dates AS $date){
-            $check_date = u::first("SELECT count(id) AS total FROM  lms_schedules WHERE class_id=$class_info->id AND `date`='$date'");
-            if($check_date->total==0){
-                $wday = date('w', strtotime($date));
-                u::insertSimpleRow(array(
-                    'date' => $date,
-                    'shift_id' => $arr_shift[$wday]->id,
-                    'class_id' => $class_info->id,
-                    'start_time' => $arr_shift[$wday]->start_time,
-                    'end_time' => $arr_shift[$wday]->end_time,
-                    'duration' => strtotime($arr_shift[$wday]->end_time) -strtotime($arr_shift[$wday]->start_time),
-                    'status' => 1,
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'creator_id' => Auth::user()->id,
-                ), 'lms_schedules');
-            }
-        }
     }
 }

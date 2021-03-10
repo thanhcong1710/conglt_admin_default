@@ -18,9 +18,14 @@ class ProductsController extends Controller
     {
         $status = isset($request->status) ? $request->status : '';
         $keyword = isset($request->keyword) ? $request->keyword : '';
-        $page = isset($request->page) ? (int) $request->page : 1;
-        $limit = isset($request->limit) ? (int) $request->limit : 20;
         $cond = " p.branch_id = ".(int)Auth::user()->branch_id;
+
+        $pagination = (object)$request->pagination;
+        $page = isset($pagination->cpage) ? (int) $pagination->cpage : 1;
+        $limit = isset($pagination->limit) ? (int) $pagination->limit : 20;
+        $offset = $page == 1 ? 0 : $limit * ($page-1);
+        $limitation =  $limit > 0 ? " LIMIT $offset, $limit": "";
+
         if ($status !== '') {
             $cond .= " AND p.status=$status";
         }
@@ -28,7 +33,7 @@ class ProductsController extends Controller
             $cond .= " AND p.title LIKE '%$keyword%' ";
         }
         $total = u::first("SELECT count(id) AS total FROM lms_products AS p WHERE $cond");
-        $list = u::query("SELECT p.* FROM lms_products AS p WHERE $cond");
+        $list = u::query("SELECT p.* FROM lms_products AS p WHERE $cond $limitation");
         $data = u::makingPagination($list, $total->total, $page, $limit);
         return response()->json($data);
     }

@@ -8,6 +8,9 @@ const BranchEdit = () => import('../../views/config/branches/edit')
 const ClassList = () => import('../../views/config/classes/list')
 const ClassAdd = () => import('../../views/config/classes/add')
 const ClassEdit = () => import('../../views/config/classes/edit')
+const ScheduleList = () => import('../../views/config/schedules/list')
+const ScheduleAdd = () => import('../../views/config/schedules/add')
+const ScheduleEdit = () => import('../../views/config/schedules/edit')
 const TuitionFeeList = () => import('../../views/config/tuition_fees/list')
 const TuitionFeeAdd = () => import('../../views/config/tuition_fees/add')
 const TuitionFeeEdit = () => import('../../views/config/tuition_fees/edit')
@@ -80,7 +83,22 @@ export default {
         path: '/tuition_fees/:id/edit',
         name: 'Cập Nhật Gói Phí',
         component: TuitionFeeEdit
-      }
+      },
+      {
+        path: '/schedules',
+        name: 'Danh Sách Buổi Học',
+        component: ScheduleList
+      },
+      {
+        path: '/schedules/add',
+        name: 'Thêm Mới Buổi Học',
+        component: ScheduleAdd
+      },
+      {
+        path: '/schedules/:id/edit',
+        name: 'Cập Nhật Buổi Học',
+        component: ScheduleEdit
+      },
     ]
   }
 }

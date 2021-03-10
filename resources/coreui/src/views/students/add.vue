@@ -27,7 +27,7 @@
                 <datepicker
                   class="form-control calendar"
                   v-model="student.birthday"
-                  placeholder="Chọn ngày kết thúc"
+                  placeholder="Chọn ngày sinh nhật"
                   lang="lang"
                   @change="selectDate"
                 />

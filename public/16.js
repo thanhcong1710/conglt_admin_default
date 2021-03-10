@@ -36,10 +36,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -179,7 +179,7 @@ __webpack_require__.r(__webpack_exports__);
     loader: _components_Loading__WEBPACK_IMPORTED_MODULE_1__["default"],
     editor: _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  name: "Add-Product",
+  name: "Edit-Product",
   data: function data() {
     return {
       tinymce: {
@@ -204,7 +204,7 @@ __webpack_require__.r(__webpack_exports__);
         title: "THÔNG BÁO",
         show: false,
         color: "success",
-        body: "Thêm mới gói phí thành công",
+        body: "Cập nhật gói phí thành công",
         closeOnBackdrop: false
       },
       tuition_fee: {
@@ -229,45 +229,24 @@ __webpack_require__.r(__webpack_exports__);
       _this.loading.processing = false;
       _this.list_product = response.data;
     })["catch"](function (e) {});
+    this.loading.processing = true;
+    _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].g("api/config/tuition_fees/detail/".concat(this.$route.params.id)).then(function (response) {
+      _this.loading.processing = false;
+      _this.tuition_fee = response.data;
+    })["catch"](function (e) {});
   },
   methods: {
     save: function save() {
       var _this2 = this;
 
-      var mess = "";
-      var resp = true;
-
-      if (this.tuition_fee.product_id == "") {
-        mess += " - Sản phẩm không được để trống<br/>";
-        resp = false;
-      }
-
-      if (this.tuition_fee.title == "") {
-        mess += " - Tên gói phí không được để trống<br/>";
-        resp = false;
-      }
-
-      if (this.tuition_fee.session == "") {
-        mess += " - Số buổi gói phí không được để trống<br/>";
-        resp = false;
-      }
-
-      if (!resp) {
-        this.modal.color = "success";
-        this.modal.body = mess;
-        this.modal.show = true;
-        this.modal.action_exit = "close";
-        return false;
-      }
-
-      this.tuition_fee.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
-      _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].p("/api/config/tuition_fees/add", this.tuition_fee).then(function (response) {
+      this.tuition_fee.note = tinymce.get("input_tinymce").getContent();
+      _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].p("/api/config/tuition_fees/update/".concat(this.$route.params.id), this.tuition_fee).then(function (response) {
         _this2.loading.processing = false;
 
         if (response.status == 200) {
           _this2.modal.color = "success";
-          _this2.modal.body = "Thêm mới gói phí thành công";
+          _this2.modal.body = "Cập nhật sản phẩm thành công";
           _this2.modal.show = true;
         }
       })["catch"](function (e) {});
@@ -292,6 +271,7 @@ __webpack_require__.r(__webpack_exports__);
       var val_receivable = _utilities_utility__WEBPACK_IMPORTED_MODULE_0__["default"].fmc(this.tuition_fee.price > this.tuition_fee.discount ? this.tuition_fee.price - this.tuition_fee.discount : 0);
       this.tuition_fee.receivable_show = val_receivable.s;
       this.tuition_fee.receivable = val_receivable.n;
+      console.log(this.tuition_fee.receivable_show);
     }
   }
 });
@@ -390,10 +370,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648& ***!
+  \******************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -743,7 +723,7 @@ var render = function() {
                     },
                     [
                       _c("i", { staticClass: "fas fa-save" }),
-                      _vm._v(" Thêm mới\n          ")
+                      _vm._v(" Cập nhật\n          ")
                     ]
                   )
                 ],
@@ -814,7 +794,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("strong", [_vm._v("Thêm mới gói phí")])
+      _c("strong", [_vm._v("Cập nhật gói phí")])
     ])
   },
   function() {
@@ -929,17 +909,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/config/tuition_fees/add.vue":
-/*!****************************************************************!*\
-  !*** ./resources/coreui/src/views/config/tuition_fees/add.vue ***!
-  \****************************************************************/
+/***/ "./resources/coreui/src/views/config/tuition_fees/edit.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/coreui/src/views/config/tuition_fees/edit.vue ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./add.vue?vue&type=template&id=6bcde23f& */ "./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f&");
-/* harmony import */ var _add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./add.vue?vue&type=script&lang=js& */ "./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js&");
+/* harmony import */ var _edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit.vue?vue&type=template&id=8c95e648& */ "./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648&");
+/* harmony import */ var _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit.vue?vue&type=script&lang=js& */ "./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -949,9 +929,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -961,38 +941,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/coreui/src/views/config/tuition_fees/add.vue"
+component.options.__file = "resources/coreui/src/views/config/tuition_fees/edit.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************/
+/***/ "./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./add.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f& ***!
-  \***********************************************************************************************/
+/***/ "./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648&":
+/*!************************************************************************************************!*\
+  !*** ./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648& ***!
+  \************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./add.vue?vue&type=template&id=6bcde23f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/add.vue?vue&type=template&id=6bcde23f&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./edit.vue?vue&type=template&id=8c95e648& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/coreui/src/views/config/tuition_fees/edit.vue?vue&type=template&id=8c95e648&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_vue_vue_type_template_id_6bcde23f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_8c95e648___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

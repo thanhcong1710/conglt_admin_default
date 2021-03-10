@@ -185,6 +185,7 @@ export default {
       const data = {
         keyword: this.searchData.keyword,
         status: this.searchData.status,
+        pagination: this.pagination
       };
       const link = "/api/config/products/list";
 
