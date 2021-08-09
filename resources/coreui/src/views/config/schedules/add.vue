@@ -5,72 +5,13 @@
         <div class="card">
           <loader :active="loading.processing" :text="loading.text" />
           <div class="card-header">
-            <strong>Thêm mới lớp học</strong>
+            <strong>Thêm mới buổi học</strong>
           </div>
           <div class="card-body">
             <form action method="post">
               <div class="form-group">
                 <label for="nf-email"
-                  >Sản phẩm <span class="text-danger"> (*)</span></label
-                >
-                <select class="form-control" v-model="lms_class.product_id">
-                  <option value="">Chọn sản phẩm</option>
-                  <option
-                    :value="product.id"
-                    v-for="(product, index) in list_product"
-                    :key="index"
-                  >
-                    {{ product.title }}
-                  </option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="nf-email"
-                  >Tên lớp học <span class="text-danger"> (*)</span></label
-                >
-                <input
-                  class="form-control"
-                  type="text"
-                  name="title"
-                  v-model="lms_class.title"
-                />
-              </div>
-              <div class="form-group">
-                <label for="nf-email"
-                  >Lịch học <span class="text-danger"> (*)</span></label
-                >
-                <vue_select
-                  label="title"
-                  multiple
-                  :options="list_shift"
-                  v-model="lms_class.shift_selected"
-                  placeholder="Chọn lịch học"
-                  :searchable="true"
-                  language="en-US"
-                ></vue_select>
-              </div>
-              <div class="form-group">
-                <label for="nf-email">Ngày bắt đầu</label>
-                <datepicker
-                  class="form-control calendar"
-                  v-model="lms_class.start_date"
-                  placeholder="Chọn ngày bắt đầu"
-                  lang="lang"
-                  @change="selectDate"
-                />
-              </div>
-              <div class="form-group">
-                <label for="nf-email">Số buổi học</label>
-                <input
-                  class="form-control"
-                  type="number"
-                  name="title"
-                  v-model="lms_class.session"
-                />
-              </div>
-              <div class="form-group">
-                <label for="nf-email"
-                  >Giáo viên <span class="text-danger"> (*)</span></label
+                  >Lớp Học <span class="text-danger"> (*)</span></label
                 >
                 <search
                   :displayIcon="search.loading"
@@ -82,24 +23,27 @@
                 </search>
               </div>
               <div class="form-group">
-                <label for="nf-email">Ghi chú</label>
-                <editor
-                  :api-key="tinymce.key"
-                  :init="tinymce.init"
-                  id="input_tinymce"
+                <label for="nf-email">Ngày Học <span class="text-danger"> (*)</span></label>
+                <datepicker
+                  class="form-control calendar"
+                  v-model="lms_schedule.date"
+                  placeholder="Chọn ngày học"
+                  lang="lang"
+                  @change="selectDate"
                 />
               </div>
               <div class="form-group">
-                <label for="nf-email">Trạng thái</label>
-                <select class="form-control" v-model="lms_class.status">
-                  <option value="0">Ngừng hoạt động</option>
-                  <option value="1">Hoạt động</option>
-                </select>
+                <label for="nf-email">Thời gian bắt đầu <span class="text-danger"> (*)</span></label>
+                <timepicker format="HH:mm" v-model="lms_schedule.start_time"></timepicker>
+              </div>
+              <div class="form-group">
+                <label for="nf-email">Thời gian kết thúc<span class="text-danger"> (*)</span></label>
+                <timepicker format="HH:mm" v-model="lms_schedule.end_time"></timepicker>
               </div>
             </form>
           </div>
           <div class="card-footer">
-            <router-link class="btn btn-danger" :to="`/classes`">
+            <router-link class="btn btn-danger" :to="`/schedules`">
               <i class="fas fa-undo-alt"></i> Hủy
             </router-link>
             <button class="btn btn-success" type="button" @click="save">
@@ -135,6 +79,7 @@ import Editor from "@tinymce/tinymce-vue";
 import vue_select from "vue-select";
 import search from "../../../components/ObjectSearch";
 import datepicker from "vue2-datepicker";
+import timepicker from "vue2-timepicker";
 import moment from 'moment';
 
 export default {
@@ -143,32 +88,12 @@ export default {
     editor: Editor,
     vue_select,
     search,
-    datepicker
+    datepicker,
+    timepicker
   },
   name: "Add-Product",
   data() {
     return {
-      tinymce: {
-        key: "68xdyo8hz3oyr5p47zv3jyvj3h6xg0hc0khthuj123tnskcx",
-        init: {
-          entity_encoding: "raw",
-          height: 300,
-          menubar: true,
-          plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table paste code help wordcount",
-          ],
-          toolbar:
-            "undo redo | bold italic backcolor | image| media |\
-           alignleft aligncenter alignright alignjustify | \
-           bullist numlist outdent indent | removeformat | help",
-          images_upload_url:
-            "/api/upload/upload_file?token=" +
-            localStorage.getItem("api_token"),
-          images_upload_base_path: "",
-        },
-      },
       loading: {
         text: "Đang tải dữ liệu...",
         processing: false,
@@ -177,23 +102,16 @@ export default {
         title: "THÔNG BÁO",
         show: false,
         color: "success",
-        body: "Thêm mới lớp học thành công",
+        body: "Thêm mới buổi học thành công",
         closeOnBackdrop: false,
         action_exit: "exit",
       },
-      lms_class: {
-        title: "",
-        status: 1,
-        lang: 0,
-        note: "",
-        product_id: "",
-        shift_selected: [],
-        teacher_id:"",
-        session:0,
-        start_date:""
+      lms_schedule: {
+        class_id: "",
+        date: "",
+        start_time: "",
+        end_time: "",
       },
-      list_product: [],
-      list_shift: [],
       search: {
         loading: "hidden",
         from_link: 0,
@@ -224,7 +142,7 @@ export default {
   methods: {
     selectDate(date) {
       if (date) {
-        this.lms_class.start_date = moment(date).format("YYYY-MM-DD");
+        this.lms_schedule.date = moment(date).format("YYYY-MM-DD");
       }
     },
     searchSuggest(keyword) {
@@ -234,7 +152,7 @@ export default {
         this.search.loading = "display";
         this.search.calling = true;
         return new Promise((resolve, reject) => {
-          u.g(`/api/config/teachers/get_data_by_keyword/${keyword}`)
+          u.g(`/api/config/classes/get_data_by_keyword/${keyword}`)
             .then((response) => {
               const resp = response.data.length
                 ? response.data
@@ -256,20 +174,22 @@ export default {
       }
     },
     searchSelect(obj) {
-      this.lms_class.teacher_id = obj.id == undefined ? "" : obj.id
+      this.lms_schedule.class_id = obj.id == undefined ? "" : obj.id
     },
     save() {
       let mess = "";
       let resp = true;
-      if (this.lms_class.product_id == "") {
+      console.log(this.lms_schedule);
+      resp = false;
+      if (this.lms_schedule.product_id == "") {
         mess += " - Sản phẩm không được để trống<br/>";
         resp = false;
       }
-      if (this.lms_class.title == "") {
-        mess += " - Tên lớp học không được để trống<br/>";
+      if (this.lms_schedule.title == "") {
+        mess += " - Tên buổi học không được để trống<br/>";
         resp = false;
       }
-      if (this.lms_class.teacher_id == "") {
+      if (this.lms_schedule.teacher_id == "") {
         mess += " - Giáo viên không được để trống<br/>";
         resp = false;
       }
@@ -280,14 +200,14 @@ export default {
         this.modal.action_exit = "close";
         return false;
       }
-      this.lms_class.note = tinymce.get("input_tinymce").getContent();
+      this.lms_schedule.note = tinymce.get("input_tinymce").getContent();
       this.loading.processing = true;
-      u.p("/api/config/classes/add", this.lms_class)
+      u.p("/api/config/classes/add", this.lms_schedule)
         .then((response) => {
           this.loading.processing = false;
           if (response.status == 200) {
             this.modal.color = "success";
-            this.modal.body = "Thêm mới lớp học thành công";
+            this.modal.body = "Thêm mới buổi học thành công";
             this.modal.show = true;
             this.modal.action_exit = "exit";
           }
@@ -304,3 +224,6 @@ export default {
   },
 };
 </script>
+<style>
+  @import '~vue2-timepicker/dist/VueTimepicker.css';
+</style>

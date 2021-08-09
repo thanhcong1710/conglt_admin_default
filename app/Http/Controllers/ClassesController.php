@@ -123,4 +123,9 @@ class ClassesController extends Controller
             }
         }
     }
+    public function getDataByKeyword(Request $request,$keyword)
+    {
+        $data = u::query("SELECT * , title AS label FROM lms_classes WHERE status=1 AND branch_id = ".Auth::user()->branch_id." AND ( title LIKE '%$keyword%' OR id LIKE '%$keyword%') ");
+        return response()->json($data);
+    }
 }

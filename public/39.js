@@ -144,6 +144,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -470,6 +472,12 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(item.date))]),
                         _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(item.start_time + " - " + item.end_time)
+                          )
+                        ]),
+                        _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(item.status))]),
                         _vm._v(" "),
                         _c(
@@ -626,6 +634,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Lớp")]),
         _vm._v(" "),
         _c("th", [_vm._v("Ngày Học")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Thời gian")]),
         _vm._v(" "),
         _c("th", [_vm._v("Trạng thái")]),
         _vm._v(" "),

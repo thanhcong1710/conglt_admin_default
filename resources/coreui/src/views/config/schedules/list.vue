@@ -58,6 +58,7 @@
                   <th>STT</th>
                   <th>Lớp</th>
                   <th>Ngày Học</th>
+                  <th>Thời gian</th>
                   <th>Trạng thái</th>
                   <th>Thao tác</th>
                 </tr>
@@ -69,6 +70,7 @@
                   </td>
                   <td>{{ item.class_name }}</td>
                   <td>{{ item.date }}</td>
+                  <td>{{ item.start_time+" - "+item.end_time }}</td>
                   <td>{{ item.status}}</td>
                   <td>
                     <router-link
